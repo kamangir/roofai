@@ -9,7 +9,7 @@ def help_ingest(
 ) -> str:
     options = "".join(
         [
-            "source=AIRS",
+            "source=AIRS | <query-object-name>",
             xtra(",dryrun,upload,target=<target>", mono=mono),
         ]
     )
