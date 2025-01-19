@@ -47,7 +47,7 @@ parser.add_argument(
     default=10,
 )
 parser.add_argument(
-    "--ingest_path",
+    "--output_dataset_path",
     type=str,
     default="",
 )
@@ -108,7 +108,7 @@ if args.task == "ingest":
     if args.source == "AIRS" or args.is_distributed == 1:
         success = ingest_from_dataset(
             input_dataset_path=args.input_dataset_path,
-            ingest_path=args.ingest_path,
+            output_dataset_path=args.output_dataset_path,
             counts={
                 "test": args.test_count,
                 "train": args.train_count,
@@ -116,10 +116,13 @@ if args.task == "ingest":
             },
             target=DatasetTarget[args.target.upper()],
             log=args.log,
+            is_distributed=args.is_distributed,
             verbose=args.verbose,
         )
     elif args.source == "CamVid":
-        success = ingest_CamVid(args.ingest_path)
+        success = ingest_CamVid(
+            output_dataset_path=args.output_dataset_path,
+        )
     else:
         logger.error(f"-{NAME}: {args.task}: {args.source}: source not found.")
 elif args.task == "review":

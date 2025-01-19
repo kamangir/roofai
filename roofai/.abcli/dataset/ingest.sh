@@ -59,7 +59,7 @@ function roofai_dataset_ingest() {
         python3 -m roofai.dataset ingest \
         --source $source \
         --target $target \
-        --ingest_path $object_path \
+        --output_dataset_path $object_path \
         "$extra_args" \
         "${@:3}"
     local status="$?"

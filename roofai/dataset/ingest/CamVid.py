@@ -21,11 +21,11 @@ CLASSES = [
 ]
 
 
-def ingest_CamVid(ingest_path: str) -> bool:
-    logger.info(f"ingesting CamVid -> {ingest_path}")
+def ingest_CamVid(output_dataset_path: str) -> bool:
+    logger.info(f"ingesting CamVid -> {output_dataset_path}")
 
     return file.save_yaml(
-        os.path.join(ingest_path, "metadata.yaml"),
+        os.path.join(output_dataset_path, "metadata.yaml"),
         {
             "classes": CLASSES,
             "kind": "CamVid",

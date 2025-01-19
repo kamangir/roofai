@@ -18,20 +18,25 @@ NAME = module.name(__file__, NAME)
 
 def ingest_from_dataset(
     input_dataset_path: str,
-    ingest_path: str,
+    output_dataset_path: str,
     counts: Dict[str, int],
     chip_overlap: float = 0.5,
     log: bool = False,
     verbose: bool = False,
     in_notebook: bool = False,
     target: DatasetTarget = DatasetTarget.TORCH,
+    is_distributed: bool = False,
 ) -> bool:
     chip_height = target.chip_height
     chip_width = target.chip_width
 
+    input_object_name = path.name(input_dataset_path)
+    output_object_name = path.name(output_dataset_path)
+
     logger.info(
-        "ingesting from {} -{}-{}x{}-@{:.0f}%-> {}:{}".format(
-            path.name(input_dataset_path),
+        "ingesting from {}{} -{}-{}x{}-@{:.0f}%-> {}:{}".format(
+            input_object_name,
+            " (distributed)" if is_distributed else "",
             " + ".join(
                 ["{} X {:,d}".format(subset, count) for subset, count in counts.items()]
             ),
@@ -39,13 +44,22 @@ def ingest_from_dataset(
             chip_width,
             chip_overlap * 100,
             target.name.lower(),
-            path.name(ingest_path),
+            output_object_name,
         )
     )
 
+    original_counts = {class_name: count for class_name, count in counts.items()}
+    if is_distributed:
+        total_count = sum([count for count in counts.values()])
+        counts = {
+            class_name: total_count if class_name == "train" else 0
+            for class_name, count in counts.items()
+        }
+        logger.info(f"☁️ distributed dataset, will ingest {total_count:,} chips first.")
+
     input_dataset = RoofAIDataset(input_dataset_path)
     output_dataset = RoofAIDataset(
-        ingest_path,
+        output_dataset_path,
         kind=(
             DatasetKind.CAMVID
             if target == DatasetTarget.TORCH
@@ -92,34 +106,33 @@ def ingest_from_dataset(
                 if log:
                     logger.info(f"remaining chip count: {chip_count:,}")
 
-    ingest_object_name = path.name(ingest_path)
     file.save_yaml(
-        os.path.join(ingest_path, "metadata.yaml"),
+        os.path.join(output_dataset_path, "metadata.yaml"),
         {
             "classes": output_dataset.classes,
             "kind": "CamVid" if target == DatasetTarget.TORCH else "SageMaker",
-            "source": "AIRS",
+            "source": input_object_name if is_distributed else "AIRS",
             "ingested-by": f"{NAME}-{VERSION}",
             # SageMaker
             "bucket": "kamangir",
             "channel": (
                 {
-                    "label_map": f"s3://kamangir/bolt/{ingest_object_name}/label_map/train_label_map.json",
-                    "train": f"s3://kamangir/bolt/{ingest_object_name}/train",
-                    "train_annotation": f"s3://kamangir/bolt/{ingest_object_name}/train_annotation",
-                    "validation": f"s3://kamangir/bolt/{ingest_object_name}/validation",
-                    "validation_annotation": f"s3://kamangir/bolt/{ingest_object_name}/validation_annotation",
+                    "label_map": f"s3://kamangir/bolt/{output_object_name}/label_map/train_label_map.json",
+                    "train": f"s3://kamangir/bolt/{output_object_name}/train",
+                    "train_annotation": f"s3://kamangir/bolt/{output_object_name}/train_annotation",
+                    "validation": f"s3://kamangir/bolt/{output_object_name}/validation",
+                    "validation_annotation": f"s3://kamangir/bolt/{output_object_name}/validation_annotation",
                 }
                 if target == DatasetTarget.SAGEMAKER
                 else {}
             ),
             "num": counts,
-            "prefix": f"bolt/{ingest_object_name}",
+            "prefix": f"bolt/{output_object_name}",
         },
         log=True,
     )
 
-    RoofAIDataset(ingest_path).visualize(
+    RoofAIDataset(output_dataset_path).visualize(
         subset="train",
         index=0,
         in_notebook=in_notebook,
