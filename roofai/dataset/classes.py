@@ -238,6 +238,9 @@ class RoofAIDataset:
                 download=True,
             )
 
+            assert (
+                "reference_filename" in record_metadata
+            ), 'no reference filename in the record, run "@datacube label".'
             filename = record_metadata["reference_filename"]
             if matrix_kind == MatrixKind.MASK:
                 filename = file.add_suffix(filename, "label")

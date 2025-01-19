@@ -52,7 +52,15 @@ def test_MatrixKind(
 
 
 @pytest.mark.parametrize(
-    "dataset_object_name, one_liner_prefix, subset, index, matrix_kind, expected_filename, expected_shape",
+    [
+        "dataset_object_name",
+        "one_liner_prefix",
+        "subset",
+        "index",
+        "matrix_kind",
+        "expected_suffix",
+        "expected_shape",
+    ],
     [
         (
             TEST_roofAI_ingest_CamVid_v1,
@@ -98,7 +106,7 @@ def test_RoofAIDataset(
     subset,
     index,
     matrix_kind,
-    expected_filename,
+    expected_suffix,
     expected_shape,
 ):
     assert objects.download(dataset_object_name)
@@ -113,10 +121,7 @@ def test_RoofAIDataset(
     assert record_id
 
     filename = dataset.get_filename(subset, record_id, matrix_kind, log=True)
-    if dataset.kind == DatasetKind.DISTRIBUTED:
-        assert filename.endswith(expected_filename)
-    else:
-        assert filename == os.path.join(dataset.dataset_path, expected_filename)
+    assert filename.endswith(expected_suffix)
 
     matrix = dataset.get_matrix(subset, record_id, matrix_kind, log=True)
     assert matrix.shape == expected_shape

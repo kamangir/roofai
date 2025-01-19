@@ -3,13 +3,16 @@
 function roofai_dataset_ingest() {
     local options=$1
     local do_dryrun=$(abcli_option_int "$options" dryrun 0)
+    local do_download=$(abcli_option_int "$options" download $(abcli_not $do_dryrun))
     local do_upload=$(abcli_option_int "$options" upload 0)
     local source=$(abcli_option "$options" source)
     local target=$(abcli_option "$options" target torch)
 
     if [[ "|CamVid|AIRS|" != *"|$source|"* ]]; then
-        abcli_log_error "roofai: dataset: ingest: $source: source not found."
-        return 1
+        source=$(abcli_clarify_object $source)
+
+        [[ "$do_download" == 1 ]] &&
+            abcli_download - $source
     fi
 
     local object_name=$(abcli_clarify_object $2 roofai_ingest_${source}_$(abcli_string_timestamp_short))
@@ -18,15 +21,13 @@ function roofai_dataset_ingest() {
 
     abcli_log "ingesting $source -$target-> $object_name"
 
-    local args=""
+    local extra_args=""
 
     if [ "$source" == "CamVid" ]; then
         # https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb
         abcli_eval dryrun=$do_dryrun,path=$object_path \
             abcli_git clone https://github.com/alexgkendall/SegNet-Tutorial object
-    fi
-
-    if [ "$source" == "AIRS" ]; then
+    elif [ "$source" == "AIRS" ]; then
         local cache_object_name=$ROOFAI_AIRS_CACHE_OBJECT_NAME
 
         local cache_from_source=0
@@ -49,7 +50,9 @@ function roofai_dataset_ingest() {
                 "unzip aerialimageryforroofsegmentation.zip"
         fi
 
-        local args="--cache_path $ABCLI_OBJECT_ROOT/$cache_object_name"
+        extra_args="--input_dataset_path $ABCLI_OBJECT_ROOT/$cache_object_name"
+    else
+        extra_args="--is_distributed 1 --input_dataset_path $ABCLI_OBJECT_ROOT/$source"
     fi
 
     abcli_eval dryrun=$do_dryrun \
@@ -57,7 +60,7 @@ function roofai_dataset_ingest() {
         --source $source \
         --target $target \
         --ingest_path $object_path \
-        "$args" \
+        "$extra_args" \
         "${@:3}"
     local status="$?"
 

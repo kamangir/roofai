@@ -7,7 +7,7 @@ from blueness.argparse.generic import sys_exit
 from roofai import NAME
 from roofai.dataset.classes import RoofAIDataset
 from roofai.dataset.classes import DatasetTarget
-from roofai.dataset.ingest.AIRS import ingest_AIRS
+from roofai.dataset.ingest.from_dataset import ingest_from_dataset
 from roofai.dataset.ingest.CamVid import ingest_CamVid
 from roofai.logger import logger
 
@@ -21,7 +21,7 @@ parser.add_argument(
     help="ingest|review",
 )
 parser.add_argument(
-    "--cache_path",
+    "--input_dataset_path",
     type=str,
     default="",
 )
@@ -95,13 +95,19 @@ parser.add_argument(
     type=int,
     default=10,
 )
+parser.add_argument(
+    "--is_distributed",
+    type=int,
+    default=0,
+    help="0 | 1",
+)
 args = parser.parse_args()
 
 success = False
 if args.task == "ingest":
-    if args.source == "AIRS":
-        success = ingest_AIRS(
-            cache_path=args.cache_path,
+    if args.source == "AIRS" or args.is_distributed == 1:
+        success = ingest_from_dataset(
+            input_dataset_path=args.input_dataset_path,
             ingest_path=args.ingest_path,
             counts={
                 "test": args.test_count,
