@@ -16,8 +16,8 @@ from roofai.logger import logger
 NAME = module.name(__file__, NAME)
 
 
-def ingest_AIRS(
-    cache_path: str,
+def ingest_from_dataset(
+    input_dataset_path: str,
     ingest_path: str,
     counts: Dict[str, int],
     chip_overlap: float = 0.5,
@@ -30,8 +30,8 @@ def ingest_AIRS(
     chip_width = target.chip_width
 
     logger.info(
-        "ingesting AIRS {} -{}-{}x{}-@{:.0f}%-> {}:{}".format(
-            path.name(cache_path),
+        "ingesting from {} -{}-{}x{}-@{:.0f}%-> {}:{}".format(
+            path.name(input_dataset_path),
             " + ".join(
                 ["{} X {:,d}".format(subset, count) for subset, count in counts.items()]
             ),
@@ -43,8 +43,8 @@ def ingest_AIRS(
         )
     )
 
-    cache_dataset = RoofAIDataset(cache_path)
-    ingest_dataset = RoofAIDataset(
+    input_dataset = RoofAIDataset(input_dataset_path)
+    output_dataset = RoofAIDataset(
         ingest_path,
         kind=(
             DatasetKind.CAMVID
@@ -53,12 +53,14 @@ def ingest_AIRS(
         ),
     ).create(log=log)
 
+    output_dataset.classes = [class_name for class_name in input_dataset.classes]
+
     for subset in tqdm(counts.keys()):
         record_id_list = []
         for matrix_kind in [MatrixKind.MASK, MatrixKind.IMAGE]:  # order is critical.
             chip_count = counts[subset]
-            for record_id in cache_dataset.subsets[subset]:
-                input_matrix = cache_dataset.get_matrix(
+            for record_id in input_dataset.subsets[subset]:
+                input_matrix = input_dataset.get_matrix(
                     subset,
                     record_id,
                     matrix_kind,
@@ -73,11 +75,12 @@ def ingest_AIRS(
                     chip_overlap=chip_overlap,
                     max_chip_count=chip_count,
                     record_id_list=record_id_list,
-                    output_path=ingest_dataset.subset_path(subset, matrix_kind),
+                    output_path=output_dataset.subset_path(subset, matrix_kind),
                     target=target,
                     prefix=record_id,
                     log=log,
                     verbose=verbose,
+                    class_count=len(output_dataset.classes),
                 )
 
                 chip_count -= slice_count
@@ -93,7 +96,7 @@ def ingest_AIRS(
     file.save_yaml(
         os.path.join(ingest_path, "metadata.yaml"),
         {
-            "classes": ingest_dataset.classes,
+            "classes": output_dataset.classes,
             "kind": "CamVid" if target == DatasetTarget.TORCH else "SageMaker",
             "source": "AIRS",
             "ingested-by": f"{NAME}-{VERSION}",
@@ -117,7 +120,7 @@ def ingest_AIRS(
     )
 
     RoofAIDataset(ingest_path).visualize(
-        subset="test",
+        subset="train",
         index=0,
         in_notebook=in_notebook,
     )
@@ -135,6 +138,7 @@ def slice_matrix(
     record_id_list: List[str],
     output_path: str,
     prefix: str,
+    class_count: int,
     target: DatasetTarget = DatasetTarget.TORCH,
     log: bool = True,
     verbose: bool = False,
@@ -179,7 +183,7 @@ def slice_matrix(
 
             # to ensure variety of labels in the pixel.
             # TODO: make it more elaborate.
-            if (kind == MatrixKind.MASK and (len(np.unique(chip)) < 2)) or (
+            if (kind == MatrixKind.MASK and np.all(chip == 0)) or (
                 kind == MatrixKind.IMAGE and (record_id not in record_id_list)
             ):
                 continue
@@ -209,7 +213,9 @@ def slice_matrix(
                         f"{path.name(output_path)}-colored",
                         f"{record_id}.png",
                     ),
-                    (plt.cm.viridis(chip) * 255).astype(np.uint8)[:, :, :3],
+                    (
+                        plt.cm.viridis(chip.astype(np.float32) / class_count) * 255
+                    ).astype(np.uint8)[:, :, :3],
                     log=verbose,
                 )
 

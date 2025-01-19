@@ -9,8 +9,9 @@ def help_ingest(
 ) -> str:
     options = "".join(
         [
-            "source=AIRS | <query-object-name>",
-            xtra(",dryrun,upload,target=<target>", mono=mono),
+            xtra("download,dryrun,", mono=mono),
+            "source=<source>",
+            xtra(",target=<target>,upload", mono=mono),
         ]
     )
 
@@ -29,8 +30,9 @@ def help_ingest(
             "[-|<object-name>]",
         ]
         + args,
-        "ingest AIRS -> <object-name>.",
+        "ingest <source> -> <object-name>.",
         {
+            "source: AIRS | <query-object-name>": [],
             "target: sagemaker | torch": [],
         },
         mono=mono,
@@ -40,8 +42,9 @@ def help_ingest(
 
     options = "".join(
         [
+            xtra("dryrun,", mono=mono),
             "source=CamVid",
-            xtra(",dryrun,upload", mono=mono),
+            xtra(",upload", mono=mono),
         ]
     )
 
