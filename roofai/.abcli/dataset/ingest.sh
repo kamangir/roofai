@@ -15,7 +15,7 @@ function roofai_dataset_ingest() {
             abcli_download - $source
     fi
 
-    local object_name=$(abcli_clarify_object $2 roofai_ingest_${source}_$(abcli_string_timestamp_short))
+    local object_name=$(abcli_clarify_object $2 ${source}_ingest_$(abcli_string_timestamp_short))
     local object_path=$ABCLI_OBJECT_ROOT/$object_name
     mkdir -pv $object_path
 
