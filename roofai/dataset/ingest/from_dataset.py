@@ -1,8 +1,10 @@
 import os
-from tqdm import tqdm
+from tqdm import tqdm, trange
 from typing import List, Tuple, Dict
 import numpy as np
 import matplotlib.pyplot as plt
+import random
+import glob
 
 from blueness import module
 from blue_options import string
@@ -20,7 +22,7 @@ def ingest_from_dataset(
     input_dataset_path: str,
     output_dataset_path: str,
     counts: Dict[str, int],
-    chip_overlap: float = 0.5,
+    chip_overlap: float = 0.25,
     log: bool = False,
     verbose: bool = False,
     in_notebook: bool = False,
@@ -69,6 +71,7 @@ def ingest_from_dataset(
 
     output_dataset.classes = [class_name for class_name in input_dataset.classes]
 
+    train_record_id_list = []
     for subset in tqdm(counts.keys()):
         record_id_list = []
         for matrix_kind in [MatrixKind.MASK, MatrixKind.IMAGE]:  # order is critical.
@@ -105,6 +108,74 @@ def ingest_from_dataset(
                     break
                 if log:
                     logger.info(f"remaining chip count: {chip_count:,}")
+
+        if subset == "train":
+            train_record_id_list = [record_id for record_id in record_id_list]
+
+    if is_distributed:
+        counts = {
+            class_name: (
+                int(original_count / total_count * len(train_record_id_list))
+                if total_count
+                else 0
+            )
+            for class_name, original_count in original_counts.items()
+        }
+        logger.info(
+            "splitting {:,} chips to {}".format(
+                len(train_record_id_list),
+                " + ".join(
+                    [f"{class_name}:{count:,}" for class_name, count in counts.items()]
+                ),
+            )
+        )
+
+        random.shuffle(train_record_id_list)
+
+        global_record_index = counts["train"]
+        for subset in tqdm(counts.keys()):
+            if subset == "train":
+                continue
+
+            next_global_record_index = global_record_index + counts[subset]
+            for record_index in trange(
+                global_record_index,
+                next_global_record_index,
+            ):
+                record_id = train_record_id_list[record_index]
+
+                for matrix_kind in [MatrixKind.MASK, MatrixKind.IMAGE]:
+                    path_pairs: Dict[str, str] = {
+                        output_dataset.subset_path(
+                            "train", matrix_kind
+                        ): output_dataset.subset_path(subset, matrix_kind)
+                    }
+
+                    if matrix_kind == MatrixKind.MASK:
+                        path_pairs.update(
+                            {
+                                f"{source_path}-colored": f"{destination_path}-colored"
+                                for source_path, destination_path in path_pairs.items()
+                            }
+                        )
+
+                    for source_path, destination_path in path_pairs.items():
+                        for filename in glob.glob(
+                            os.path.join(
+                                source_path,
+                                f"{record_id}*.*",
+                            )
+                        ):
+                            if not file.move(
+                                filename,
+                                destination=os.path.join(
+                                    destination_path,
+                                    file.name_and_extension(filename),
+                                ),
+                            ):
+                                return False
+
+            global_record_index = next_global_record_index
 
     file.save_yaml(
         os.path.join(output_dataset_path, "metadata.yaml"),
