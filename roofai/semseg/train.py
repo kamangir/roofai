@@ -92,7 +92,7 @@ class SemSegModelTrainer:
             visualize(
                 {
                     "image": image,
-                    "mask": mask.squeeze(),
+                    "mask": mask.squeeze(-1),
                 },
                 in_notebook=in_notebook,
                 filename=os.path.join(model_path, f"augmented_dataset-{i:05d}.png"),
