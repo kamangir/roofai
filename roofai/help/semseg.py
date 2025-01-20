@@ -12,23 +12,25 @@ device_and_profile_details = {
 }
 
 
-def help_predict(
-    tokens: List[str],
-    mono: bool,
-) -> str:
-    options = "".join(
+def predict_options(mono: bool):
+    return "".join(
         [
             xtra("device=<device>,~download,dryrun,profile=<profile>,", mono=mono),
             "upload",
         ]
     )
 
+
+def help_predict(
+    tokens: List[str],
+    mono: bool,
+) -> str:
     return show_usage(
         [
             "roofai",
             "semseg",
             "predict",
-            f"[{options}]",
+            f"[{predict_options(mono=mono)}]",
             "[..|<model-object-name>]",
             "[.|<dataset-object-name>]",
             "[-|<prediction-object-name>]",
