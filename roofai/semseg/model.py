@@ -46,7 +46,10 @@ class SemSegModel:
             )
         )
 
-        self.model = torch.load(self.filename).to(self.device)
+        self.model = torch.load(
+            self.filename,
+            map_location=torch.device(self.device),
+        ).to(self.device)
 
         success, metadata = file.load_json(
             file.add_extension(
