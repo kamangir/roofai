@@ -11,6 +11,16 @@ from roofai.semseg.model import SemSegModel
     "dataset_object_name, classes",
     [
         (
+            # roofai dataset ingest \
+            #  source=palisades-dataset-v1,upload \
+            #  palisades-dataset-v1-1000X-test \
+            #  --test_count 100 \
+            #  --train_count 800 \
+            #  --val_count 100
+            "palisades-dataset-v1-1000X-test",
+            ["affected"],
+        ),
+        (
             env.TEST_roofAI_ingest_AIRS_v1,
             ["roof"],
         ),
