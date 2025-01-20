@@ -5,7 +5,7 @@ function test_roofai_dataset_ingest_and_review() {
     local do_dryrun=$(abcli_option_int "$options" dryrun 0)
 
     local list_of_sources="CamVid+palisades-dataset-v1"
-    [[ "$abcli_is_mac" == true ]] &&
+    [[ "$abcli_is_github_workflow" == false ]] &&
         list_of_sources="AIRS+$list_of_sources"
     list_of_sources=$(abcli_option "$options" source $list_of_sources)
 
