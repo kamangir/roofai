@@ -217,7 +217,7 @@ class SemSegModel:
 
     @property
     def signature(self):
-        return "{}: {}[{}]-{}-> {}: {:.2f}".format(
+        return "{}: {}[{}]-{}-> {} @ {:.2f} px".format(
             self.__class__.__name__,
             self.encoder_name,
             self.encoder_weights,
