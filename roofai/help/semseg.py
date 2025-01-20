@@ -39,17 +39,27 @@ def help_predict(
     )
 
 
-def help_train(
-    tokens: List[str],
+def train_options(
     mono: bool,
-) -> str:
-    options = "".join(
+    show_download: bool = True,
+):
+    return "".join(
         [
-            xtra("device=<device>,~download,dryrun,profile=<profile>,", mono=mono),
+            xtra(
+                "device=<device>,{}dryrun,profile=<profile>,".format(
+                    "~download," if show_download else ""
+                ),
+                mono=mono,
+            ),
             "upload",
         ]
     )
 
+
+def help_train(
+    tokens: List[str],
+    mono: bool,
+) -> str:
     args = [
         "[--activation <sigmoid>]",
         "[--classes <one+two+three+four>]",
@@ -63,7 +73,7 @@ def help_train(
             "roofai",
             "semseg",
             "train",
-            f"[{options}]",
+            f"[{train_options(mono=mono)}]",
             "[.|<dataset-object-name>]",
             "[-|<model-object-name>]",
         ]

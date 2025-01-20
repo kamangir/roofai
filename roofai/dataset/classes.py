@@ -295,7 +295,7 @@ class RoofAIDataset:
                     kind,
                     string.pretty_shape_of_matrix(matrix),
                     (
-                        "{} unique value(s): {}".format(
+                        ": {} unique value(s): {}".format(
                             len(unique_value),
                             unique_value,
                         )
