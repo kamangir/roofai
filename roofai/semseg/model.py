@@ -46,7 +46,10 @@ class SemSegModel:
             )
         )
 
-        self.model = torch.load(self.filename).to(self.device)
+        self.model = torch.load(
+            self.filename,
+            map_location=torch.device(self.device),
+        ).to(self.device)
 
         success, metadata = file.load_json(
             file.add_extension(
@@ -214,7 +217,7 @@ class SemSegModel:
 
     @property
     def signature(self):
-        return "{}: {}[{}]-{}-> {}: {:.2f}".format(
+        return "{}: {}[{}]-{}-> {} @ {:.2f} px".format(
             self.__class__.__name__,
             self.encoder_name,
             self.encoder_weights,
