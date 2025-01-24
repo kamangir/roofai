@@ -4,13 +4,11 @@ from typing import List, Any
 
 from blueness import module
 from blue_options import string
-from blue_options.host import signature as host_signature
 from blue_objects import file, path, objects
-from blue_objects.graphics import add_signature
+from blue_objects.graphics.signature import sign_filename
 
-from roofai import VERSION, NAME
+from roofai import NAME
 from roofai.host import signature
-from roofai.logger import logger
 
 
 NAME = module.name(__file__, NAME)
@@ -76,34 +74,10 @@ def visualize(
                 object_name=path.name(file.path(filename)),
             )
             + description,
+            footer=signature(),
             line_width=line_width,
         )
 
     if in_notebook:
         plt.show()
     plt.close()
-
-
-def sign_filename(
-    filename: str,
-    header: List[str],
-    line_width: int = 80,
-) -> bool:
-    success, image = file.load_image(filename)
-    if not success:
-        return success
-
-    if not file.save_image(
-        filename,
-        add_signature(
-            image,
-            header=[" | ".join(header)],
-            footer=[" | ".join(signature())],
-            line_width=line_width,
-        ),
-    ):
-        return False
-
-    logger.info("-> {}".format(filename))
-
-    return True
