@@ -12,11 +12,19 @@ device_and_profile_details = {
 }
 
 
-def predict_options(mono: bool):
+def predict_options(
+    mono: bool,
+    cascade: bool = False,
+):
     return "".join(
         [
-            xtra("device=<device>,~download,dryrun,profile=<profile>,", mono=mono),
-            "upload",
+            xtra(
+                "device=<device>,{}profile=<profile>".format(
+                    "~download,dryrun," if not cascade else ""
+                ),
+                mono=mono,
+            ),
+            ",upload" if not cascade else "",
         ]
     )
 
