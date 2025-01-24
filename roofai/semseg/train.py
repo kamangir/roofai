@@ -9,6 +9,7 @@ from segmentation_models_pytorch import utils
 
 from blue_options import string
 from blue_objects import file, path
+from blue_objects.graphics.signature import sign_filename
 
 from roofai.semseg.augmentation import (
     get_training_augmentation,
@@ -18,8 +19,9 @@ from roofai.semseg.augmentation import (
 from roofai.dataset.classes import RoofAIDataset
 from roofai.semseg.dataloader import Dataset
 from roofai.semseg.model import SemSegModel
-from roofai.semseg.utils import visualize, sign_filename
+from roofai.semseg.utils import visualize
 from roofai.semseg import Profile
+from roofai.host import signature
 from roofai.logger import logger
 
 
@@ -309,6 +311,7 @@ class SemSegModelTrainer:
                     )
                 ),
             ],
+            footer=signature(),
         )
 
         test_dataset = Dataset(
