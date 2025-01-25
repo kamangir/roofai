@@ -19,12 +19,12 @@ def predict_options(
     return "".join(
         [
             xtra(
-                "device=<device>,{}profile=<profile>".format(
+                "device=<device>,{}profile=<profile>,".format(
                     "~download,dryrun," if not cascade else ""
                 ),
                 mono=mono,
             ),
-            ",upload" if not cascade else "",
+            "upload",
         ]
     )
 
