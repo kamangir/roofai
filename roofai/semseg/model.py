@@ -49,6 +49,7 @@ class SemSegModel:
         self.model = torch.load(
             self.filename,
             map_location=torch.device(self.device),
+            # weights_only=False,
         ).to(self.device)
 
         success, metadata = file.load_json(

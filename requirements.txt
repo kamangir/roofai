@@ -21,5 +21,6 @@ scipy
 segmentation-models-pytorch
 shapely
 timm
-torch
+# https://github.com/qubvel-org/segmentation_models.pytorch/blob/main/requirements/required.txt
+torch==2.5.1
 tqdm
