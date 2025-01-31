@@ -19,7 +19,7 @@ python-dotenv[cli]
 segmentation_models_pytorch
 scipy
 segmentation-models-pytorch
-shapely
+shapely==2.0.6
 timm
 # https://github.com/qubvel-org/segmentation_models.pytorch/blob/main/requirements/required.txt
 torch==2.5.1
