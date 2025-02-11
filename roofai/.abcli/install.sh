@@ -29,7 +29,7 @@ function abcli_install_roofai() {
         mkdir -pv $model_path
 
         aws s3 sync \
-            $ABCLI_S3_OBJECT_PREFIX/$model_name \
+            s3://kamangir/bolt/$model_name \
             $model_path
 
         cp -v \
