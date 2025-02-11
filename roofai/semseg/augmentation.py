@@ -34,19 +34,19 @@ def get_training_augmentation():
             min_height=320, min_width=320, always_apply=True, border_mode=0
         ),
         albu.RandomCrop(height=320, width=320, always_apply=True),
-        albu.IAAAdditiveGaussianNoise(p=0.2),
-        albu.IAAPerspective(p=0.5),
+        albu.GaussNoise(p=0.2),
+        albu.Perspective(p=0.5),
         albu.OneOf(
             [
                 albu.CLAHE(p=1),
-                albu.RandomBrightness(p=1),
+                albu.RandomBrightnessContrast(p=1),
                 albu.RandomGamma(p=1),
             ],
             p=0.9,
         ),
         albu.OneOf(
             [
-                albu.IAASharpen(p=1),
+                albu.Sharpen(p=1),
                 albu.Blur(blur_limit=3, p=1),
                 albu.MotionBlur(blur_limit=3, p=1),
             ],
@@ -54,7 +54,7 @@ def get_training_augmentation():
         ),
         albu.OneOf(
             [
-                albu.RandomContrast(p=1),
+                albu.RandomBrightnessContrast(p=1),
                 albu.HueSaturationValue(p=1),
             ],
             p=0.9,
