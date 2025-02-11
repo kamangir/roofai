@@ -3,6 +3,7 @@ import pytest
 from blue_objects import objects
 
 from roofai import env
+from roofai.tests.caching import cache_pretrainedmodels
 from roofai.semseg.interface import predict, train
 from roofai.semseg.model import SemSegModel
 
@@ -31,6 +32,8 @@ from roofai.semseg.model import SemSegModel
     ],
 )
 def test_semseg_train(dataset_object_name, classes):
+    assert cache_pretrainedmodels()
+
     assert objects.download(dataset_object_name)
 
     model_object_name = objects.unique_object("test_semseg_train-model")
