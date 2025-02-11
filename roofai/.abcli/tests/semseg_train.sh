@@ -17,7 +17,7 @@ function test_roofai_semseg_train() {
 
     abcli_eval dryrun=$do_dryrun \
         roofai_semseg_train \
-        profile=VALIDATION,$3 \
+        profile=VALIDATION,~upload,$3 \
         $dataset_object_name \
         $model_object_name \
         --classes $classes

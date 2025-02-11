@@ -213,7 +213,10 @@ class SemSegModelTrainer:
             train_logs = train_epoch.run(train_loader)
             valid_logs = valid_epoch.run(valid_loader)
 
-            epic_logs[i] = {"train": train_logs, "valid": valid_logs}
+            epic_logs[i] = {
+                "train": {key_: float(value_) for key_, value_ in train_logs.items()},
+                "valid": {key_: float(value_) for key_, value_ in valid_logs.items()},
+            }
 
             # do something (save model, change lr, etc.)
             if max_score < valid_logs["iou_score"]:
