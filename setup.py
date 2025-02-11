@@ -14,6 +14,7 @@ setup(
         f"{NAME}.dataset.ingest",
         f"{NAME}.help",
         f"{NAME}.semseg",
+        f"{NAME}.tests",
     ],
     include_package_data=True,
     package_data={
