@@ -25,7 +25,7 @@ function abcli_install_roofai() {
         local model_name=$(basename -- "$filename")
         model_name="${model_name%.*}"
 
-        local model_path=$ABCLI_OBJECT_ROOT/$object_name
+        local model_path=$ABCLI_OBJECT_ROOT/$model_name
         mkdir -pv $model_path
 
         aws s3 sync \
