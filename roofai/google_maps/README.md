@@ -20,7 +20,7 @@ runme(){
     @upload - $object_name
 
     @assets publish \
-        extension=gif,push \
+        extensions=gif,push \
 	    $object_name
 }
 
