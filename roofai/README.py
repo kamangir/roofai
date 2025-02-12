@@ -20,6 +20,12 @@ items = README.Items(
             "marquee": "./assets/predict-00247.png",
             "description": "A Semantic Segmenter based on [segmentation_models.pytorch](<https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb>).",
         },
+        {
+            "name": "Google Maps API",
+            "url": "./roofai/google_maps/static_api.md",
+            "marquee": "TBA",
+            "description": "Integrations with the [Google Maps Platform](https://developers.google.com/maps).",
+        },
     ]
 )
 
@@ -47,6 +53,9 @@ def build():
             },
             {
                 "path": "semseg",
+            },
+            {
+                "path": "google_maps",
             },
         ]
     )
