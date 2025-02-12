@@ -46,13 +46,14 @@ graph LR
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
-|   |   |   |
-| --- | --- | --- |
-| [`datasets`](./roofai/dataset) [![image](https://github.com/kamangir/assets/blob/main/roofAI/AIRS-cache-v45--review-index-2.png?raw=true)](./roofai/dataset) Semantic Segmentation Datasets | [`semseg`](./roofai/semseg) [![image](./assets/predict-00247.png)](./roofai/semseg) A Semantic Segmenter based on [segmentation_models.pytorch](<https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb>). | [`Google Maps API`](./roofai/google_maps/static_api.md) [![image](TBA)](./roofai/google_maps/static_api.md) Integrations with the [Google Maps Platform](https://developers.google.com/maps). |
+|   |   |
+| --- | --- |
+| [`datasets`](./roofai/dataset) [![image](https://github.com/kamangir/assets/blob/main/roofAI/AIRS-cache-v45--review-index-2.png?raw=true)](./roofai/dataset) Semantic Segmentation Datasets | [`semseg`](./roofai/semseg) [![image](./assets/predict-00247.png)](./roofai/semseg) A Semantic Segmenter based on [segmentation_models.pytorch](<https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb>). |
+| [`Google Maps API`](./roofai/google_maps/static_api.md) [![image](TBA)](./roofai/google_maps/static_api.md) Integrations with the [Google Maps Platform](https://developers.google.com/maps). |  |
 
 ---
 
 
 [![pylint](https://github.com/kamangir/roofai/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/roofai/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/roofai.svg)](https://pypi.org/project/roofai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/roofai)](https://pypistats.org/packages/roofai)
 
-built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.91.1`](https://github.com/kamangir/roofai).
+built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.92.1`](https://github.com/kamangir/roofai).
