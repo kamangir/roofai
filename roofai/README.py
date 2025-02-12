@@ -1,39 +1,27 @@
 import os
 
-from blue_options import MARQUEE as default_MARQUEE
 from blue_objects import file, README
 
 from roofai import NAME, VERSION, ICON, REPO_NAME
 from roofai.dataset.README import items as dataset_items
 
-features = {
-    "datasets": {
-        "description": "Semantic Segmentation Datasets",
-        "icon": ICON,
-        "thumbnail": "https://github.com/kamangir/assets/blob/main/roofAI/AIRS-cache-v45--review-index-2.png?raw=true",
-        "url": "./roofai/dataset",
-    },
-    "semseg": {
-        "description": "A Semantic Segmenter based on [segmentation_models.pytorch](<https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb>).",
-        "icon": ICON,
-        "thumbnail": "./assets/predict-00247.png",
-        "url": "./roofai/semseg",
-    },
-}
 
-
-items = [
-    "{}[`{}`]({}) [![image]({})]({}) {}".format(
-        details["icon"],
-        feature,
-        details["url"],
-        details["thumbnail"],
-        details["url"],
-        details["description"],
-    )
-    for feature, details in features.items()
-    if feature != "template"
-]
+items = README.Items(
+    [
+        {
+            "name": "datasets",
+            "url": "./roofai/dataset",
+            "marquee": "https://github.com/kamangir/assets/blob/main/roofAI/AIRS-cache-v45--review-index-2.png?raw=true",
+            "description": "Semantic Segmentation Datasets",
+        },
+        {
+            "name": "semseg",
+            "url": "./roofai/semseg",
+            "marquee": "./assets/predict-00247.png",
+            "description": "A Semantic Segmenter based on [segmentation_models.pytorch](<https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb>).",
+        },
+    ]
+)
 
 
 def build():
