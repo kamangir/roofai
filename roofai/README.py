@@ -11,13 +11,13 @@ features = {
         "description": "Semantic Segmentation Datasets",
         "icon": ICON,
         "thumbnail": "https://github.com/kamangir/assets/blob/main/roofAI/AIRS-cache-v45--review-index-2.png?raw=true",
-        "url": "https://github.com/kamangir/roofai/blob/main/roofai/dataset",
+        "url": "./dataset",
     },
     "semseg": {
         "description": "A Semantic Segmenter based on [segmentation_models.pytorch](<https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb>).",
         "icon": ICON,
-        "thumbnail": "https://github.com/kamangir/roofAI/raw/main/assets/predict-00247.png",
-        "url": "https://github.com/kamangir/roofai/blob/main/roofai/semseg",
+        "thumbnail": "../assets/predict-00247.png",
+        "url": "./semseg",
     },
     "template": {
         "description": "",
