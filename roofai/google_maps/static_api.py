@@ -23,7 +23,7 @@ def get(
     filename: str = "",
     zoom: int = 20,
     maptype: str = "satellite",
-    size: str = "600x600",
+    size: str = "640x640",
 ) -> Union[bool, np.ndarray]:
     image: np.ndarray = np.array(())
 
@@ -38,7 +38,7 @@ def get(
         "{}.get: {}".format(
             NAME,
             ", ".join(
-                [f"{key}:{value}" for key, value in params.items if key != "key"]
+                [f"{key}:{value}" for key, value in params.items() if key != "key"]
             ),
         )
     )

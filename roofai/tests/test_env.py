@@ -21,3 +21,6 @@ def test_blue_plugin_env():
     assert env.TEST_roofAI_semseg_model_CamVid_v1
 
     assert env.ROOFAI_AIRS_CACHE_OBJECT_NAME
+
+    assert isinstance(env.ROOFAI_TEST_GOOGLE_MAPS_LAT, float)
+    assert isinstance(env.ROOFAI_TEST_GOOGLE_MAPS_LON, float)

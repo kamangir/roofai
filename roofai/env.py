@@ -19,3 +19,6 @@ TEST_roofAI_semseg_model_AIRS_full_v2 = get_env("TEST_roofAI_semseg_model_AIRS_f
 TEST_roofAI_semseg_model_CamVid_v1 = get_env("TEST_roofAI_semseg_model_CamVid_v1")
 
 ROOFAI_AIRS_CACHE_OBJECT_NAME = get_env("ROOFAI_AIRS_CACHE_OBJECT_NAME")
+
+ROOFAI_TEST_GOOGLE_MAPS_LAT = get_env("ROOFAI_TEST_GOOGLE_MAPS_LAT", 0.0)
+ROOFAI_TEST_GOOGLE_MAPS_LON = get_env("ROOFAI_TEST_GOOGLE_MAPS_LON", 0.0)

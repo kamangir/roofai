@@ -49,7 +49,7 @@ parser.add_argument(
 parser.add_argument(
     "--size",
     type=str,
-    default="600x600",
+    default="640x640",
 )
 args = parser.parse_args()
 
