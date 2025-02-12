@@ -23,7 +23,7 @@ items = README.Items(
         {
             "name": "Google Maps API",
             "url": "./roofai/google_maps",
-            "marquee": "TBA",
+            "marquee": "https://github.com/kamangir/assets/blob/main/static-image-api-2025-02-11-an1gvf/static-image-api-2025-02-11-an1gvf.gif",
             "description": "Integrations with the [Google Maps Platform](https://developers.google.com/maps).",
         },
     ]
