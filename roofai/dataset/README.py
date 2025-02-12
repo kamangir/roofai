@@ -1,3 +1,6 @@
+from blue_objects.README import Items
+
+
 list_of_datasets = {
     "AIRS": {
         "description": "Aerial Imagery for Roof Segmentation from [kaggle](https://www.kaggle.com/datasets/atilol/aerialimageryforroofsegmentation).",
@@ -10,13 +13,14 @@ list_of_datasets = {
 }
 
 
-items = [
-    "[`{}`](./ingest/{}.md) [![image]({})](./ingest/{}.md) {}".format(
-        dataset_name,
-        dataset_name,
-        details["thumbnail"],
-        dataset_name,
-        details["description"],
-    )
-    for dataset_name, details in list_of_datasets.items()
-]
+items = Items(
+    [
+        {
+            "name": dataset_name,
+            "url": f"./ingest/{dataset_name}.md",
+            "marquee": details["thumbnail"],
+            "description": details["description"],
+        }
+        for dataset_name, details in list_of_datasets.items()
+    ]
+)

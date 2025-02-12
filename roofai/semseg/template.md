@@ -57,7 +57,7 @@ roofAI-dataset-2025-01-13-gca7nz-train-2025-01-13-ukhtql
 
 | | | |
 |-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/roofAI/roofAI-dataset-2025-01-13-bbz4k3-train-2025-01-13-i8le50/dataset.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roofAI/roofAI-dataset-2025-01-13-bbz4k3-train-2025-01-13-i8le50/train-summary.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roofAI/roofAI-dataset-2025-01-13-bbz4k3-train-2025-01-13-i8le50/predict-00000.png?raw=true) |
+| assets:::roofAI/roofAI-dataset-2025-01-13-bbz4k3-train-2025-01-13-i8le50/dataset.png | assets:::roofAI/roofAI-dataset-2025-01-13-bbz4k3-train-2025-01-13-i8le50/train-summary.png | assets:::roofAI/roofAI-dataset-2025-01-13-bbz4k3-train-2025-01-13-i8le50/predict-00000.png |
 
 `model.json` (example, shortened)
 ```json
@@ -113,8 +113,8 @@ prediction-2025-01-13-v4nd7z
 </details>
 
 
-![image](https://github.com/kamangir/assets/blob/main/roofAI/predict-00009.png?raw=true)
+assets:::roofAI/predict-00009.png
 
 ---
 
-![image](https://github.com/kamangir/assets/blob/main/roofAI/2023-11-12-20-30-49-02592-predict.gif?raw=true)
+assets:::roofAI/2023-11-12-20-30-49-02592-predict.gif
