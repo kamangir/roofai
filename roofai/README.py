@@ -19,12 +19,6 @@ features = {
         "thumbnail": "./assets/predict-00247.png",
         "url": "./semseg",
     },
-    "template": {
-        "description": "",
-        "icon": ICON,
-        "thumbnail": default_MARQUEE,
-        "url": "",
-    },
 }
 
 
@@ -44,23 +38,24 @@ items = [
 
 def build():
     return all(
-        [
-            README.build(
-                items=items,
-                path=os.path.join(file.path(__file__), ".."),
-                ICON=ICON,
-                NAME=NAME,
-                VERSION=VERSION,
-                REPO_NAME=REPO_NAME,
-            ),
-            README.build(
-                items=dataset_items,
-                cols=len(dataset_items),
-                path=os.path.join(file.path(__file__), "dataset"),
-                ICON=ICON,
-                NAME=NAME,
-                VERSION=VERSION,
-                REPO_NAME=REPO_NAME,
-            ),
+        README.build(
+            items=readme["items"],
+            cols=readme.get("cols", 3),
+            path=os.path.join(file.path(__file__), readme["path"]),
+            ICON=ICON,
+            NAME=NAME,
+            VERSION=VERSION,
+            REPO_NAME=REPO_NAME,
+        )
+        for readme in [
+            {
+                "items": items,
+                "path": "..",
+            },
+            {
+                "items": dataset_items,
+                "cols": len(dataset_items),
+                "path": "dataset",
+            },
         ]
     )
