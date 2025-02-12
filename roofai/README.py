@@ -39,7 +39,7 @@ items = [
 def build():
     return all(
         README.build(
-            items=readme["items"],
+            items=readme.get("items", []),
             cols=readme.get("cols", 3),
             path=os.path.join(file.path(__file__), readme["path"]),
             ICON=ICON,
@@ -56,6 +56,9 @@ def build():
                 "items": dataset_items,
                 "cols": len(dataset_items),
                 "path": "dataset",
+            },
+            {
+                "path": "semseg",
             },
         ]
     )
