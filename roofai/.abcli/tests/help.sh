@@ -5,6 +5,10 @@ function test_roofai_help() {
 
     local module
     for module in \
+        "@gmaps" \
+        "@google_maps" \
+        "@google_maps get_static_image" \
+        \
         "roofai dataset" \
         "roofai dataset ingest" \
         "roofai dataset review" \

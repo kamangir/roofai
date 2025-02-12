@@ -42,6 +42,7 @@ jobs:
           ABCLI_AWS_RDS_PASSWORD: ${{ secrets.ABCLI_AWS_RDS_PASSWORD }}
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: |
           echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
           echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
@@ -49,4 +50,5 @@ jobs:
           echo "ABCLI_AWS_RDS_PASSWORD: $ABCLI_AWS_RDS_PASSWORD"
           echo "DATABRICKS_HOST: $DATABRICKS_HOST"
           echo "DATABRICKS_TOKEN: $DATABRICKS_TOKEN"
+          echo "GOOGLE_MAPS_API_KEY: $GOOGLE_MAPS_API_KEY"
           pytest --verbose

@@ -10,6 +10,8 @@ def test_required_env():
 
 
 def test_blue_plugin_env():
+    assert env.GOOGLE_MAPS_API_KEY
+
     assert env.TEST_roofAI_ingest_AIRS_v1
     assert env.TEST_roofAI_ingest_AIRS_v2
     assert env.TEST_roofAI_ingest_CamVid_v1
