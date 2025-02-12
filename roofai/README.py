@@ -22,7 +22,7 @@ items = README.Items(
         },
         {
             "name": "Google Maps API",
-            "url": "./roofai/google_maps/static_api.md",
+            "url": "./roofai/google_maps",
             "marquee": "TBA",
             "description": "Integrations with the [Google Maps Platform](https://developers.google.com/maps).",
         },
