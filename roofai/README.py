@@ -16,7 +16,7 @@ features = {
     "semseg": {
         "description": "A Semantic Segmenter based on [segmentation_models.pytorch](<https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb>).",
         "icon": ICON,
-        "thumbnail": "../assets/predict-00247.png",
+        "thumbnail": "./assets/predict-00247.png",
         "url": "./semseg",
     },
     "template": {
