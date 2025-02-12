@@ -21,7 +21,7 @@ runme(){
 
     @assets publish \
         extensions=gif,push \
-	    $object_name
+        $object_name
 }
 
 runme
