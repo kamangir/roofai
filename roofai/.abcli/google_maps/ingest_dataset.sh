@@ -9,6 +9,9 @@ function roofai_google_maps_ingest_dataset() {
     local object_path=$ABCLI_OBJECT_ROOT/$object_name
 
     local ingest_options=$3
+    local lat=$(abcli_option "$ingest_options" lat 0)
+    local lon=$(abcli_option "$ingest_options" lon 0)
+    local count=$(abcli_option "$ingest_options" count 10)
 
     abcli_eval dryrun=$do_dryrun \
         python3 -m roofai.google_maps \
