@@ -5,6 +5,7 @@ from blueness.argparse.generic import sys_exit
 from blue_objects import objects
 
 from roofai import NAME
+from roofai.google_maps.geocoding import geocode
 from roofai.google_maps.static_api import get as get_static_image
 from roofai.logger import logger
 
@@ -14,7 +15,7 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="get_static_image",
+    help="get_static_image | geocode",
 )
 parser.add_argument(
     "--lat",
@@ -51,6 +52,16 @@ parser.add_argument(
     type=str,
     default="640x640",
 )
+parser.add_argument(
+    "--address",
+    type=str,
+)
+parser.add_argument(
+    "--verbose",
+    type=int,
+    default=0,
+    help="0 | 1",
+)
 args = parser.parse_args()
 
 success = False
@@ -69,6 +80,12 @@ if args.task == "get_static_image":
         zoom=args.zoom,
         maptype=args.maptype,
         size=args.size,
+    )
+elif args.task == "geocode":
+    success, _, _, _ = geocode(
+        address=args.address,
+        object_name=args.object_name,
+        verbose=args.verbose == 1,
     )
 else:
     success = None

@@ -7,7 +7,7 @@ def help_geocode(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("dryrun", mono=mono)
+    options = xtra("-", mono=mono)
 
     args = [
         "[--address <address>]",
