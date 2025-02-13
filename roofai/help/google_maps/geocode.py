@@ -11,6 +11,7 @@ def help_geocode(
 
     args = [
         "[--address <address>]",
+        "[--verbose 1]",
     ]
 
     return show_usage(

@@ -9,11 +9,15 @@ from roofai.google_maps.geocoding import geocode
 
 
 @pytest.mark.parametrize(
-    ["address"],
-    [["350 W Georgia St, Vancouver, BC V6B 6B1, Canada"]],
+    ["address", "expected_success"],
+    [
+        ["350 W Georgia St, Vancouver, BC V6B 6B1, Canada", True],
+        ["void", False],
+    ],
 )
 def test_google_maps_geocode(
     address: str,
+    expected_success: bool,
 ):
     for object_name in [
         "",
@@ -24,6 +28,8 @@ def test_google_maps_geocode(
             object_name=object_name,
             verbose=True,
         )
-        assert success
-        assert isinstance(lat, float)
-        assert isinstance(lon, float)
+        assert success == expected_success
+
+        if expected_success:
+            assert isinstance(lat, float)
+            assert isinstance(lon, float)

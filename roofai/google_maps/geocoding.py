@@ -31,6 +31,8 @@ def geocode(
 
     description_of_failure: str = ""
     metadata: Dict = {}
+    lat: float = 0.0
+    lon: float = 0.0
     if response.status_code != 200:
         success = False
         description_of_failure = "status_code={}, text={}".format(
