@@ -8,6 +8,7 @@ function test_roofai_help() {
         "@gmaps" \
         "@google_maps" \
         "@google_maps get_static_image" \
+        "@google_maps geocode" \
         \
         "roofai dataset" \
         "roofai dataset ingest" \

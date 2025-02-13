@@ -14,16 +14,20 @@ graph LR
 
     gmaps_get_static_image["@gmaps<br>get_static_image - -<br>--lat &lt;lat&gt;<br>--lon &lt;lon&gt;"]
 
+    gmaps_geocode["@gmaps<br>geocode - -<br>--address &lt;address&gt;"]
+
     semseg_train["roofai<br>semseg<br>train -<br>&lt;dataset-object-name&gt;<br>&lt;model-object-name&gt;"]
 
     semseg_predict["roofai<br>semseg<br>predict -<br>&lt;model-object-name&gt;<br>&lt;dataset-object-name&gt;<br>&lt;prediction-object-name&gt;"]
 
+    address["🌐 address"]:::folder
+    lat_lon["🌐 lat,lon"]:::folder
     AIRS["AIRS"]:::folder
     CamVid["CamVid"]:::folder
-    dataset_object_name["dataset object"]:::folder
-    model_object_name["model object"]:::folder
-    prediction_object_name["prediction object"]:::folder
-    object_name["object"]:::folder
+    dataset_object_name["📂 dataset object"]:::folder
+    model_object_name["📂 model object"]:::folder
+    prediction_object_name["📂 prediction object"]:::folder
+    object_name["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
 
     AIRS --> dataset_ingest
@@ -41,7 +45,12 @@ graph LR
     dataset_object_name --> semseg_predict
     semseg_predict --> prediction_object_name
 
+    lat_lon --> gmaps_get_static_image
     gmaps_get_static_image --> object_name
+
+    address --> gmaps_geocode
+    gmaps_geocode --> object_name
+    gmaps_geocode --> lat_lon
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
@@ -56,4 +65,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/roofai/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/roofai/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/roofai.svg)](https://pypi.org/project/roofai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/roofai)](https://pypistats.org/packages/roofai)
 
-built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.97.1`](https://github.com/kamangir/roofai).
+built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.105.1`](https://github.com/kamangir/roofai).
