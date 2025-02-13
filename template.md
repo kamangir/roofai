@@ -14,7 +14,7 @@ graph LR
 
     gmaps_get_static_image["@gmaps get_static_image~~-~~- --lat~~<lat> --lon~~<lon>"]
 
-    gmaps_geocode["@gmaps geocode~~-~~- --address <address>"]
+    gmaps_geocode["@gmaps geocode~~-~~- --address~~<address>"]
 
     semseg_train["roofai semseg train~~- <dataset-object-name> <model-object-name>"]
 
