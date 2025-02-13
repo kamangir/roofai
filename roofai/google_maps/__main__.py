@@ -66,7 +66,7 @@ args = parser.parse_args()
 
 success = False
 if args.task == "get_static_image":
-    success, _ = get_static_image(
+    success, _, _ = get_static_image(
         lat=args.lat,
         lon=args.lon,
         filename=(

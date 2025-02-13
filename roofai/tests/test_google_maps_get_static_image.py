@@ -22,7 +22,7 @@ def test_google_maps_get_static_image(
 ):
     object_name = objects.unique_object("test_google_maps_get_static_image")
 
-    success, image = get_static_image(
+    success, image, metadata = get_static_image(
         lat=lat,
         lon=lon,
         filename=objects.path_of(
@@ -33,3 +33,5 @@ def test_google_maps_get_static_image(
 
     assert success
     assert isinstance(image, np.ndarray)
+    assert "gsd" in metadata
+    assert isinstance(metadata["gsd"], float)
