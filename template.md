@@ -14,10 +14,14 @@ graph LR
 
     gmaps_get_static_image["@gmaps get_static_image~~-~~- --lat~~<lat> --lon~~<lon>"]
 
+    gmaps_geocode["@gmaps geocode~~-~~- --address <address>"]
+
     semseg_train["roofai semseg train~~- <dataset-object-name> <model-object-name>"]
 
     semseg_predict["roofai semseg predict~~- <model-object-name> <dataset-object-name> <prediction-object-name>"]
 
+    address["🌐 address"]:::folder
+    lat_lon["🌐 lat,lon"]:::folder
     AIRS["AIRS"]:::folder
     CamVid["CamVid"]:::folder
     dataset_object_name["dataset object"]:::folder
@@ -41,7 +45,12 @@ graph LR
     dataset_object_name --> semseg_predict
     semseg_predict --> prediction_object_name
 
+    lat_lon --> gmaps_get_static_image
     gmaps_get_static_image --> object_name
+
+    address --> gmaps_geocode
+    gmaps_geocode --> object_name
+    gmaps_geocode --> lat_lon
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
