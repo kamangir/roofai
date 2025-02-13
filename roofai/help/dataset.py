@@ -3,7 +3,7 @@ from typing import List
 from blue_options.terminal import show_usage, xtra
 
 
-def help_ingest(
+def help_ingest_AIRS_or_distributed(
     tokens: List[str],
     mono: bool,
 ) -> str:
@@ -21,7 +21,7 @@ def help_ingest(
         "[--val_count <10>]",
     ]
 
-    usage_1 = show_usage(
+    return show_usage(
         [
             "roofai",
             "dataset",
@@ -38,8 +38,11 @@ def help_ingest(
         mono=mono,
     )
 
-    # ---
 
+def help_ingest_CamVid(
+    tokens: List[str],
+    mono: bool,
+) -> str:
     options = "".join(
         [
             xtra("dryrun,", mono=mono),
@@ -48,7 +51,7 @@ def help_ingest(
         ]
     )
 
-    usage_2 = show_usage(
+    return show_usage(
         [
             "roofai",
             "dataset",
@@ -60,12 +63,44 @@ def help_ingest(
         mono=mono,
     )
 
-    # ---
 
+def help_ingest_gmaps(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "".join(
+        [
+            xtra("dryrun,", mono=mono),
+            "source=gmaps",
+            xtra(",upload", mono=mono),
+        ]
+    )
+
+    ingest_options = "count=<count>,lat=<lat>,lon=<lon>"
+
+    return show_usage(
+        [
+            "roofai",
+            "dataset",
+            "ingest",
+            f"[{options}]",
+            "[-|<object-name>]",
+            f"[{ingest_options}]",
+        ],
+        "ingest gmaps -> <object-name>.",
+        mono=mono,
+    )
+
+
+def help_ingest(
+    tokens: List[str],
+    mono: bool,
+) -> str:
     return "\n".join(
         [
-            usage_1,
-            usage_2,
+            help_ingest_AIRS_or_distributed(tokens, mono),
+            help_ingest_CamVid(tokens, mono),
+            help_ingest_gmaps(tokens, mono),
         ]
     )
 

@@ -8,6 +8,11 @@ function roofai_dataset_ingest() {
     local source=$(abcli_option "$options" source)
     local target=$(abcli_option "$options" target torch)
 
+    if [[ "$source" == gmaps ]]; then
+        roofai_google_maps_ingest_dataset "$@"
+        return
+    fi
+
     if [[ "|CamVid|AIRS|" != *"|$source|"* ]]; then
         source=$(abcli_clarify_object $source)
 
