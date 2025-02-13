@@ -8,7 +8,7 @@ pip install roofai
 
 ```mermaid
 graph LR
-    dataset_ingest["roofai dataset ingest source=AIRS|CamVid <dataset-object-name>"]
+    dataset_ingest["roofai dataset ingest source=AIRS|CamVid|gmaps|<distributed-dataset> <dataset-object-name>"]
 
     dataset_review["roofai dataset review~~- <dataset-object-name>"]
 
@@ -25,11 +25,14 @@ graph LR
     AIRS["AIRS"]:::folder
     CamVid["CamVid"]:::folder
     dataset_object_name["📂 dataset object"]:::folder
+    distributed_dataset_object_name["📂 distributed dataset object"]:::folder
     model_object_name["📂 model object"]:::folder
     prediction_object_name["📂 prediction object"]:::folder
     object_name["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
 
+    gmaps_get_static_image --> dataset_ingest
+    distributed_dataset_object_name --> dataset_ingest
     AIRS --> dataset_ingest
     CamVid --> dataset_ingest
     dataset_ingest --> dataset_object_name

@@ -64,6 +64,34 @@ def help_ingest_CamVid(
     )
 
 
+def help_ingest_gmaps(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "".join(
+        [
+            xtra("dryrun,", mono=mono),
+            "source=gmaps",
+            xtra(",upload", mono=mono),
+        ]
+    )
+
+    ingest_options = "count=<count>,lat=<lat>,lon=<lon>"
+
+    return show_usage(
+        [
+            "roofai",
+            "dataset",
+            "ingest",
+            f"[{options}]",
+            "[-|<object-name>]",
+            f"[{ingest_options}]",
+        ],
+        "ingest gmaps -> <object-name>.",
+        mono=mono,
+    )
+
+
 def help_ingest(
     tokens: List[str],
     mono: bool,
@@ -72,6 +100,7 @@ def help_ingest(
         [
             help_ingest_AIRS_or_distributed(tokens, mono),
             help_ingest_CamVid(tokens, mono),
+            help_ingest_gmaps(tokens, mono),
         ]
     )
 
