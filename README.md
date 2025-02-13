@@ -24,10 +24,10 @@ graph LR
     lat_lon["🌐 lat,lon"]:::folder
     AIRS["AIRS"]:::folder
     CamVid["CamVid"]:::folder
-    dataset_object_name["dataset object"]:::folder
-    model_object_name["model object"]:::folder
-    prediction_object_name["prediction object"]:::folder
-    object_name["object"]:::folder
+    dataset_object_name["📂 dataset object"]:::folder
+    model_object_name["📂 model object"]:::folder
+    prediction_object_name["📂 prediction object"]:::folder
+    object_name["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
 
     AIRS --> dataset_ingest
@@ -65,4 +65,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/roofai/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/roofai/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/roofai.svg)](https://pypi.org/project/roofai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/roofai)](https://pypistats.org/packages/roofai)
 
-built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.100.1`](https://github.com/kamangir/roofai).
+built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.101.1`](https://github.com/kamangir/roofai).

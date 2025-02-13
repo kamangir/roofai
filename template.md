@@ -24,10 +24,10 @@ graph LR
     lat_lon["🌐 lat,lon"]:::folder
     AIRS["AIRS"]:::folder
     CamVid["CamVid"]:::folder
-    dataset_object_name["dataset object"]:::folder
-    model_object_name["model object"]:::folder
-    prediction_object_name["prediction object"]:::folder
-    object_name["object"]:::folder
+    dataset_object_name["📂 dataset object"]:::folder
+    model_object_name["📂 model object"]:::folder
+    prediction_object_name["📂 prediction object"]:::folder
+    object_name["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
 
     AIRS --> dataset_ingest
