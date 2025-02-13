@@ -1,8 +1,9 @@
-from typing import Union
+from typing import Union, Dict
 import requests
 from PIL import Image
 import numpy as np
 import io
+import math
 
 from blueness import module
 from blue_options import string
@@ -24,7 +25,7 @@ def get(
     zoom: int = 20,
     maptype: str = "satellite",
     size: str = "640x640",
-) -> Union[bool, np.ndarray]:
+) -> Union[bool, np.ndarray, Dict]:
     image: np.ndarray = np.array(())
 
     params = {
@@ -52,13 +53,13 @@ def get(
                 response.text,
             )
         )
-        return False, image
+        return False, image, {}
 
     try:
         image = np.array(Image.open(io.BytesIO(response.content)))
     except Exception as e:
         logger.error(e)
-        return False, image
+        return False, image, {}
     logger.info(string.pretty_shape_of_matrix(image))
 
     if filename:
@@ -67,8 +68,12 @@ def get(
                 file.write(response.content)
         except Exception as e:
             logger.error(e)
-            return False, image
+            return False, image, {}
 
         logger.info(f"-> {filename}")
 
-    return True, image
+    # https://groups.google.com/g/google-maps-js-api-v3/c/hDRO4oHVSeM?pli=1
+    gsd = 156543.03392 * math.cos(lat * np.pi / 180) / (2**zoom)
+    logger.info(f"gsd: {gsd:.2f} m")
+
+    return True, image, {"gsd": gsd}
