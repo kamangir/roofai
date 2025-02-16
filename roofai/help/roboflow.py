@@ -5,18 +5,30 @@ from blue_options.terminal import show_usage, xtra
 from roofai.roboflow.project import list_of_project_types
 
 
+def project_creation_args(
+    mono: bool,
+    cascade: bool = False,
+):
+    return [
+        "[--name <name>]",
+        "[--description <description>]",
+    ] + (
+        []
+        if cascade
+        else [
+            "[--type <type>]",
+            xtra("[--license <MIT>]", mono=mono),
+        ]
+    )
+
+
 def help_create_project(
     tokens: List[str],
     mono: bool,
 ) -> str:
     options = xtra("-", mono=mono)
 
-    args = [
-        "[--name <name>]",
-        "[--description <description>]",
-        "[--type <type>]",
-        "[--license <MIT>]",
-    ]
+    args = project_creation_args(mono=mono)
 
     return show_usage(
         [
