@@ -5,7 +5,7 @@ from blue_options import string
 from blue_objects import objects
 
 from roofai import env
-from roofai.google_maps.static_api import get as get_static_image
+from roofai.google_maps.api.static import get as get_static_image
 
 
 @pytest.mark.parametrize(

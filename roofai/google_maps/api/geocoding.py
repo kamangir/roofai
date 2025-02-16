@@ -1,5 +1,6 @@
 from typing import Dict, Tuple
 import requests
+import pprint
 
 from blueness import module
 from blue_objects.metadata import post_to_object
@@ -43,7 +44,7 @@ def geocode(
     if success:
         metadata = response.json()
         if verbose:
-            logger.info(metadata)
+            pprint.pprint(metadata)
 
         if metadata["status"] != "OK":
             success = False

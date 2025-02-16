@@ -5,7 +5,7 @@ from blue_options import string
 from blue_objects import objects
 
 from roofai import env
-from roofai.google_maps.geocoding import geocode
+from roofai.google_maps.api.geocoding import geocode
 
 
 @pytest.mark.parametrize(
