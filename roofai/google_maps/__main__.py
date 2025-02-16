@@ -98,6 +98,7 @@ elif args.task == "ingest_dataset":
         object_name=args.object_name,
         lat=args.lat,
         lon=args.lon,
+        zoom=args.zoom,
         count=args.count,
     )
 else:

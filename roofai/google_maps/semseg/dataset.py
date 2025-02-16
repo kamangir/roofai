@@ -10,14 +10,16 @@ NAME = module.name(__file__, NAME)
 def ingest_dataset(
     lat: float,
     lon: float,
+    zoom: int,
     count: int,
     object_name: str,
 ) -> bool:
     logger.info(
-        "{}.ingest_dataset(lat:{:.6f}, lon:{:.6f}, count:{}) -> {}".format(
+        "{}.ingest_dataset: [lat={:.6f}, lon={:.6f}] @ zoom={} * count={} -> {}".format(
             NAME,
             lat,
             lon,
+            zoom,
             count,
             object_name,
         )

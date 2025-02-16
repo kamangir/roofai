@@ -7,5 +7,5 @@
 ```bash
 roofai dataset ingest \
 	source=gmaps - \
-	count=10,lat=53.343318,lon=-2.650661
+	count=10,lat=53.343318,lon=-2.650661,zoom=19
 ```
