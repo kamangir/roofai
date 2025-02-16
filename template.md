@@ -10,7 +10,7 @@ pip install roofai
 graph LR
     dataset_ingest["roofai dataset ingest source=AIRS|CamVid|<distributed-dataset> <dataset-object-name>"]
 
-    dataset_ingest_gmaps["roofai dataset ingest source=gmaps~~- count=<count>,lat=<lat>,lon=<lon>,zoom=<zoom> roboflow,import"]
+    dataset_ingest_gmaps["roofai dataset ingest source=gmaps~~- count=<count>,lat=<lat>,lon=<lon> roboflow,import"]
 
     dataset_review["roofai dataset review~~- <dataset-object-name>"]
 
