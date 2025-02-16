@@ -2,8 +2,6 @@
 
 ## ingesting and labelling a dataset
 
-ℹ️ Experimented with [roboflow](https://docs.roboflow.com/api-reference/images/upload-api). Observed that there is no API endpoint for deleting projects; and the manual step isn't realistic. This makes testing hard to impossible. Will now experiment with [51](https://docs.voxel51.com/).
-
 🔥
 
 ```bash
