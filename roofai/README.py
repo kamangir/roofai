@@ -30,7 +30,7 @@ items = README.Items(
             "name": "SemSeg on Google Maps",
             "url": "./roofai/google_maps/semseg",
             "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
-            "description": "Semantic Segmentation datasets and models.",
+            "description": "Google Maps semantic segmentation datasets and models.",
         },
     ]
 )
@@ -63,6 +63,9 @@ def build():
             },
             {
                 "path": "google_maps/api",
+            },
+            {
+                "path": "google_maps/semseg",
             },
         ]
     )
