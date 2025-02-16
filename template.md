@@ -43,6 +43,7 @@ graph LR
     dataset_ingest_gmaps --> roboflow
 
     AIRS --> dataset_review
+    distributed_dataset_object_name --> dataset_review
     dataset_object_name --> dataset_review
     dataset_review --> terminal
 
