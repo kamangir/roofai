@@ -17,6 +17,7 @@ setup(
         f"{NAME}.google_maps.semseg",
         f"{NAME}.help",
         f"{NAME}.help.google_maps",
+        f"{NAME}.roboflow",
         f"{NAME}.semseg",
         f"{NAME}.tests",
     ],

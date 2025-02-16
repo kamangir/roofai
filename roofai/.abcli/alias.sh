@@ -1,8 +1,10 @@
 #! /usr/bin/env bash
 
-alias @google_maps=roofai_google_maps
 alias @gmaps=roofai_google_maps
+alias @google_maps=roofai_google_maps
 
-alias semseg=roofai_semseg
+alias @roboflow=roofai_roboflow
 
 alias roofAI=roofai
+
+alias semseg=roofai_semseg

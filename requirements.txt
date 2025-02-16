@@ -19,3 +19,4 @@ geopandas
 opencv-python
 scipy
 kaggle
+roboflow
