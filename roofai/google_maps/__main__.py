@@ -5,9 +5,9 @@ from blueness.argparse.generic import sys_exit
 from blue_objects import objects
 
 from roofai import NAME
-from roofai.google_maps.dataset_ingest import ingest_dataset
-from roofai.google_maps.geocoding import geocode
-from roofai.google_maps.static_api import get as get_static_image
+from roofai.google_maps.api.geocoding import geocode
+from roofai.google_maps.api.static import get as get_static_image
+from roofai.google_maps.semseg.dataset import ingest_dataset
 from roofai.logger import logger
 
 NAME = module.name(__file__, NAME)

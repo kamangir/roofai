@@ -15,6 +15,8 @@ setup(
         f"{NAME}.google_maps",
         f"{NAME}.help",
         f"{NAME}.help.google_maps",
+        f"{NAME}.help.google_maps.api",
+        f"{NAME}.help.google_maps.dataset",
         f"{NAME}.semseg",
         f"{NAME}.tests",
     ],

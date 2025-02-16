@@ -9,22 +9,28 @@ from roofai.dataset.README import items as dataset_items
 items = README.Items(
     [
         {
-            "name": "datasets",
+            "name": "Datasets",
             "url": "./roofai/dataset",
             "marquee": "https://github.com/kamangir/assets/blob/main/roofAI/AIRS-cache-v45--review-index-2.png?raw=true",
             "description": "Semantic Segmentation Datasets",
         },
         {
-            "name": "semseg",
+            "name": "Semantic Segmentation (SemSeg)",
             "url": "./roofai/semseg",
             "marquee": "./assets/predict-00247.png",
             "description": "A Semantic Segmenter based on [segmentation_models.pytorch](<https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb>).",
         },
         {
             "name": "Google Maps API",
-            "url": "./roofai/google_maps",
-            "marquee": "https://github.com/kamangir/assets/blob/main/static-image-api-2025-02-11-an1gvf/static-image-api-2025-02-11-an1gvf.gif",
-            "description": "Integrations with the [Google Maps Platform](https://developers.google.com/maps).",
+            "url": "./roofai/google_maps/api",
+            "marquee": "https://github.com/kamangir/assets/blob/main/static-image-api-2025-02-15-wnfsd9/static-image-api-2025-02-15-wnfsd9-2X.gif?raw=true",
+            "description": "Integrations with the Google Maps [Static](https://developers.google.com/maps/documentation/maps-static/start) and [Geocoding](https://developers.google.com/maps/documentation/geocoding/start) APIs.",
+        },
+        {
+            "name": "SemSeg on Google Maps",
+            "url": "./roofai/google_maps/semseg",
+            "marquee": "https://github.com/kamangir/assets/raw/main/blue-plugin/marquee.png?raw=true",
+            "description": "Semantic Segmentation datasets and models.",
         },
     ]
 )
@@ -56,7 +62,7 @@ def build():
                 "path": "semseg",
             },
             {
-                "path": "google_maps",
+                "path": "google_maps/api",
             },
         ]
     )
