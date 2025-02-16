@@ -4,12 +4,12 @@
 
 ```bash
 runme() {
-	local object_name=gmaps-dataset-$(@@timestamp)
+    local object_name=gmaps-dataset-$(@@timestamp)
 
-	roofai dataset ingest \
-		source=gmaps,upload \
-		$object_name \
-		count=10,lat=53.343318,lon=-2.650661,zoom=20
+    roofai dataset ingest \
+        source=gmaps,upload \
+        $object_name \
+        count=10,lat=53.343318,lon=-2.650661,zoom=20
 
     @publish ~download,tar $object_name
 }
@@ -19,6 +19,11 @@ runme
 
 
 [gmaps-dataset-2025-02-15-3ce3jm](https://kamangir-public.s3.ca-central-1.amazonaws.com/gmaps-dataset-2025-02-15-3ce3jm.tar.gz)
+
+
+<details>
+<summary>metadata</summary>
+
 ```yaml
 center:
   gsd: 0.08912957603498574
@@ -39,7 +44,8 @@ grid:
 
 ```
 
-🚧
+</details>
+
 
 ## uploading to roboflow for labelling
 
