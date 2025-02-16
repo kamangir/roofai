@@ -76,7 +76,7 @@ def help_ingest_gmaps(
         ]
     )
 
-    ingest_options = "count=<count>,lat=<lat>,lon=<lon>"
+    ingest_options = "count=<count>,lat=<lat>,lon=<lon>,zoom=<zoom>"
 
     return show_usage(
         [

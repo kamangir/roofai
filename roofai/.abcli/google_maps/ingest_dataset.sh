@@ -12,6 +12,7 @@ function roofai_google_maps_ingest_dataset() {
     local lat=$(abcli_option "$ingest_options" lat 0)
     local lon=$(abcli_option "$ingest_options" lon 0)
     local count=$(abcli_option "$ingest_options" count 10)
+    local zoom=$(abcli_option "$ingest_options" zoom 20)
 
     abcli_eval dryrun=$do_dryrun \
         python3 -m roofai.google_maps \
@@ -19,6 +20,7 @@ function roofai_google_maps_ingest_dataset() {
         --lat $lat \
         --lon $lon \
         --count $count \
+        --zoom $zoom \
         --object_name $object_name \
         "${@:4}"
     local status="$?"
