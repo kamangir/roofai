@@ -14,7 +14,7 @@ setup(
         f"{NAME}.dataset.ingest",
         f"{NAME}.google_maps",
         f"{NAME}.google_maps.api",
-        f"{NAME}.google_maps.dataset",
+        f"{NAME}.google_maps.semseg",
         f"{NAME}.help",
         f"{NAME}.help.google_maps",
         f"{NAME}.semseg",
