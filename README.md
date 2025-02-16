@@ -8,7 +8,9 @@ pip install roofai
 
 ```mermaid
 graph LR
-    dataset_ingest["roofai<br>dataset<br>ingest<br>source=AIRS|CamVid|gmaps|&lt;distributed-dataset&gt;<br>&lt;dataset-object-name&gt;"]
+    dataset_ingest["roofai<br>dataset<br>ingest<br>source=AIRS|CamVid|&lt;distributed-dataset&gt;<br>&lt;dataset-object-name&gt;"]
+
+    dataset_ingest_gmaps["roofai<br>dataset<br>ingest<br>source=gmaps -<br>count=&lt;count&gt;,lat=&lt;lat&gt;,lon=&lt;lon&gt;,zoom=&lt;zoom&gt;<br>roboflow,import"]
 
     dataset_review["roofai<br>dataset<br>review -<br>&lt;dataset-object-name&gt;"]
 
@@ -30,12 +32,15 @@ graph LR
     prediction_object_name["📂 prediction object"]:::folder
     object_name["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
+    roboflow["🖼️ roboflow"]:::folder
 
-    gmaps_get_static_image --> dataset_ingest
     distributed_dataset_object_name --> dataset_ingest
     AIRS --> dataset_ingest
     CamVid --> dataset_ingest
     dataset_ingest --> dataset_object_name
+
+    gmaps_get_static_image --> dataset_ingest_gmaps
+    dataset_ingest_gmaps --> roboflow
 
     AIRS --> dataset_review
     dataset_object_name --> dataset_review
@@ -68,4 +73,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/roofai/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/roofai/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/roofai.svg)](https://pypi.org/project/roofai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/roofai)](https://pypistats.org/packages/roofai)
 
-built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.135.1`](https://github.com/kamangir/roofai).
+built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.136.1`](https://github.com/kamangir/roofai).
