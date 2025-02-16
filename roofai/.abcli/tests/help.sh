@@ -10,6 +10,9 @@ function test_roofai_help() {
         "@google_maps get_static_image" \
         "@google_maps geocode" \
         \
+        "@roboflow" \
+        "@roboflow create_project" \
+        \
         "roofai dataset" \
         "roofai dataset ingest" \
         "roofai dataset review" \

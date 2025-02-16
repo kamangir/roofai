@@ -1,6 +1,10 @@
 # Google Maps + SemSeg
 
-## ingesting a dataset
+## ingesting and labelling a dataset
+
+ℹ️ Experimented with [roboflow](https://docs.roboflow.com/api-reference/images/upload-api). Observed that there is no API endpoint for deleting projects; and the manual step isn't realistic. This makes testing hard to impossible. Will now experiment with [51](https://docs.voxel51.com/).
+
+🔥
 
 ```bash
 runme() {
@@ -17,14 +21,10 @@ runme() {
 runme
 ```
 
-set:::object_name gmaps-dataset-2025-02-15-3ce3jm
+set:::object_name gmaps-dataset-2025-02-15-ueo77u
 
 object:::get:::object_name
 
 details:::metadata
 yaml:::get:::object_name:::roofai-roofai-google_maps-semseg-dataset
 details:::
-
-## uploading to roboflow for labelling
-
-🚧
