@@ -1,6 +1,6 @@
 # Google Maps + SemSeg
 
-## ingesting a dataset and uploading it to [roboflow](https://docs.roboflow.com/)
+## ingesting and labelling a dataset
 
 🔥
 
