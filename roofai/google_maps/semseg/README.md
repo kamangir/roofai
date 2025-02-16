@@ -1,6 +1,8 @@
 # Google Maps + SemSeg
 
-## ingesting a dataset
+## ingesting a dataset and uploading it to [roboflow](https://docs.roboflow.com/)
+
+🔥
 
 ```bash
 runme() {
@@ -18,7 +20,7 @@ runme
 ```
 
 
-[gmaps-dataset-2025-02-15-3ce3jm](https://kamangir-public.s3.ca-central-1.amazonaws.com/gmaps-dataset-2025-02-15-3ce3jm.tar.gz)
+[gmaps-dataset-2025-02-15-ueo77u](https://kamangir-public.s3.ca-central-1.amazonaws.com/gmaps-dataset-2025-02-15-ueo77u.tar.gz)
 
 
 <details>
@@ -41,12 +43,14 @@ count: 10
 grid:
 - 3
 - 4
+lat: 53.343318
+lon: -2.650661
+maptype: satellite
+size: 640x640
+zoom: 20
 
 ```
 
 </details>
 
 
-## uploading to roboflow for labelling
-
-🚧

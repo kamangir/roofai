@@ -1,6 +1,8 @@
 # Google Maps + SemSeg
 
-## ingesting a dataset
+## ingesting a dataset and uploading it to [roboflow](https://docs.roboflow.com/)
+
+🔥
 
 ```bash
 runme() {
@@ -17,14 +19,10 @@ runme() {
 runme
 ```
 
-set:::object_name gmaps-dataset-2025-02-15-3ce3jm
+set:::object_name gmaps-dataset-2025-02-15-ueo77u
 
 object:::get:::object_name
 
 details:::metadata
 yaml:::get:::object_name:::roofai-roofai-google_maps-semseg-dataset
 details:::
-
-## uploading to roboflow for labelling
-
-🚧

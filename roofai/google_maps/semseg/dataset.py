@@ -25,6 +25,15 @@ def ingest_dataset(
     if count < 1:
         return False
 
+    metadata = {
+        "lat": lat,
+        "lon": lon,
+        "zoom": zoom,
+        "maptype": maptype,
+        "size": size,
+        "count": count,
+    }
+
     logger.info(
         "{}.ingest_dataset: [lat={:.6f}, lon={:.6f}] of {} @ zoom={} * count={} * {} -> {}".format(
             NAME,
@@ -38,7 +47,6 @@ def ingest_dataset(
         )
     )
 
-    metadata = {"count": count}
     success, _, metadata["center"] = get_static_image(
         lat=lat,
         lon=lon,
