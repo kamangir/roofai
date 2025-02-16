@@ -1,6 +1,6 @@
 # Google Maps + SemSeg
 
-## generating a dataset
+## ingesting a dataset
 
 🔥
 
