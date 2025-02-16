@@ -23,7 +23,8 @@ def meters_to_degrees(
 
     if direction == "lat":
         return delta_in_m / meters_per_degree_latitude
-    elif direction == "lon":
+
+    if direction == "lon":
         return delta_in_m / meters_per_degree_longitude
-    else:
-        raise ValueError(f"'lat' or 'lon' expected, received '{direction}'!")
+
+    raise ValueError(f"'lat' or 'lon' expected, received '{direction}'!")
