@@ -44,6 +44,7 @@ graph LR
 
     AIRS --> dataset_review
     distributed_dataset_object_name --> dataset_review
+    CamVid --> dataset_review
     dataset_object_name --> dataset_review
     dataset_review --> terminal
 
