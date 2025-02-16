@@ -10,17 +10,17 @@ pip install roofai
 graph LR
     dataset_ingest["roofai dataset ingest source=AIRS|CamVid|<distributed-dataset> <dataset-object-name>"]
 
-    dataset_ingest_gmaps["roofai dataset ingest source=gmaps~~- count=<count>,lat=<lat>,lon=<lon> roboflow,import"]
-
     dataset_review["roofai dataset review~~- <dataset-object-name>"]
+
+    semseg_train["roofai semseg train~~- <dataset-object-name> <model-object-name>"]
+
+    semseg_predict["roofai semseg predict~~- <model-object-name> <dataset-object-name> <prediction-object-name>"]
 
     gmaps_get_static_image["@gmaps get_static_image~~-~~- --lat~~<lat> --lon~~<lon>"]
 
     gmaps_geocode["@gmaps geocode~~-~~- --address~~<address>"]
 
-    semseg_train["roofai semseg train~~- <dataset-object-name> <model-object-name>"]
-
-    semseg_predict["roofai semseg predict~~- <model-object-name> <dataset-object-name> <prediction-object-name>"]
+    dataset_ingest_gmaps["roofai dataset ingest source=gmaps~~- count=<count>,lat=<lat>,lon=<lon> roboflow,import"]
 
     address["🌐 address"]:::folder
     lat_lon["🌐 lat,lon"]:::folder
