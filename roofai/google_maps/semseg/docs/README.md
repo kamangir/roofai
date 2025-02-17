@@ -58,7 +58,7 @@ zoom: 20
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/image.png?raw=true) | assets::roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/mask.png |
+| ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/image.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/mask.png?raw=true) |
 
 🚧
 
