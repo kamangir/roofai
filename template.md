@@ -20,7 +20,7 @@ graph LR
 
     gmaps_geocode["@gmaps geocode~~-~~- --address~~<address>"]
 
-    dataset_ingest_gmaps["roofai dataset ingest source=gmaps~~- count=<count>,lat=<lat>,lon=<lon> roboflow,import"]
+    dataset_ingest_gmaps["roofai dataset ingest source=gmaps~~- count=<count>,lat=<lat>,lon=<lon> roboflow,project=<project-name>"]
 
     address["🌐 address"]:::folder
     lat_lon["🌐 lat,lon"]:::folder
