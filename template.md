@@ -45,7 +45,7 @@ graph LR
     CamVid --> dataset_ingest
     dataset_ingest --> dataset_object_name
 
-    gmaps_get_static_image --> dataset_ingest_gmaps
+    dataset_ingest_gmaps --> gmaps_get_static_image
     dataset_ingest_gmaps --> roboflow
     dataset_ingest_gmaps --> object_name
 

@@ -45,7 +45,7 @@ graph LR
     CamVid --> dataset_ingest
     dataset_ingest --> dataset_object_name
 
-    gmaps_get_static_image --> dataset_ingest_gmaps
+    dataset_ingest_gmaps --> gmaps_get_static_image
     dataset_ingest_gmaps --> roboflow
     dataset_ingest_gmaps --> object_name
 
@@ -89,4 +89,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/roofai/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/roofai/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/roofai.svg)](https://pypi.org/project/roofai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/roofai)](https://pypistats.org/packages/roofai)
 
-built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.186.1`](https://github.com/kamangir/roofai).
+built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.187.1`](https://github.com/kamangir/roofai).
