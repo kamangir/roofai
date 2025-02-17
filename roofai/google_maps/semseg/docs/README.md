@@ -49,17 +49,11 @@ zoom: 20
 
 ## downloading the labelled dataset from roboflow
 
-🔥
-
 ```bash
 @roboflow download \
-    project=roof-dataset-two,version=5,~upload - \
-    ingest,count=10000,~upload -
+    project=roof-dataset-two,version=5,upload - \
+    ingest,count=10000,upload -
 ```
-
-TODO: ~upload -> upload
-
-🔥
 
 | | |
 |-|-|
@@ -94,10 +88,41 @@ source: gmaps
 </details>
 
 
+---
 
 
+![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png?raw=true)
 
-[roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7.tar.gz)
+---
+
+
+[roof-dataset-two-5-2025-02-17-u3s0js](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-17-u3s0js.tar.gz)
+
+
+<details>
+<summary>metadata</summary>
+
+```yaml
+classes:
+- background
+- roof
+ingested-by: roofai-6.190.1
+kind: CamVid
+roofai-roofai-roboflow-download:
+  input:
+    project: roof-dataset-two
+    version: 5
+source: gmaps
+
+```
+
+</details>
+
+
+---
+
+
+[roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau.tar.gz)
 
 
 <details>
@@ -109,21 +134,19 @@ channel: {}
 classes:
 - background
 - roof
-ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.179.1
+ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.190.1
 kind: CamVid
 num:
   test: 19
   train: 156
   val: 19
-prefix: bolt/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
-source: roof-dataset-two-5-2025-02-16-mvhttg
+prefix: bolt/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
+source: roof-dataset-two-5-2025-02-17-u3s0js
 
 ```
 
 </details>
 
-
-![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png?raw=true)
 
 🔥
 

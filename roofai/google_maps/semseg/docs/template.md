@@ -22,17 +22,11 @@ assets:::roofAI/roboflow/labelling-2.png
 
 ## downloading the labelled dataset from roboflow
 
-🔥
-
 ```bash
 @roboflow download \
-    project=roof-dataset-two,version=5,~upload - \
-    ingest,count=10000,~upload -
+    project=roof-dataset-two,version=5,upload - \
+    ingest,count=10000,upload -
 ```
-
-TODO: ~upload -> upload
-
-🔥
 
 | | |
 |-|-|
@@ -52,17 +46,31 @@ details:::metadata
 yaml:::get:::object_name_2
 details:::
 
+---
 
+set:::dataset_object_name_1 roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
 
-set:::dataset_object_name roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
+assets:::get:::dataset_object_name_1/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png
 
-object:::get:::dataset_object_name
+---
+
+set:::object_name_3 roof-dataset-two-5-2025-02-17-u3s0js
+
+object:::get:::object_name_3
 
 details:::metadata
-yaml:::get:::dataset_object_name
+yaml:::get:::object_name_3
 details:::
 
-assets:::get:::dataset_object_name/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png
+---
+
+set:::dataset_object_name_2 roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
+
+object:::get:::dataset_object_name_2
+
+details:::metadata
+yaml:::get:::dataset_object_name_2
+details:::
 
 🔥
 
