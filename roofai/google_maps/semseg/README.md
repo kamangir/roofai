@@ -45,6 +45,8 @@ zoom: 20
 </details>
 
 
+![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/labelling-2.png?raw=true)
+
 🔥
 
 ---

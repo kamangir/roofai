@@ -18,6 +18,8 @@ details:::metadata
 yaml:::get:::object_name:::roofai-roofai-google_maps-semseg-dataset
 details:::
 
+assets:::roofAI/roboflow/labelling-2.png
+
 🔥
 
 ---
