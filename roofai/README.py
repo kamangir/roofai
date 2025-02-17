@@ -29,7 +29,7 @@ items = README.Items(
         {
             "name": "SemSeg on Google Maps",
             "url": "./roofai/google_maps/semseg",
-            "marquee": "https://github.com/kamangir/assets/blob/main/roofAI/google_maps/dataset.png?raw=true",
+            "marquee": "https://github.com/kamangir/assets/raw/main/roofAI/roboflow/labelling-2.png?raw=true",
             "description": "Google Maps semantic segmentation datasets and models.",
         },
     ]
