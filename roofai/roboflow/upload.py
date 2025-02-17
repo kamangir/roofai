@@ -2,6 +2,7 @@ from blueness import module
 from blue_options.elapsed_timer import ElapsedTimer
 
 from roofai import NAME
+from roofai.roboflow.create import create_project
 from roofai.logger import logger
 
 
@@ -21,6 +22,17 @@ def upload_to_project(
             project_name,
         )
     )
+
+    if create:
+        if not create_project(
+            project_name=project_name,
+            project_description="uploaded-from-{}".format(
+                object_name.replace("_", "-")
+            ),
+            project_type="semantic-segmentation",
+            project_license="MIT",
+        ):
+            return False
 
     timer = ElapsedTimer()
 
