@@ -31,7 +31,6 @@ function roofai_google_maps_ingest_dataset() {
         abcli_upload - $object_name
 
     local roboflow_options=$4
-    echo roboflow_options=$roboflow_options
     local do_roboflow=$(abcli_option_int "$roboflow_options" roboflow 0)
     [[ "$do_roboflow" == 0 ]] &&
         return 0
