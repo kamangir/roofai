@@ -38,7 +38,7 @@ graph LR
     terminal["💻 terminal"]:::folder
     roboflow["🖼️ roboflow"]:::folder
 
-    dataset_object --> dataset_ingest
+    dataset_object_name --> dataset_ingest
     distributed_dataset_object_name --> dataset_ingest
     AIRS --> dataset_ingest
     CamVid --> dataset_ingest
@@ -53,8 +53,8 @@ graph LR
 
     roboflow --> roboflow_download
     roboflow_download --> dataset_ingest
-    roboflow_download --> dataset_Review
-    roboflow_download --> dataset_object
+    roboflow_download --> dataset_review
+    roboflow_download --> dataset_object_name
 
     AIRS --> dataset_review
     distributed_dataset_object_name --> dataset_review
