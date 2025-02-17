@@ -26,7 +26,7 @@ assets:::roofAI/roboflow/labelling-2.png
 
 ```bash
 @roboflow download \
-	project=roof-dataset-one,version=1 -
+    project=roof-dataset-one,version=1 -
 ```
 
 | | |

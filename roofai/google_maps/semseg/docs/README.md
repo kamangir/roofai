@@ -53,7 +53,7 @@ zoom: 20
 
 ```bash
 @roboflow download \
-	project=roof-dataset-one,version=1 -
+    project=roof-dataset-one,version=1 -
 ```
 
 | | |
