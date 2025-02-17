@@ -1,4 +1,4 @@
-# Google Maps + SemSeg
+# Google Maps + SemSeg - round 1
 
 ## ingesting a dataset
 
@@ -65,6 +65,3 @@ https://app.roboflow.com/kamangir/roof-dataset-one/annotate
 
 
 ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/labelling-2.png?raw=true)
-
-
-🔥

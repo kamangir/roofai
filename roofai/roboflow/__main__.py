@@ -7,6 +7,7 @@ from roofai import NAME
 from roofai.roboflow.create import create_project
 from roofai.roboflow.status import get_status
 from roofai.roboflow.upload import upload_to_project
+from roofai.roboflow.download import download_project
 from roofai.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -15,11 +16,16 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="create_project | get_status | upload",
+    help="create_project | download | get_status | upload",
 )
 parser.add_argument(
     "--project_name",
     type=str,
+)
+parser.add_argument(
+    "--version",
+    type=int,
+    default=1,
 )
 parser.add_argument(
     "--description",
@@ -51,6 +57,12 @@ parser.add_argument(
     default=1,
     help="0 | 1",
 )
+parser.add_argument(
+    "--clean",
+    type=int,
+    default=1,
+    help="0 | 1",
+)
 args = parser.parse_args()
 
 success = False
@@ -60,6 +72,14 @@ if args.task == "create_project":
         project_description=args.description,
         project_type=args.type,
         project_license=args.license,
+    )
+elif args.task == "download":
+    success = download_project(
+        object_name=args.object_name,
+        project_name=args.project_name,
+        project_version=args.version,
+        clean=args.clean == 1,
+        verbose=args.verbose == 1,
     )
 elif args.task == "get_status":
     success, _ = get_status()

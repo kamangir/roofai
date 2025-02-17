@@ -65,7 +65,13 @@ def build():
                 "path": "google_maps/api",
             },
             {
-                "path": "google_maps/semseg",
+                "path": "google_maps/semseg/docs",
             },
+        ]
+        + [
+            {
+                "path": f"google_maps/semseg/docs/round-{index}.md",
+            }
+            for index in [1, 2, 3]
         ]
     )
