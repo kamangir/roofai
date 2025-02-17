@@ -26,8 +26,13 @@ assets:::roofAI/roboflow/labelling-2.png
 
 ```bash
 @roboflow download \
-    project=roof-dataset-two,version=5,upload -
+    project=roof-dataset-two,version=5,~upload - \
+	ingest,count=10000,~upload -    
 ```
+
+TODO: ~upload -> upload
+
+🔥
 
 | | |
 |-|-|

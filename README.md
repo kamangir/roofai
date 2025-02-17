@@ -20,7 +20,11 @@ graph LR
 
     gmaps_geocode["@gmaps<br>geocode - -<br>--address &lt;address&gt;"]
 
-    dataset_ingest_gmaps["roofai<br>dataset<br>ingest<br>source=gmaps -<br>count=&lt;count&gt;,lat=&lt;lat&gt;,lon=&lt;lon&gt;<br>roboflow,project=&lt;project-name&gt;"]
+    dataset_ingest_gmaps["roofai<br>dataset<br>ingest<br>source=gmaps<br>&lt;object-name&gt;<br>count=&lt;count&gt;,lat=&lt;lat&gt;,lon=&lt;lon&gt;<br>roboflow,project=&lt;project-name&gt;"]
+
+    roboflow_upload["@roboflow<br>upload<br>project=&lt;project-name&gt;<br>&lt;object-name&gt;"]
+
+    roboflow_download["@roboflow<br>download<br>project=&lt;project-name&gt;,version=&lt;version&gt;<br>&lt;object-name&gt;<br>ingest,count=&lt;10000&gt;<br>&lt;dataset-object-name&gt;"]
 
     address["🌐 address"]:::folder
     lat_lon["🌐 lat,lon"]:::folder
@@ -41,6 +45,13 @@ graph LR
 
     gmaps_get_static_image --> dataset_ingest_gmaps
     dataset_ingest_gmaps --> roboflow
+    dataset_ingest_gmaps --> object_name
+
+    object_name --> roboflow_upload
+    roboflow_upload --> roboflow
+
+    roboflow --> roboflow_download
+    roboflow_download --> dataset_ingest
 
     AIRS --> dataset_review
     distributed_dataset_object_name --> dataset_review
@@ -75,4 +86,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/roofai/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/roofai/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/roofai.svg)](https://pypi.org/project/roofai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/roofai)](https://pypistats.org/packages/roofai)
 
-built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.182.1`](https://github.com/kamangir/roofai).
+built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.183.1`](https://github.com/kamangir/roofai).

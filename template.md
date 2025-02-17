@@ -20,7 +20,11 @@ graph LR
 
     gmaps_geocode["@gmaps geocode~~-~~- --address~~<address>"]
 
-    dataset_ingest_gmaps["roofai dataset ingest source=gmaps~~- count=<count>,lat=<lat>,lon=<lon> roboflow,project=<project-name>"]
+    dataset_ingest_gmaps["roofai dataset ingest source=gmaps <object-name> count=<count>,lat=<lat>,lon=<lon> roboflow,project=<project-name>"]
+
+    roboflow_upload["@roboflow upload project=<project-name> <object-name>"]
+
+    roboflow_download["@roboflow download project=<project-name>,version=<version> <object-name> ingest,count=<10000> <dataset-object-name>"]
 
     address["🌐 address"]:::folder
     lat_lon["🌐 lat,lon"]:::folder
@@ -41,6 +45,13 @@ graph LR
 
     gmaps_get_static_image --> dataset_ingest_gmaps
     dataset_ingest_gmaps --> roboflow
+    dataset_ingest_gmaps --> object_name
+
+    object_name --> roboflow_upload
+    roboflow_upload --> roboflow
+
+    roboflow --> roboflow_download
+    roboflow_download --> dataset_ingest
 
     AIRS --> dataset_review
     distributed_dataset_object_name --> dataset_review

@@ -53,14 +53,23 @@ def help_download(
         ]
     )
 
+    ingest_options = "".join(
+        [
+            "ingest,count=<10000>",
+            xtra(",dryrun,upload", mono=mono),
+        ]
+    )
+
     return show_usage(
         [
             "@roboflow",
             "download",
             f"[{options}]",
             "[-|<object-name>]",
+            f"[{ingest_options}]",
+            "[-|<dataset-object-name>]",
         ],
-        "roboflow/<project-name> -> <object-name>.",
+        "download roboflow/<project-name> & ...",
         mono=mono,
     )
 
