@@ -71,7 +71,7 @@ elif args.task == "download":
     success = download_project(
         object_name=args.object_name,
         project_name=args.project_name,
-        version=args.version,
+        project_version=args.version,
         verbose=args.verbose == 1,
     )
 elif args.task == "get_status":
