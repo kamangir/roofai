@@ -4,6 +4,7 @@ function roofai_roboflow_download() {
     local options=$1
     local do_dryrun=$(abcli_option_int "$options" dryrun 0)
     local do_upload=$(abcli_option_int "$options" upload 0)
+    local do_clean=$(abcli_option_int "$options" clean 1)
     local project_name=$(abcli_option "$options" project roofai-generic)
     local version=$(abcli_option "$options" version 1)
 
@@ -12,6 +13,7 @@ function roofai_roboflow_download() {
     abcli_eval dryrun=$do_dryrun \
         python3 -m roofai.roboflow \
         download \
+        --clean $do_clean \
         --project_name $project_name \
         --version $version \
         --object_name $object_name \

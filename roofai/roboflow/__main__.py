@@ -57,6 +57,12 @@ parser.add_argument(
     default=1,
     help="0 | 1",
 )
+parser.add_argument(
+    "--clean",
+    type=int,
+    default=1,
+    help="0 | 1",
+)
 args = parser.parse_args()
 
 success = False
@@ -72,6 +78,7 @@ elif args.task == "download":
         object_name=args.object_name,
         project_name=args.project_name,
         project_version=args.version,
+        clean=args.clean == 1,
         verbose=args.verbose == 1,
     )
 elif args.task == "get_status":

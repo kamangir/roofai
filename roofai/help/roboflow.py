@@ -46,7 +46,7 @@ def help_download(
 ) -> str:
     options = "".join(
         [
-            xtra("dryrun,", mono=mono),
+            xtra("dryrun,~clean,", mono=mono),
             "project=<project-name>,upload,version=<version>",
         ]
     )

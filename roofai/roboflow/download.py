@@ -23,14 +23,16 @@ def download_project(
     object_name: str,
     project_name: str,
     project_version: int,
+    clean: bool = True,
     verbose: bool = False,
 ) -> bool:
     logger.info(
-        "{}.download_project: {}({}) -> {}".format(
+        "{}.download_project: {}({}) -> {}{}".format(
             NAME,
             project_name,
             project_version,
             object_name,
+            " clean" if clean else "",
         )
     )
 
@@ -85,9 +87,8 @@ def download_project(
             )
         )
     ):
-        logger.info(image_filename)
-
         record_id = file.name(image_filename).replace(".", "-")
+        logger.info(record_id)
 
         success, image = file.load_image(
             image_filename,
@@ -138,6 +139,15 @@ def download_project(
                 * 255
             ).astype(np.uint8)[:, :, :3],
             log=verbose,
+        ):
+            return False
+
+        if clean and not all(
+            file.delete(filename_)
+            for filename_ in [
+                image_filename,
+                mask_filename,
+            ]
         ):
             return False
 
