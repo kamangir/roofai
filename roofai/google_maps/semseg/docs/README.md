@@ -51,6 +51,17 @@ zoom: 20
 
 🔥
 
+```bash
+@roboflow download \
+	project=roof-dataset-one,version=1 -
+```
+
+| | |
+|-|-|
+| ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/image.png?raw=true) | assets::roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/mask.png |
+
+🚧
+
 ---
 
 - [round 1](./round-1.md)

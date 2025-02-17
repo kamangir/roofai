@@ -24,6 +24,17 @@ assets:::roofAI/roboflow/labelling-2.png
 
 🔥
 
+```bash
+@roboflow download \
+	project=roof-dataset-one,version=1 -
+```
+
+| | |
+|-|-|
+| assets:::roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/image.png | assets::roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/mask.png |
+
+🚧
+
 ---
 
 - [round 1](./round-1.md)

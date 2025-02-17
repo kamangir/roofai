@@ -1,12 +1,16 @@
 import os
 from roboflow import Roboflow
+from tqdm import tqdm
+import glob
+import matplotlib.pyplot as plt
+import numpy as np
 
 from blueness import module
 from blue_options.elapsed_timer import ElapsedTimer
-from blue_objects import objects, path
+from blue_objects import objects, path, file
 from blue_objects.metadata import post_to_object
 
-from roofai import NAME
+from roofai import NAME, fullname
 from roofai.env import ROBOFLOW_API_KEY
 from roofai.logger import logger
 
@@ -37,11 +41,12 @@ def download_project(
         }
     }
 
-    temp_folder = os.path.join(
-        objects.object_path(object_name),
+    object_path = objects.object_path(object_name)
+    temp_path = os.path.join(
+        object_path,
         "downloaded_from_roboflow",
     )
-    if not path.create(temp_folder, log=True):
+    if not path.create(temp_path, log=verbose):
         return False
 
     timer = ElapsedTimer()
@@ -55,7 +60,7 @@ def download_project(
 
         _ = version.download(
             model_format="png-mask-semantic",
-            location=temp_folder,
+            location=temp_path,
             overwrite=True,
         )
     except Exception as e:
@@ -64,6 +69,89 @@ def download_project(
 
     timer.stop()
     logger.info(f"took {timer.elapsed_pretty()}")
+
+    success, list_of_classes = file.load_dataframe(
+        os.path.join(temp_path, "train/_classes.csv"),
+        log=verbose,
+    )
+    if not success:
+        return False
+
+    for image_filename in tqdm(
+        glob.glob(
+            os.path.join(
+                temp_path,
+                "train/*.jpg",
+            )
+        )
+    ):
+        logger.info(image_filename)
+
+        record_id = file.name(image_filename).replace(".", "-")
+
+        success, image = file.load_image(
+            image_filename,
+            log=verbose,
+        )
+        if not success:
+            return False
+        if not file.save_image(
+            os.path.join(
+                object_path,
+                f"SegNet-Tutorial/CamVid/train/{record_id}.png",
+            ),
+            image,
+            log=verbose,
+        ):
+            return False
+
+        mask_filename = os.path.join(
+            file.path(image_filename),
+            "{}_mask.png".format(
+                file.name(image_filename),
+            ),
+        )
+
+        success, mask = file.load_image(
+            mask_filename,
+            log=verbose,
+        )
+        if not success:
+            return False
+        if not file.save_image(
+            os.path.join(
+                object_path,
+                f"SegNet-Tutorial/CamVid/trainannot/{record_id}.png",
+            ),
+            mask,
+            log=verbose,
+        ):
+            return False
+
+        if not file.save_image(
+            os.path.join(
+                object_path,
+                f"SegNet-Tutorial/CamVid/traina-colored/{record_id}.png",
+            ),
+            (
+                plt.cm.viridis(mask[:, :, 0].astype(np.float32) / len(list_of_classes))
+                * 255
+            ).astype(np.uint8)[:, :, :3],
+            log=verbose,
+        ):
+            return False
+
+    if not file.save_yaml(
+        os.path.join(object_path, "metadata.yaml"),
+        {
+            "classes": [value for _, value in sorted(list_of_classes.items())],
+            "ingested-by": fullname(),
+            "kind": "CamVid",
+            "source": "gmaps",
+        },
+        log=True,
+    ):
+        return False
 
     return post_to_object(
         object_name,
