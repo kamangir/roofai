@@ -13,6 +13,8 @@ https://app.roboflow.com/kamangir/roof-dataset-two/annotate
 
 
 
+[gmaps-dataset-2025-02-16-7b2zxk](https://kamangir-public.s3.ca-central-1.amazonaws.com/gmaps-dataset-2025-02-16-7b2zxk.tar.gz)
+
 
 <details>
 <summary>metadata</summary>
