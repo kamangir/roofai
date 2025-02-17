@@ -73,6 +73,8 @@ runme
 | ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/image.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/mask.png?raw=true) |
 
 
+[roof-dataset-one-1-2025-02-16-k7xo1q](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-one-1-2025-02-16-k7xo1q.tar.gz)
+
 
 <details>
 <summary>metadata</summary>

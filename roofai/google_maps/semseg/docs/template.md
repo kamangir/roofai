@@ -47,6 +47,8 @@ runme
 
 set:::dataset_2 roof-dataset-one-1-2025-02-16-k7xo1q
 
+object:::get:::dataset_2
+
 details:::metadata
 yaml:::get:::dataset_2
 details:::
