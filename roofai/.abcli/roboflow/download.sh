@@ -17,8 +17,7 @@ function roofai_roboflow_download() {
         --clean $do_clean \
         --project_name $project_name \
         --version $version \
-        --object_name $object_name \
-        "${@:3}"
+        --object_name $object_name
     [[ $? -ne 0 ]] && return 1
 
     if [[ "$do_review" == 1 ]]; then
@@ -32,5 +31,19 @@ function roofai_roboflow_download() {
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $object_name
 
-    return 0
+    local ingest_options=$3
+    local do_ingest=$(abcli_option_int "$ingest_options" ingest 0)
+    [[ "$do_ingest" == 0 ]] &&
+        return 0
+
+    local count=$(abcli_option "$ingest_options" count 1000)
+
+    local dataset_object_name=$(abcli_clarify_object $4 $object_name-ingest-$(abcli_string_timestamp_short))
+
+    roofai_dataset_ingest \
+        ~download,source=$object_name,$ingest_options \
+        $dataset_object_name \
+        --test_count $(python3 -c "print(int($count*0.1))") \
+        --train_count $(python3 -c "print(int($count*0.8))") \
+        --val_count $(python3 -c "print(int($count*0.1))")
 }

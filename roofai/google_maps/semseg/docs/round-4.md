@@ -1,4 +1,4 @@
-# Google Maps + SemSeg
+# Google Maps + SemSeg - round 4
 
 ## ingesting a dataset and uploading it to roboflow for labelling
 
@@ -51,8 +51,7 @@ zoom: 20
 
 ```bash
 @roboflow download \
-    project=roof-dataset-two,version=5,upload - \
-    ingest,count=10000,upload -
+    project=roof-dataset-two,version=5,upload -
 ```
 
 | | |
@@ -62,13 +61,10 @@ zoom: 20
 
 ![image](https://github.com/kamangir/assets/blob/main/roof-dataset-one-1-2025-02-16-k7xo1q/00001-00000_png-rf-60c50dfd3edfe4472d69cb6b4c83b890.png?raw=true)
 
-
-![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png?raw=true)
-
 ---
 
 
-[roof-dataset-two-5-2025-02-17-u3s0js](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-17-u3s0js.tar.gz)
+[roof-dataset-two-5-2025-02-16-mvhttg](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-16-mvhttg.tar.gz)
 
 
 <details>
@@ -78,7 +74,7 @@ zoom: 20
 classes:
 - background
 - roof
-ingested-by: roofai-6.190.1
+ingested-by: roofai-6.174.1
 kind: CamVid
 roofai-roofai-roboflow-download:
   input:
@@ -91,8 +87,33 @@ source: gmaps
 </details>
 
 
+## ingesting a dataset at the required chip size and split
 
-[roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau.tar.gz)
+```bash
+runme() {
+    local dataset_object_name=roof-dataset-two-5-2025-02-16-mvhttg
+    local object_name=$dataset_object_name-ingest-$(@@timestamp)
+
+    roofai dataset ingest \
+        source=$dataset_object_name,upload \
+        $object_name \
+        --test_count 1000 \
+        --train_count 8000 \
+        --val_count 1000
+
+    @publish tar $object_name
+
+    @assets publish \
+        extensions=png,push \
+        $object_name \
+        --prefix _review/
+}
+
+runme
+```
+
+
+[roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7.tar.gz)
 
 
 <details>
@@ -104,25 +125,24 @@ channel: {}
 classes:
 - background
 - roof
-ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.190.1
+ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.179.1
 kind: CamVid
 num:
   test: 19
   train: 156
   val: 19
-prefix: bolt/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
-source: roof-dataset-two-5-2025-02-17-u3s0js
+prefix: bolt/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
+source: roof-dataset-two-5-2025-02-16-mvhttg
 
 ```
 
 </details>
 
 
-🔥
+![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png?raw=true)
 
 ---
 
 - [round 1](./round-1.md)
 - [round 2](./round-2.md)
 - [round 3](./round-3.md)
-- [round 4](./round-4.md)
