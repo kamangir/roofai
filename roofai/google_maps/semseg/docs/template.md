@@ -45,6 +45,39 @@ details:::metadata
 yaml:::get:::dataset_3
 details:::
 
+```bash
+runme() {
+    local dataset_object_name=roof-dataset-two-5-2025-02-16-mvhttg
+    local object_name=$dataset_object_name-ingest-$(@@timestamp)
+
+    roofai dataset ingest \
+        source=$dataset_object_name,upload \
+        $object_name \
+        --test_count 1000 \
+        --train_count 8000 \
+        --val_count 1000
+
+    @publish tar $object_name
+
+    @assets publish \
+        extensions=png,push \
+        $object_name \
+        --prefix _review/
+}
+
+runme
+```
+
+set:::dataset_4 roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
+
+object:::get:::dataset_4
+
+details:::metadata
+yaml:::get:::dataset_4
+details:::
+
+assets:::get:::dataset_4/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png
+
 🔥
 
 ---
