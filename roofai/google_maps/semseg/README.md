@@ -1,8 +1,6 @@
 # Google Maps + SemSeg
 
-## ingesting and labelling a dataset
-
-🔥
+## ingesting a dataset
 
 ```bash
 runme() {
@@ -54,3 +52,19 @@ zoom: 20
 </details>
 
 
+## ingesting a dataset and uploading it to roboflow for labelling
+
+```bash
+roofai dataset ingest \
+	source=gmaps - \
+	count=10,lat=53.343318,lon=-2.650661 \
+	roboflow,create,project=roof-dataset-one
+```
+
+https://app.roboflow.com/kamangir/roof-dataset-one/annotate
+
+
+![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/labelling-2.png?raw=true)
+
+
+🔥
