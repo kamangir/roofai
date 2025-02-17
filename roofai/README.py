@@ -68,6 +68,9 @@ def build():
                 "path": "google_maps/semseg/round-1.md",
             },
             {
+                "path": "google_maps/semseg/round-2.md",
+            },
+            {
                 "path": "google_maps/semseg",
             },
         ]
