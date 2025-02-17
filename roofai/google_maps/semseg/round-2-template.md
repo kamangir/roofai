@@ -1,4 +1,4 @@
-# Google Maps + SemSeg
+# Google Maps + SemSeg - round 2
 
 > purpose: ingesting a dataset and uploading it to roboflow for labelling, and then training a model.
 
