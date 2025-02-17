@@ -65,13 +65,13 @@ def build():
                 "path": "google_maps/api",
             },
             {
-                "path": "google_maps/semseg/round-1.md",
+                "path": "google_maps/semseg/docs/round-1.md",
             },
             {
-                "path": "google_maps/semseg/round-2.md",
+                "path": "google_maps/semseg/docs/round-2.md",
             },
             {
-                "path": "google_maps/semseg",
+                "path": "google_maps/semseg/docs",
             },
         ]
     )

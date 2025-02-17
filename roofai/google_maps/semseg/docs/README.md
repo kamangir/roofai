@@ -49,8 +49,6 @@ zoom: 20
 
 ## downloading the labelled dataset from roboflow
 
-
-
 🔥
 
 ---

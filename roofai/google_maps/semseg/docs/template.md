@@ -22,8 +22,6 @@ assets:::roofAI/roboflow/labelling-2.png
 
 ## downloading the labelled dataset from roboflow
 
-
-
 🔥
 
 ---

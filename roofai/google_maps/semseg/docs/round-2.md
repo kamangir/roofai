@@ -1,6 +1,6 @@
 # Google Maps + SemSeg - round 2
 
-> purpose: ingesting a dataset and uploading it to roboflow for labelling, and then training a model.
+## ingesting a dataset and uploading it to roboflow for labelling, and then training a model.
 
 ```bash
 roofai dataset ingest \
@@ -50,7 +50,6 @@ zoom: 20
 ⚠️ low quality of the model.
 
 ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/model-1.png?raw=true)
-
 
 ---
 
