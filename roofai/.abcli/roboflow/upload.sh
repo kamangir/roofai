@@ -14,8 +14,8 @@ function roofai_roboflow_upload() {
     abcli_eval dryrun=$do_dryrun \
         python3 -m roofai.roboflow \
         upload \
-        --object_name "$object_name" \
         --create $do_create \
         --project_name $project_name \
+        --object_name $object_name \
         "${@:3}"
 }
