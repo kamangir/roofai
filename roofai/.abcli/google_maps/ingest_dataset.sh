@@ -21,9 +21,8 @@ function roofai_google_maps_ingest_dataset() {
         --lon $lon \
         --count $count \
         --zoom $zoom \
-        --object_name $object_name \
-        "${@:4}"
-    local status="$?"
+        --object_name $object_name
+    [[ $? -ne 0 ]] && return 1
 
     [[ "$do_dryrun" == 0 ]] &&
         abcli_cat $object_path/metadata.yaml
@@ -31,5 +30,13 @@ function roofai_google_maps_ingest_dataset() {
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $object_name
 
-    return $status
+    local roboflow_options=$4
+    local do_roboflow=$(abcli_option_int "$roboflow_options" roboflow 0)
+    [[ "$do_roboflow" == 0 ]] &&
+        return 0
+
+    roofai_roboflow_upload \
+        ~download,$roboflow_options \
+        $object_name \
+        "${@:5}"
 }

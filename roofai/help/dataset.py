@@ -2,6 +2,8 @@ from typing import List
 
 from blue_options.terminal import show_usage, xtra
 
+from roofai.help.roboflow import upload_options
+
 
 def help_ingest_AIRS_or_distributed(
     tokens: List[str],
@@ -78,6 +80,13 @@ def help_ingest_gmaps(
 
     ingest_options = "count=<count>,lat=<lat>,lon=<lon>,zoom=<zoom>"
 
+    roboflow_options = "roboflow,{}".format(
+        upload_options(
+            mono=mono,
+            cascade=True,
+        )
+    )
+
     return show_usage(
         [
             "roofai",
@@ -86,8 +95,9 @@ def help_ingest_gmaps(
             f"[{options}]",
             "[-|<object-name>]",
             f"[{ingest_options}]",
+            f"[{roboflow_options}]",
         ],
-        "ingest gmaps -> <object-name>.",
+        "ingest gmaps -> <object-name> -> roboflow/<project-name>.",
         mono=mono,
     )
 
