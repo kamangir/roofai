@@ -36,14 +36,6 @@ set:::object_name_1 roof-dataset-one-1-2025-02-16-k7xo1q
 
 assets:::get:::object_name_1/00001-00000_png-rf-60c50dfd3edfe4472d69cb6b4c83b890.png
 
----
-
-set:::object_name_2 roof-dataset-two-5-2025-02-16-mvhttg
-
-object:::get:::object_name_2
-
----
-
 set:::dataset_object_name_1 roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
 
 assets:::get:::dataset_object_name_1/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png
