@@ -31,4 +31,6 @@ function roofai_roboflow_download() {
 
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $object_name
+
+    return 0
 }
