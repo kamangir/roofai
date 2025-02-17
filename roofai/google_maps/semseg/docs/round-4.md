@@ -1,4 +1,4 @@
-# Google Maps + SemSeg
+# Google Maps + SemSeg - round 4
 
 ## ingesting a dataset and uploading it to roboflow for labelling
 
@@ -48,8 +48,6 @@ zoom: 20
 ![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/labelling-2.png?raw=true)
 
 ## downloading the labelled dataset from roboflow
-
-🔥
 
 ```bash
 @roboflow download \
@@ -141,11 +139,8 @@ source: roof-dataset-two-5-2025-02-16-mvhttg
 
 ![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png?raw=true)
 
-🔥
-
 ---
 
 - [round 1](./round-1.md)
 - [round 2](./round-2.md)
 - [round 3](./round-3.md)
-- [round 4](./round-4.md)

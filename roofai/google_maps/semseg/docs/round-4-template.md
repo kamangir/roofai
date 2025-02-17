@@ -1,4 +1,4 @@
-# Google Maps + SemSeg
+# Google Maps + SemSeg - round 4
 
 ## ingesting a dataset and uploading it to roboflow for labelling
 
@@ -21,8 +21,6 @@ details:::
 assets:::roofAI/roboflow/labelling-2.png
 
 ## downloading the labelled dataset from roboflow
-
-🔥
 
 ```bash
 @roboflow download \
@@ -80,11 +78,8 @@ details:::
 
 assets:::get:::dataset_4/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png
 
-🔥
-
 ---
 
 - [round 1](./round-1.md)
 - [round 2](./round-2.md)
 - [round 3](./round-3.md)
-- [round 4](./round-4.md)
