@@ -42,10 +42,6 @@ set:::object_name_2 roof-dataset-two-5-2025-02-16-mvhttg
 
 object:::get:::object_name_2
 
-details:::metadata
-yaml:::get:::object_name_2
-details:::
-
 ---
 
 set:::dataset_object_name_1 roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
@@ -61,8 +57,6 @@ object:::get:::object_name_3
 details:::metadata
 yaml:::get:::object_name_3
 details:::
-
----
 
 set:::dataset_object_name_2 roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
 

@@ -67,27 +67,6 @@ zoom: 20
 
 [roof-dataset-two-5-2025-02-16-mvhttg](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-16-mvhttg.tar.gz)
 
-
-<details>
-<summary>metadata</summary>
-
-```yaml
-classes:
-- background
-- roof
-ingested-by: roofai-6.174.1
-kind: CamVid
-roofai-roofai-roboflow-download:
-  input:
-    project: roof-dataset-two
-    version: 5
-source: gmaps
-
-```
-
-</details>
-
-
 ---
 
 
@@ -118,8 +97,6 @@ source: gmaps
 
 </details>
 
-
----
 
 
 [roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau.tar.gz)
