@@ -2,7 +2,7 @@ from typing import List
 
 from blue_options.terminal import show_usage, xtra
 
-from roofai.help.roboflow import project_creation_args
+from roofai.help.roboflow import upload_options
 
 
 def help_ingest_AIRS_or_distributed(
@@ -80,15 +80,12 @@ def help_ingest_gmaps(
 
     ingest_options = "count=<count>,lat=<lat>,lon=<lon>,zoom=<zoom>"
 
-    roboflow_options = "".join(
-        [
-            "roboflow",
-            xtra(",~create,", mono=mono),
-            "import",
-        ]
+    roboflow_options = "roboflow,{}".format(
+        upload_options(
+            mono=mono,
+            cascade=True,
+        )
     )
-
-    args = project_creation_args(mono=mono, cascade=True)
 
     return show_usage(
         [
@@ -99,9 +96,8 @@ def help_ingest_gmaps(
             "[-|<object-name>]",
             f"[{ingest_options}]",
             f"[{roboflow_options}]",
-        ]
-        + args,
-        "ingest gmaps -> <object-name>.",
+        ],
+        "ingest gmaps -> <object-name> -> roboflow/<project-name>.",
         mono=mono,
     )
 

@@ -9,5 +9,6 @@ function test_roofai_google_maps_ingest_dataset() {
         roofai_dataset_ingest \
         source=gmaps \
         $object_name \
-        count=10,lat=53.343318,lon=-2.650661,zoom=20
+        count=3,lat=53.343318,lon=-2.650661,zoom=20 \
+        roboflow,~create,project=roofai-bash-test-roboflow-create-project
 }

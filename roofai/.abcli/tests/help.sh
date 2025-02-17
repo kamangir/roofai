@@ -12,6 +12,7 @@ function test_roofai_help() {
         \
         "@roboflow" \
         "@roboflow create_project" \
+        "@roboflow upload" \
         \
         "roofai dataset" \
         "roofai dataset ingest" \

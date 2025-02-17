@@ -5,7 +5,6 @@ function test_roboflow_create_project() {
 
     abcli_eval ,$options \
         roofai_roboflow_create_project \
-        ,$options \
-        --name roofai-bash-test-roboflow-create-project \
+        project=roofai-bash-test-roboflow-create-project,$options \
         --description "created-by-bashtest"
 }
