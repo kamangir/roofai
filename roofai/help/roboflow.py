@@ -54,6 +54,23 @@ def upload_options(
     )
 
 
+def help_status(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "dryrun"
+
+    return show_usage(
+        [
+            "@roboflow",
+            "status",
+            f"[{options}]",
+        ],
+        "show roboflow status.",
+        mono=mono,
+    )
+
+
 def help_upload(
     tokens: List[str],
     mono: bool,
@@ -74,5 +91,6 @@ def help_upload(
 
 help_functions = {
     "create_project": help_create_project,
+    "status": help_status,
     "upload": help_upload,
 }

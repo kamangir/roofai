@@ -5,6 +5,7 @@ from blueness.argparse.generic import sys_exit
 
 from roofai import NAME
 from roofai.roboflow.create import create_project
+from roofai.roboflow.status import get_status
 from roofai.roboflow.upload import upload_to_project
 from roofai.logger import logger
 
@@ -14,7 +15,7 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="create_project | upload",
+    help="create_project | get_status | upload",
 )
 parser.add_argument(
     "--project_name",
@@ -60,6 +61,8 @@ if args.task == "create_project":
         project_type=args.type,
         project_license=args.license,
     )
+elif args.task == "get_status":
+    success, _ = get_status()
 elif args.task == "upload":
     success = upload_to_project(
         object_name=args.object_name,

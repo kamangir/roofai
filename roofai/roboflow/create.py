@@ -19,15 +19,26 @@ list_of_project_types = [
 ]
 
 
+# https://docs.roboflow.com/api-reference/images/upload-api#upload-to-a-new-project
 def create_project(
     project_name: str,
     project_description: str,
     project_type: str = "semantic-segmentation",
     project_license: str = "MIT",
+    recreate: bool = False,
 ) -> bool:
     if project_type not in list_of_project_types:
         logger.error(f"{project_type}: project type not found.")
         return False
+
+    rf = Roboflow(api_key=ROBOFLOW_API_KEY)
+
+    if not recreate and any(
+        existing_project_name.startswith(f"kamangir/{project_name}")
+        for existing_project_name in rf.workspace().projects()
+    ):
+        logger.info(f"✅  {project_name}")
+        return True
 
     logger.info(
         "{}.create_project({}/{}): {}".format(
@@ -40,8 +51,6 @@ def create_project(
 
     timer = ElapsedTimer()
     try:
-        rf = Roboflow(api_key=ROBOFLOW_API_KEY)
-
         _ = rf.workspace().create_project(
             project_name=project_name,
             project_license=project_license,
@@ -51,7 +60,6 @@ def create_project(
     except Exception as e:
         logger.error(e)
         return False
-
     timer.stop()
     logger.info(f"took {timer.elapsed_pretty()}")
 
