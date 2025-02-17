@@ -49,6 +49,9 @@ zoom: 20
 
 ⚠️ low quality of the model.
 
+![image](https://github.com/kamangir/assets/blob/main/roofAI/roboflow/model-1.png?raw=true)
+
+
 ---
 
 - [round 1](./round-1.md)

@@ -22,6 +22,9 @@ assets:::roofAI/roboflow/labelling-2.png
 
 ⚠️ low quality of the model.
 
+assets:::roofAI/roboflow/model-1.png
+
+
 ---
 
 - [round 1](./round-1.md)
