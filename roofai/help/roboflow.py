@@ -40,6 +40,29 @@ def help_create_project(
     )
 
 
+def help_download(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "".join(
+        [
+            xtra("dryrun,", mono=mono),
+            "project=<project-name>,upload,version=<version>",
+        ]
+    )
+
+    return show_usage(
+        [
+            "@roboflow",
+            "download",
+            f"[{options}]",
+            "[-|<object-name>]",
+        ],
+        "roboflow/<project-name> -> <object-name>.",
+        mono=mono,
+    )
+
+
 def upload_options(
     mono: bool,
     cascade: bool = False,
@@ -91,6 +114,7 @@ def help_upload(
 
 help_functions = {
     "create_project": help_create_project,
+    "download": help_download,
     "status": help_status,
     "upload": help_upload,
 }

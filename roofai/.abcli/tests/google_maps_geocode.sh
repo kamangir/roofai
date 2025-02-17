@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function test_google_maps_geocode() {
+function test_roofai_google_maps_geocode() {
     local options=$1
 
     local object_name=test_google_maps_geocode-$(abcli_string_timestamp_short)

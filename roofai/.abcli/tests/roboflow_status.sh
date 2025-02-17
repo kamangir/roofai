@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function test_roboflow_status() {
+function test_roofai_roboflow_status() {
     local options=$1
 
     abcli_eval ,$options \
