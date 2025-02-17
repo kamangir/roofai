@@ -72,12 +72,22 @@ def download_project(
     timer.stop()
     logger.info(f"took {timer.elapsed_pretty()}")
 
-    success, list_of_classes = file.load_dataframe(
+    success, classes_df = file.load_dataframe(
         os.path.join(temp_path, "train/_classes.csv"),
         log=verbose,
     )
     if not success:
         return False
+
+    list_of_classes = [
+        class_name.strip() for class_name in classes_df[" Class"].tolist()
+    ]
+    logger.info(
+        "{} class(es): {}".format(
+            len(list_of_classes),
+            ", ".join(list_of_classes),
+        )
+    )
 
     for image_filename in tqdm(
         glob.glob(
@@ -154,7 +164,7 @@ def download_project(
     if not file.save_yaml(
         os.path.join(object_path, "metadata.yaml"),
         {
-            "classes": [value for _, value in sorted(list_of_classes.items())],
+            "classes": list_of_classes,
             "ingested-by": fullname(),
             "kind": "CamVid",
             "source": "gmaps",

@@ -47,7 +47,9 @@ def help_download(
     options = "".join(
         [
             xtra("dryrun,~clean,", mono=mono),
-            "project=<project-name>,upload,version=<version>",
+            "project=<project-name>",
+            xtra(",~review,", mono=mono),
+            "upload,version=<version>",
         ]
     )
 
