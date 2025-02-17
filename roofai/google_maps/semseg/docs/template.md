@@ -12,10 +12,10 @@ roofai dataset ingest \
 https://app.roboflow.com/kamangir/roof-dataset-two/annotate
 
 
-set:::dataset_1 gmaps-dataset-2025-02-16-7b2zxk
+set:::gmaps_dataset gmaps-dataset-2025-02-16-7b2zxk
 
 details:::metadata
-yaml:::get:::dataset_1:::roofai-roofai-google_maps-semseg-dataset
+yaml:::get:::gmaps_dataset:::roofai-roofai-google_maps-semseg-dataset
 details:::
 
 assets:::roofAI/roboflow/labelling-2.png
@@ -38,52 +38,31 @@ TODO: ~upload -> upload
 |-|-|
 | assets:::roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/image.png | assets:::roofAI/roboflow/roof-dataset-one-1-2025-02-16-k9ezfk/mask.png |
 
-set:::dataset_2 roof-dataset-one-1-2025-02-16-k7xo1q
+set:::object_name_1 roof-dataset-one-1-2025-02-16-k7xo1q
 
-assets:::get:::dataset_2/00001-00000_png-rf-60c50dfd3edfe4472d69cb6b4c83b890.png
+assets:::get:::object_name_1/00001-00000_png-rf-60c50dfd3edfe4472d69cb6b4c83b890.png
 
 ---
 
-set:::dataset_3 roof-dataset-two-5-2025-02-16-mvhttg
+set:::object_name_2 roof-dataset-two-5-2025-02-16-mvhttg
 
-object:::get:::dataset_3
-
-details:::metadata
-yaml:::get:::dataset_3
-details:::
-
-```bash
-runme() {
-    local dataset_object_name=roof-dataset-two-5-2025-02-16-mvhttg
-    local object_name=$dataset_object_name-ingest-$(@@timestamp)
-
-    roofai dataset ingest \
-        source=$dataset_object_name,upload \
-        $object_name \
-        --test_count 1000 \
-        --train_count 8000 \
-        --val_count 1000
-
-    @publish tar $object_name
-
-    @assets publish \
-        extensions=png,push \
-        $object_name \
-        --prefix _review/
-}
-
-runme
-```
-
-set:::dataset_4 roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
-
-object:::get:::dataset_4
+object:::get:::object_name_2
 
 details:::metadata
-yaml:::get:::dataset_4
+yaml:::get:::object_name_2
 details:::
 
-assets:::get:::dataset_4/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png
+
+
+set:::dataset_object_name roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7
+
+object:::get:::dataset_object_name
+
+details:::metadata
+yaml:::get:::dataset_object_name
+details:::
+
+assets:::get:::dataset_object_name/00003-00000_png-rf-005aa82fabd5523b81afa254257e976f-00000-00000.png
 
 🔥
 

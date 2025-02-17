@@ -94,28 +94,7 @@ source: gmaps
 </details>
 
 
-```bash
-runme() {
-    local dataset_object_name=roof-dataset-two-5-2025-02-16-mvhttg
-    local object_name=$dataset_object_name-ingest-$(@@timestamp)
 
-    roofai dataset ingest \
-        source=$dataset_object_name,upload \
-        $object_name \
-        --test_count 1000 \
-        --train_count 8000 \
-        --val_count 1000
-
-    @publish tar $object_name
-
-    @assets publish \
-        extensions=png,push \
-        $object_name \
-        --prefix _review/
-}
-
-runme
-```
 
 
 [roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7](https://kamangir-public.s3.ca-central-1.amazonaws.com/roof-dataset-two-5-2025-02-16-mvhttg-ingest-2025-02-17-0yqil7.tar.gz)
