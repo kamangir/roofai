@@ -16,7 +16,7 @@ graph LR
 
     semseg_predict["roofai semseg predict~~- <model-object-name> <dataset-object-name> <prediction-object-name>"]
 
-    gmaps_get_static_image["@gmaps get_static_image~~-~~- --lat~~<lat> --lon~~<lon>"]
+    gmaps_get_static_image["@gmaps get_static_image~~- <object-name> --lat~~<lat> --lon~~<lon>"]
 
     gmaps_geocode["@gmaps geocode~~-~~- --address~~<address>"]
 
@@ -35,6 +35,7 @@ graph LR
     model_object_name["📂 model object"]:::folder
     prediction_object_name["📂 prediction object"]:::folder
     object_name["📂 object"]:::folder
+    object_name_static_image["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
     roboflow["🖼️ roboflow"]:::folder
 
@@ -70,10 +71,9 @@ graph LR
     semseg_predict --> prediction_object_name
 
     lat_lon --> gmaps_get_static_image
-    gmaps_get_static_image --> object_name
+    gmaps_get_static_image --> object_name_static_image
 
     address --> gmaps_geocode
-    gmaps_geocode --> object_name
     gmaps_geocode --> lat_lon
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
