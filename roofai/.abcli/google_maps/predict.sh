@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function roofai_google_maps_get_predict() {
+function roofai_google_maps_predict() {
     local options=$1
     local lat=$(abcli_option "$options" lat 0)
     local lon=$(abcli_option "$options" lon 0)
@@ -17,7 +17,9 @@ function roofai_google_maps_get_predict() {
     [[ "$do_download" == 1 ]] &&
         abcli_download - $model_object_name
 
-    local prediction_object_name=$(abcli_clarify_object $4 prediction-$lat-$lon-$(abcli_string_timestamp_short))
+    local prediction_object_name="prediction-$lat-$lon-$(abcli_string_timestamp_short)"
+    prediction_object_name=$(echo $prediction_object_name | tr . -)
+    prediction_object_name=$(abcli_clarify_object $4 $prediction_object_name)
 
     abcli_eval dryrun=$do_dryrun \
         python3 -m roofai.google_maps \

@@ -131,15 +131,59 @@ roofai semseg train \
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih/train-summary.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih/predict-00000.png?raw=true) |
 
-## running prediction
+## prediction
 
 🔥
 
 ```bash
-@gmaps predict \
-	lat=$ROOFAI_TEST_GOOGLE_MAPS_LAT,lon=$ROOFAI_TEST_GOOGLE_MAPS_LON \
-	profile=FULL,upload - -
+runme() {
+    local prediction_object_name=prediction-$(@@timestamp)
+
+    @gmaps predict \
+        lat=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LAT,lon=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LON \
+        profile=FULL,upload - \
+        $prediction_object_name
+
+    @publish tar $prediction_object_name
+
+    @assets publish \
+        extensions=png,push \
+        $prediction_object_name
+}
+
+runme
 ```
+
+
+[prediction-2025-02-17-1tuy6j](https://kamangir-public.s3.ca-central-1.amazonaws.com/prediction-2025-02-17-1tuy6j.tar.gz)
+
+| | |
+|-|-|
+| ![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-17-1tuy6j/input.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-17-1tuy6j/prediction.png?raw=true) |
+
+
+<details>
+<summary>metadata</summary>
+
+```yaml
+bucket: kamangir
+channel: {}
+classes:
+- background
+- roof
+ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.190.1
+kind: CamVid
+num:
+  test: 19
+  train: 156
+  val: 19
+prefix: bolt/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
+source: roof-dataset-two-5-2025-02-17-u3s0js
+
+```
+
+</details>
+
 
 🔥
 

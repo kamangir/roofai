@@ -72,15 +72,40 @@ object:::get:::model_object_name
 |-|-|
 | assets:::get:::model_object_name/train-summary.png | assets:::get:::model_object_name/predict-00000.png |
 
-## running prediction
+## prediction
 
 🔥
 
 ```bash
-@gmaps predict \
-	lat=$ROOFAI_TEST_GOOGLE_MAPS_LAT,lon=$ROOFAI_TEST_GOOGLE_MAPS_LON \
-	profile=FULL,upload - -
+runme() {
+    local prediction_object_name=prediction-$(@@timestamp)
+
+    @gmaps predict \
+        lat=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LAT,lon=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LON \
+        profile=FULL,upload - \
+        $prediction_object_name
+
+    @publish tar $prediction_object_name
+
+    @assets publish \
+        extensions=png,push \
+        $prediction_object_name
+}
+
+runme
 ```
+
+set:::prediction_object_name prediction-2025-02-17-1tuy6j
+
+object:::get:::prediction_object_name
+
+| | |
+|-|-|
+| assets:::get:::prediction_object_name/input.png | assets:::get:::prediction_object_name/prediction.png |
+
+details:::metadata
+yaml:::get:::dataset_object_name_2
+details:::
 
 🔥
 
