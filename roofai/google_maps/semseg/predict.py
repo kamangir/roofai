@@ -170,11 +170,13 @@ def predict(
         matrix=output_matrix,
         suffix=[dataset.matrix],
         header=objects.signature(
-            info=f"lat:{lat:.05f},lon:{lon:.05f}",
+            info="prediction",
             object_name=prediction_object_name,
         )
         + ([address] if address else [])
         + [
+            f"lat:{lat:.05f}",
+            f"lon:{lon:.05f}",
             f"model: {model_object_name}",
             model.signature,
             f"device: {device}",
