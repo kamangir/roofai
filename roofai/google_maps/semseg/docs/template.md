@@ -102,7 +102,7 @@ object:::get:::prediction_object_name
 | assets:::get:::prediction_object_name/input.png | assets:::get:::prediction_object_name/prediction.png |
 
 details:::metadata
-yaml:::get:::dataset_object_name_2
+yaml:::get:::prediction_object_name
 details:::
 
 🔥

@@ -164,19 +164,13 @@ runme
 <summary>metadata</summary>
 
 ```yaml
-bucket: kamangir
-channel: {}
-classes:
-- background
-- roof
-ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.190.1
-kind: CamVid
-num:
-  test: 19
-  train: 156
-  val: 19
-prefix: bolt/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
-source: roof-dataset-two-5-2025-02-17-u3s0js
+roofai-roofai-google_maps-semseg-predict:
+  address: ''
+  elapsed_time: 1.6198914051055908
+  lat: 53.343318
+  lon: -2.650661
+  model: roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih
+  output_filename: prediction.png
 
 ```
 
