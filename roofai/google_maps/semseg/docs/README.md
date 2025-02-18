@@ -153,9 +153,9 @@ runme
 ```
 
 
-[prediction-2025-02-18-u0frtv](https://kamangir-public.s3.ca-central-1.amazonaws.com/prediction-2025-02-18-u0frtv.tar.gz)
+[prediction-2025-02-18-lc08t8](https://kamangir-public.s3.ca-central-1.amazonaws.com/prediction-2025-02-18-lc08t8.tar.gz)
 
-![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-18-u0frtv/prediction.png?raw=true)
+![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-18-lc08t8/prediction.png?raw=true)
 
 
 <details>
@@ -164,7 +164,7 @@ runme
 ```yaml
 roofai-roofai-google_maps-semseg-predict:
   address: ''
-  elapsed_time: 1.5131659507751465
+  elapsed_time: 1.428591251373291
   lat: 53.343318
   lon: -2.650661
   model: roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih

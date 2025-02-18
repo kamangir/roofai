@@ -93,7 +93,7 @@ runme() {
 runme
 ```
 
-set:::prediction_object_name prediction-2025-02-18-u0frtv
+set:::prediction_object_name prediction-2025-02-18-lc08t8
 
 object:::get:::prediction_object_name
 

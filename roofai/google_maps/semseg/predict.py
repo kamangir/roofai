@@ -99,6 +99,7 @@ def predict(
         preprocessing=get_preprocessing(preprocessing_fn),
         count=model.profile.data_count,
         prediction_object_name=prediction_object_name,
+        verbose=verbose,
     )
 
     index_list = (
