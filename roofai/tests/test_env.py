@@ -25,6 +25,9 @@ def test_blue_plugin_env():
     assert isinstance(env.ROOFAI_TEST_GOOGLE_MAPS_LAT, float)
     assert isinstance(env.ROOFAI_TEST_GOOGLE_MAPS_LON, float)
 
+    assert isinstance(env.ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LAT, float)
+    assert isinstance(env.ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LON, float)
+
     assert env.ROBOFLOW_API_KEY
 
     assert env.ROOFAI_DEFAULT_GOOGLE_MAPS_MODEL
