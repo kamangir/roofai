@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 import segmentation_models_pytorch as smp
 import numpy as np
 from tqdm import tqdm
@@ -37,7 +37,10 @@ def predict(
     in_notebook: bool = False,
     batch_size: int = 32,
     verbose: bool = False,
-) -> bool:
+) -> Tuple[bool, np.ndarray, np.ndarray]:
+    output_matrix: np.ndarray = np.array(())
+    input_matrix: np.ndarray = np.array(())
+
     if address:
         success, lat, lon, _ = geocode(
             address=address,
@@ -45,25 +48,25 @@ def predict(
             verbose=verbose,
         )
         if not success:
-            return success
+            return success, output_matrix, input_matrix
 
     success, model_tags = get_tags(model_object_name)
     if not success:
-        return success
+        return success, output_matrix, input_matrix
     dataset_object_name = model_tags.get("dataset", "")
     if not dataset_object_name:
         logger.error(f"{model_object_name}.dataset not found.")
-        return False
+        return False, output_matrix, input_matrix
 
     success, dataset_tags = get_tags(dataset_object_name)
     if not success:
-        return success
+        return success, output_matrix, input_matrix
     zoom_str = dataset_tags.get("zoom", "bad-zoom-value")
     try:
         zoom = int(zoom_str)
     except Exception as e:
         logger.error(e)
-        return False
+        return False, output_matrix, input_matrix
 
     model = SemSegModel(
         model_filename=objects.path_of(
@@ -191,24 +194,28 @@ def predict(
         colormap=cv2.COLORMAP_JET,
         verbose=True,
     ):
-        return False
+        return False, output_matrix, dataset.matrix
 
     output_matrix = output_matrix * 255
     output_matrix[output_matrix < 0] = 0
     output_matrix[output_matrix > 255] = 255
     output_matrix = output_matrix.astype(np.uint8)
 
-    return post_to_object(
-        prediction_object_name,
-        NAME.replace(".", "-"),
-        {
-            "lat": lat,
-            "lon": lon,
-            "chip_count": chip_count,
-            "creation-date": string.pretty_date(),
-            "address": address,
-            "elapsed_time": timer.elapsed_time,
-            "model": model_object_name,
-            "output_filename": file.name_and_extension(output_filename),
-        },
+    return (
+        post_to_object(
+            prediction_object_name,
+            NAME.replace(".", "-"),
+            {
+                "lat": lat,
+                "lon": lon,
+                "chip_count": chip_count,
+                "creation-date": string.pretty_date(),
+                "address": address,
+                "elapsed_time": timer.elapsed_time,
+                "model": model_object_name,
+                "output_filename": file.name_and_extension(output_filename),
+            },
+        ),
+        output_matrix,
+        dataset.matrix,
     )

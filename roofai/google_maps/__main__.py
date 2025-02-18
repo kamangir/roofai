@@ -127,7 +127,7 @@ elif args.task == "ingest_dataset":
         count=args.count,
     )
 elif args.task == "predict":
-    success = predict(
+    success, _, _ = predict(
         lat=args.lat,
         lon=args.lon,
         address=args.address,
