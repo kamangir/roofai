@@ -54,7 +54,6 @@ details:::metadata
 yaml:::get:::dataset_object_name_2
 details:::
 
-
 ## training a model
 
 ```bash
@@ -72,6 +71,8 @@ object:::get:::model_object_name
 | | |
 |-|-|
 | assets:::get:::model_object_name/train-summary.png | assets:::get:::model_object_name/predict-00000.png |
+
+## running prediction
 
 🔥
 

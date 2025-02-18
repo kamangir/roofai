@@ -114,7 +114,6 @@ source: roof-dataset-two-5-2025-02-17-u3s0js
 </details>
 
 
-
 ## training a model
 
 ```bash
@@ -131,6 +130,8 @@ roofai semseg train \
 | | |
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih/train-summary.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih/predict-00000.png?raw=true) |
+
+## running prediction
 
 🔥
 
