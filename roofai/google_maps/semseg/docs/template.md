@@ -54,6 +54,43 @@ details:::metadata
 yaml:::get:::dataset_object_name_2
 details:::
 
+
+## training a model
+
+```bash
+runme() {
+    local dataset_object_name=roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
+    local model_object_name=$dataset_object_name-model-$(@@timestamp)
+
+    roofai semseg train \
+        profile=FULL,upload \
+        $dataset_object_name \
+        $model_object_name \
+        --classes roof \
+        --epoch_count 5
+
+    @publish tar $model_object_name
+
+    @assets publish \
+        extensions=png,push \
+        $model_object_name
+}
+
+runme
+```
+
+set:::model_object_name roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih
+
+object:::get:::model_object_name
+
+details:::metadata
+yaml:::get:::model_object_name
+details:::
+
+| | |
+|-|-|
+| assets:::get:::model_object_name/train-summary.png | assets:::get:::model_object_name/predict-00000.png |
+
 🔥
 
 ---
