@@ -122,7 +122,8 @@ def predict(
 
     stack_of_masks = np.concatenate(list_of_masks, axis=0)
 
-    logger.info(f"stitching {stack_of_masks.shape[0]:,} chips...")
+    chip_count = stack_of_masks.shape[0]
+    logger.info(f"stitching {chip_count:,} chip(s)...")
     output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.float32)
     weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
     chip_index: int = 0
@@ -165,11 +166,12 @@ def predict(
         matrix=output_matrix,
         suffix=[dataset.matrix],
         header=objects.signature(
-            info=f"{lat:.05f},{lon:.05f}",
+            info=f"lat:{lat:.05f},lon:{lon:.05f}",
             object_name=prediction_object_name,
         )
         + ([address] if address else [])
         + [
+            f"model: {model_object_name}",
             model.signature,
             f"device: {device}",
             f"profile: {profile}",
@@ -180,6 +182,7 @@ def predict(
                     short=True,
                 )
             ),
+            f"{chip_count:,} chip(s)",
         ],
         footer=[fullname()],
         dynamic_range=[0, 1.0],
@@ -200,6 +203,7 @@ def predict(
         {
             "lat": lat,
             "lon": lon,
+            "chip_count": chip_count,
             "address": address,
             "elapsed_time": timer.elapsed_time,
             "model": model_object_name,
