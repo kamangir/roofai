@@ -83,10 +83,6 @@ set:::model_object_name roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-r
 
 object:::get:::model_object_name
 
-details:::metadata
-yaml:::get:::model_object_name
-details:::
-
 | | |
 |-|-|
 | assets:::get:::model_object_name/train-summary.png | assets:::get:::model_object_name/predict-00000.png |
