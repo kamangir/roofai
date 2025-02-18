@@ -1,7 +1,5 @@
 import pytest
-import numpy as np
 
-from blue_options import string
 from blue_objects import objects
 
 from roofai import env
