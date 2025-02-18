@@ -9,6 +9,11 @@ function roofai_roboflow_download() {
     local project_name=$(abcli_option "$options" project roofai-generic)
     local version=$(abcli_option "$options" version 1)
 
+    local zoom=$(abcli_mlflow_tags_get \
+        $project_name \
+        --tag zoom)
+    abcli_log "zoom: $zoom"
+
     local object_name=$(abcli_clarify_object $2 $project_name-$version-$(abcli_string_timestamp_short))
 
     abcli_eval dryrun=$do_dryrun \
@@ -19,6 +24,10 @@ function roofai_roboflow_download() {
         --version $version \
         --object_name $object_name
     [[ $? -ne 0 ]] && return 1
+
+    abcli_mlflow_tags_set \
+        $object_name \
+        zoom=$zoom
 
     if [[ "$do_review" == 1 ]]; then
         roofai_dataset_review - \
@@ -39,6 +48,10 @@ function roofai_roboflow_download() {
     local count=$(abcli_option "$ingest_options" count 1000)
 
     local dataset_object_name=$(abcli_clarify_object $4 $object_name-ingest-$(abcli_string_timestamp_short))
+
+    abcli_mlflow_tags_set \
+        $dataset_object_name \
+        zoom=$zoom
 
     roofai_dataset_ingest \
         ~download,source=$object_name,$ingest_options \

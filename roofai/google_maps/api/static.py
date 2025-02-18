@@ -58,7 +58,7 @@ def get(
         return False, image, {}
 
     try:
-        image = np.array(Image.open(io.BytesIO(response.content)))
+        image = np.array(Image.open(io.BytesIO(response.content)).convert("RGB"))
     except Exception as e:
         logger.error(e)
         return False, image, {}

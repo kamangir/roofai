@@ -33,6 +33,8 @@ def test_google_maps_get_static_image(
 
     assert success
     assert isinstance(image, np.ndarray)
+    assert len(image.shape) == 3
+    assert image.shape[2] == 3
 
     assert "gsd" in metadata
     assert isinstance(metadata["gsd"], float)
