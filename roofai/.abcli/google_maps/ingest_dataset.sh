@@ -24,6 +24,10 @@ function roofai_google_maps_ingest_dataset() {
         --object_name $object_name
     [[ $? -ne 0 ]] && return 1
 
+    abcli_mlflow_tags_set \
+        $object_name \
+        zoom=$zoom
+
     [[ "$do_dryrun" == 0 ]] &&
         abcli_cat $object_path/metadata.yaml
 

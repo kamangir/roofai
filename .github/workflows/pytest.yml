@@ -44,6 +44,7 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
           ROBOFLOW_API_KEY: ${{ secrets.ROBOFLOW_API_KEY }}
+          MLFLOW_TRACKING_URI: databricks
         run: |
           echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
           echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
@@ -53,4 +54,5 @@ jobs:
           echo "DATABRICKS_TOKEN: $DATABRICKS_TOKEN"
           echo "GOOGLE_MAPS_API_KEY: $GOOGLE_MAPS_API_KEY"
           echo "ROBOFLOW_API_KEY: $ROBOFLOW_API_KEY"
+          echo "MLFLOW_TRACKING_URI: $MLFLOW_TRACKING_URI"
           pytest --verbose

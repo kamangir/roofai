@@ -72,6 +72,6 @@ def build():
             {
                 "path": f"google_maps/semseg/docs/round-{index}.md",
             }
-            for index in [1, 2, 3, 4, 5]
+            for index in [1, 2, 3, 4, 5, 6]
         ]
     )

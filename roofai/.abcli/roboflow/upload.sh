@@ -11,6 +11,14 @@ function roofai_roboflow_upload() {
     [[ "$do_download" == 1 ]] &&
         abcli_download - $object_name
 
+    local zoom=$(abcli_mlflow_tags_get \
+        $object_name \
+        --tag zoom)
+    abcli_log "zoom: $zoom"
+    abcli_mlflow_tags_set \
+        $project_name \
+        zoom=$zoom
+
     abcli_eval dryrun=$do_dryrun \
         python3 -m roofai.roboflow \
         upload \

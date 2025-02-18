@@ -1,4 +1,4 @@
-# Google Maps + SemSeg
+# Google Maps + SemSeg - round 6
 
 ## ingesting a dataset and uploading it to roboflow for labelling
 
@@ -105,8 +105,6 @@ details:::metadata
 yaml:::get:::dataset_object_name_2
 details:::
 
-🔥
-
 ---
 
 - [round 1](./round-1.md)
@@ -114,4 +112,3 @@ details:::
 - [round 3](./round-3.md)
 - [round 4](./round-4.md)
 - [round 5](./round-5.md)
-- [round 6](./round-6.md)

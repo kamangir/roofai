@@ -5,9 +5,11 @@ from blueness.argparse.generic import sys_exit
 from blue_objects import objects
 
 from roofai import NAME
+from roofai.semseg import Profile
 from roofai.google_maps.api.geocoding import geocode
 from roofai.google_maps.api.static import get as get_static_image
-from roofai.google_maps.semseg.dataset import ingest_dataset
+from roofai.google_maps.semseg.ingest import ingest_dataset
+from roofai.google_maps.semseg.predict import predict
 from roofai.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -16,7 +18,7 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="get_static_image | geocode | ingest_dataset",
+    help="get_static_image | geocode | ingest_dataset | predict",
 )
 parser.add_argument(
     "--lat",
@@ -56,6 +58,7 @@ parser.add_argument(
 parser.add_argument(
     "--address",
     type=str,
+    default="",
 )
 parser.add_argument(
     "--verbose",
@@ -67,6 +70,26 @@ parser.add_argument(
     "--count",
     type=int,
     default=10,
+)
+parser.add_argument(
+    "--model_object_name",
+    type=str,
+)
+parser.add_argument(
+    "--prediction_object_name",
+    type=str,
+)
+parser.add_argument(
+    "--device",
+    type=str,
+    default="cpu",
+    help="cpu|cuda",
+)
+parser.add_argument(
+    "--profile",
+    type=str,
+    default="VALIDATION",
+    help="FULL|QUICK|VALIDATION",
 )
 args = parser.parse_args()
 
@@ -102,6 +125,16 @@ elif args.task == "ingest_dataset":
         maptype=args.maptype,
         size=args.size,
         count=args.count,
+    )
+elif args.task == "predict":
+    success = predict(
+        lat=args.lat,
+        lon=args.lon,
+        address=args.address,
+        model_object_name=args.model_object_name,
+        prediction_object_name=args.prediction_object_name,
+        device=args.device,
+        profile=Profile[args.profile],
     )
 else:
     success = None

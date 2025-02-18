@@ -25,6 +25,10 @@ function roofai_semseg_train() {
         "${@:4}"
     local status="$?"
 
+    abcli_mlflow_tags_set \
+        $model_object_name \
+        dataset=$dataset_object_name
+
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $model_object_name
 

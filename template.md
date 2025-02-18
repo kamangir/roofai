@@ -26,6 +26,8 @@ graph LR
 
     roboflow_download["@roboflow download project=<project-name>,version=<version> <object-name> ingest,count=<10000> <dataset-object-name>"]
 
+    gmaps_predict["@gmaps predict lat=<lat>,lon=<lon>~~- <model-object-name> <prediction-object-name>"]
+
     address["🌐 address"]:::folder
     lat_lon["🌐 lat,lon"]:::folder
     AIRS["AIRS"]:::folder
@@ -38,6 +40,11 @@ graph LR
     object_name_static_image["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
     roboflow["🖼️ roboflow"]:::folder
+
+    lat_lon --> gmaps_predict
+    address --> gmaps_predict
+    model_object_name --> gmaps_predict
+    gmaps_predict --> prediction_object_name
 
     dataset_object_name --> dataset_ingest
     distributed_dataset_object_name --> dataset_ingest

@@ -9,6 +9,7 @@ function test_roofai_help() {
         "@google_maps" \
         "@google_maps get_static_image" \
         "@google_maps geocode" \
+        "@google_maps predict" \
         \
         "@roboflow" \
         "@roboflow create_project" \
