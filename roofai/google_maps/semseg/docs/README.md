@@ -155,9 +155,7 @@ runme
 
 [prediction-2025-02-18-u0frtv](https://kamangir-public.s3.ca-central-1.amazonaws.com/prediction-2025-02-18-u0frtv.tar.gz)
 
-| | |
-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-18-u0frtv/input.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-18-u0frtv/prediction.png?raw=true) |
+![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-18-u0frtv/prediction.png?raw=true)
 
 
 <details>

@@ -97,9 +97,7 @@ set:::prediction_object_name prediction-2025-02-18-u0frtv
 
 object:::get:::prediction_object_name
 
-| | |
-|-|-|
-| assets:::get:::prediction_object_name/input.png | assets:::get:::prediction_object_name/prediction.png |
+assets:::get:::prediction_object_name/prediction.png
 
 details:::metadata
 yaml:::get:::prediction_object_name
