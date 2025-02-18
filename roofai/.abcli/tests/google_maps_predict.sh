@@ -8,7 +8,7 @@ function test_roofai_google_maps_predict() {
     abcli_eval ,$options \
         roofai_google_maps_get_predict \
         lat=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LAT,lon=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LON \
-        profile=FULL \
+        profile=VALIDATION \
         $ROOFAI_DEFAULT_GOOGLE_MAPS_MODEL \
         $prediction_object_name
 }
