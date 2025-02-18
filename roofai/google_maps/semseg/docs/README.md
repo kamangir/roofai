@@ -135,6 +135,14 @@ roofai semseg train \
 
 🔥
 
+```bash
+@gmaps predict \
+	lat=$ROOFAI_TEST_GOOGLE_MAPS_LAT,lon=$ROOFAI_TEST_GOOGLE_MAPS_LON \
+	profile=FULL,upload - -
+```
+
+🔥
+
 ---
 
 - [round 1](./round-1.md)

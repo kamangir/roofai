@@ -26,6 +26,8 @@ graph LR
 
     roboflow_download["@roboflow<br>download<br>project=&lt;project-name&gt;,version=&lt;version&gt;<br>&lt;object-name&gt;<br>ingest,count=&lt;10000&gt;<br>&lt;dataset-object-name&gt;"]
 
+    gmaps_predict["@gmaps<br>predict<br>lat=&lt;lat&gt;,lon=&lt;lon&gt; -<br>&lt;model-object-name&gt;<br>&lt;prediction-object-name&gt;"]
+
     address["🌐 address"]:::folder
     lat_lon["🌐 lat,lon"]:::folder
     AIRS["AIRS"]:::folder
@@ -94,4 +96,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/roofai/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/roofai/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/roofai.svg)](https://pypi.org/project/roofai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/roofai)](https://pypistats.org/packages/roofai)
 
-built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.205.1`](https://github.com/kamangir/roofai).
+built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.206.1`](https://github.com/kamangir/roofai).
