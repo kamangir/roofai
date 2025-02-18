@@ -175,8 +175,6 @@ roofai-roofai-google_maps-semseg-predict:
 </details>
 
 
-🔥
-
 ---
 
 - [round 1](./round-1.md)

@@ -103,8 +103,6 @@ details:::metadata
 yaml:::get:::prediction_object_name
 details:::
 
-🔥
-
 ---
 
 - [round 1](./round-1.md)
