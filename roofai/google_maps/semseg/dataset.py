@@ -52,14 +52,14 @@ class GoogleMapsDataset(BaseDataset):
 
         self.ids: List[str] = []
         for y in range(
-            0,
-            self.matrix.shape[0] - self.chip_height,
-            int(chip_overlap * self.chip_height),
+            self.chip_height_offset,
+            self.matrix.shape[0] - self.chip_height + self.chip_height_offset,
+            self.chip_height_overlap,
         ):
             for x in range(
-                0,
-                self.matrix.shape[1] - self.chip_width,
-                int(chip_overlap * self.chip_width),
+                self.chip_width_offset,
+                self.matrix.shape[1] - self.chip_width + self.chip_width_offset,
+                self.chip_width_overlap,
             ):
                 self.ids += [f"{y:05d}-{x:05d}"]
 
@@ -80,6 +80,26 @@ class GoogleMapsDataset(BaseDataset):
                 self.chip_width,
             )
         )
+
+    @property
+    def chip_width_offset(self):
+        return int(
+            ((self.matrix.shape[1] - self.chip_width) % self.chip_width_overlap) / 2
+        )
+
+    @property
+    def chip_width_overlap(self):
+        return int(self.chip_overlap * self.chip_width)
+
+    @property
+    def chip_height_offset(self):
+        return int(
+            ((self.matrix.shape[0] - self.chip_height) % self.chip_height_overlap) / 2
+        )
+
+    @property
+    def chip_height_overlap(self):
+        return int(self.chip_overlap * self.chip_height)
 
     def __getitem__(self, i):
         item_id = self.ids[i]  # expecting f"{y:05d}-{x:05d}"

@@ -126,18 +126,14 @@ def predict(
     weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
     chip_index: int = 0
     for y in range(
-        0,
-        dataset.matrix.shape[0] - dataset.chip_height,
-        int(
-            dataset.chip_overlap * dataset.chip_height,
-        ),
+        dataset.chip_height_offset,
+        dataset.matrix.shape[0] - dataset.chip_height + dataset.chip_height_offset,
+        dataset.chip_height_overlap,
     ):
         for x in range(
-            0,
-            dataset.matrix.shape[1] - dataset.chip_width,
-            int(
-                dataset.chip_overlap * dataset.chip_width,
-            ),
+            dataset.chip_width_offset,
+            dataset.matrix.shape[1] - dataset.chip_width + dataset.chip_width_offset,
+            dataset.chip_width_overlap,
         ):
             output_matrix[
                 y : y + dataset.chip_height,
