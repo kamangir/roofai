@@ -133,8 +133,6 @@ roofai semseg train \
 
 ## prediction
 
-🔥
-
 ```bash
 runme() {
     local prediction_object_name=prediction-$(@@timestamp)
@@ -194,3 +192,4 @@ source: roof-dataset-two-5-2025-02-17-u3s0js
 - [round 3](./round-3.md)
 - [round 4](./round-4.md)
 - [round 5](./round-5.md)
+- [round 6](./round-5.md)
