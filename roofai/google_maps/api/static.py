@@ -26,7 +26,6 @@ def get(
     zoom: int = 20,
     maptype: str = "satellite",
     size: str = "640x640",
-    verbose: bool = False,
 ) -> Union[bool, np.ndarray, Dict]:
     image: np.ndarray = np.array(())
 
@@ -62,8 +61,7 @@ def get(
     except Exception as e:
         logger.error(e)
         return False, image, {}
-    if verbose:
-        logger.info(string.pretty_shape_of_matrix(image))
+    logger.info("image: {}".format(string.pretty_shape_of_matrix(image)))
 
     if filename:
         try:

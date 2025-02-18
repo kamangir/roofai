@@ -93,19 +93,15 @@ runme() {
 runme
 ```
 
-set:::prediction_object_name prediction-2025-02-17-1tuy6j
+set:::prediction_object_name prediction-2025-02-18-lc08t8
 
 object:::get:::prediction_object_name
 
-| | |
-|-|-|
-| assets:::get:::prediction_object_name/input.png | assets:::get:::prediction_object_name/prediction.png |
+assets:::get:::prediction_object_name/prediction.png
 
 details:::metadata
-yaml:::get:::dataset_object_name_2
+yaml:::get:::prediction_object_name
 details:::
-
-🔥
 
 ---
 

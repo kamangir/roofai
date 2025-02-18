@@ -153,37 +153,27 @@ runme
 ```
 
 
-[prediction-2025-02-17-1tuy6j](https://kamangir-public.s3.ca-central-1.amazonaws.com/prediction-2025-02-17-1tuy6j.tar.gz)
+[prediction-2025-02-18-lc08t8](https://kamangir-public.s3.ca-central-1.amazonaws.com/prediction-2025-02-18-lc08t8.tar.gz)
 
-| | |
-|-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-17-1tuy6j/input.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-17-1tuy6j/prediction.png?raw=true) |
+![image](https://github.com/kamangir/assets/blob/main/prediction-2025-02-18-lc08t8/prediction.png?raw=true)
 
 
 <details>
 <summary>metadata</summary>
 
 ```yaml
-bucket: kamangir
-channel: {}
-classes:
-- background
-- roof
-ingested-by: roofai.roofai.dataset.ingest.from_dataset-6.190.1
-kind: CamVid
-num:
-  test: 19
-  train: 156
-  val: 19
-prefix: bolt/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
-source: roof-dataset-two-5-2025-02-17-u3s0js
+roofai-roofai-google_maps-semseg-predict:
+  address: ''
+  elapsed_time: 1.428591251373291
+  lat: 53.343318
+  lon: -2.650661
+  model: roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih
+  output_filename: prediction.png
 
 ```
 
 </details>
 
-
-🔥
 
 ---
 

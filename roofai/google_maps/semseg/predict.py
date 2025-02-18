@@ -99,6 +99,7 @@ def predict(
         preprocessing=get_preprocessing(preprocessing_fn),
         count=model.profile.data_count,
         prediction_object_name=prediction_object_name,
+        verbose=verbose,
     )
 
     index_list = (
@@ -162,6 +163,7 @@ def predict(
 
     if not log_matrix(
         matrix=output_matrix,
+        suffix=[dataset.matrix],
         header=objects.signature(
             info=f"{lat:.05f},{lon:.05f}",
             object_name=prediction_object_name,

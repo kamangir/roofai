@@ -23,9 +23,9 @@ class GoogleMapsDataset(BaseDataset):
         preprocessing=None,
         count=-1,
         chip_overlap: float = 0.25,
-        verbose: bool = True,
         prediction_object_name: str = "",
         size: str = "640x640",
+        verbose: bool = False,
     ):
 
         self.chip_height = DatasetTarget.TORCH.chip_height
@@ -40,13 +40,12 @@ class GoogleMapsDataset(BaseDataset):
                     object_name=prediction_object_name,
                     filename="input.png",
                 )
-                if prediction_object_name
+                if verbose
                 else ""
             ),
             zoom=zoom,
             maptype="satellite",
             size=size,
-            verbose=verbose,
         )
         assert success
 

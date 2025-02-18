@@ -1,7 +1,5 @@
 import pytest
-import numpy as np
 
-from blue_options import string
 from blue_objects import objects
 
 from roofai import env
@@ -22,7 +20,7 @@ def test_google_maps_predict(
     lat: float,
     lon: float,
 ):
-    prediction_object_name = objects.unique_object(test_google_maps_predict)
+    prediction_object_name = objects.unique_object("test_google_maps_predict")
 
     model_object_name = env.ROOFAI_DEFAULT_GOOGLE_MAPS_MODEL
     assert objects.download(model_object_name)
