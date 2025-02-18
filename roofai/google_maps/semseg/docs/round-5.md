@@ -1,4 +1,4 @@
-# Google Maps + SemSeg
+# Google Maps + SemSeg - round 5
 
 ## ingesting a dataset and uploading it to roboflow for labelling
 
@@ -114,14 +114,29 @@ source: roof-dataset-two-5-2025-02-17-u3s0js
 </details>
 
 
+
 ## training a model
 
 ```bash
-roofai semseg train \
-    profile=FULL,upload \
-    roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau - \
-    --classes roof \
-    --epoch_count 5
+runme() {
+    local dataset_object_name=roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau
+    local model_object_name=$dataset_object_name-model-$(@@timestamp)
+
+    roofai semseg train \
+        profile=FULL,upload \
+        $dataset_object_name \
+        $model_object_name \
+        --classes roof \
+        --epoch_count 5
+
+    @publish tar $model_object_name
+
+    @assets publish \
+        extensions=png,push \
+        $model_object_name
+}
+
+runme
 ```
 
 
@@ -131,14 +146,9 @@ roofai semseg train \
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih/train-summary.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roof-dataset-two-5-2025-02-17-u3s0js-ingest-2025-02-17-rohoau-model-2025-02-17-tj4kih/predict-00000.png?raw=true) |
 
-## running prediction
-
-🔥
-
 ---
 
 - [round 1](./round-1.md)
 - [round 2](./round-2.md)
 - [round 3](./round-3.md)
 - [round 4](./round-4.md)
-- [round 5](./round-5.md)

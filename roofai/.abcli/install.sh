@@ -2,8 +2,6 @@
 
 function abcli_install_roofai() {
 
-    [[ "$abcli_is_sagemaker_system" == true ]] && return 0
-
     # done in .github/workflows
     # [[ "$abcli_is_github_workflow" == true ]] && return 0
 
