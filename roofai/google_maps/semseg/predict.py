@@ -6,19 +6,20 @@ import torch
 import cv2
 
 from blueness import module
+from blue_options import string
 from blue_options.elapsed_timer import ElapsedTimer
 from blue_objects import objects, file
 from blue_objects.mlflow.tags import get_tags
 from blue_objects.metadata import post_to_object
 from blue_objects.logger.matrix import log_matrix
 
-from roofai.google_maps.api.geocoding import geocode
-from roofai.semseg.model import SemSegModel
-from roofai.semseg import Profile
-from roofai.semseg.augmentation import get_validation_augmentation, get_preprocessing
 from roofai import NAME
 from roofai import fullname
+from roofai.google_maps.api.geocoding import geocode
 from roofai.google_maps.semseg.dataset import GoogleMapsDataset
+from roofai.semseg import Profile
+from roofai.semseg.augmentation import get_validation_augmentation, get_preprocessing
+from roofai.semseg.model import SemSegModel
 from roofai.logger import logger
 
 
@@ -204,6 +205,7 @@ def predict(
             "lat": lat,
             "lon": lon,
             "chip_count": chip_count,
+            "creation-date": string.pretty_date(),
             "address": address,
             "elapsed_time": timer.elapsed_time,
             "model": model_object_name,
