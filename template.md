@@ -39,6 +39,11 @@ graph LR
     terminal["💻 terminal"]:::folder
     roboflow["🖼️ roboflow"]:::folder
 
+    lat_lon --> gmaps_predict
+    address --> gmaps_predict
+    model_object_name --> gmaps_predict
+    gmaps_predict --> prediction_object_name
+
     dataset_object_name --> dataset_ingest
     distributed_dataset_object_name --> dataset_ingest
     AIRS --> dataset_ingest
