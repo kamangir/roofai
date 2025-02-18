@@ -22,7 +22,7 @@ class GoogleMapsDataset(BaseDataset):
         augmentation=None,
         preprocessing=None,
         count=-1,
-        chip_overlap: float = 0.05,
+        chip_overlap: float = 0.25,
         verbose: bool = True,
         prediction_object_name: str = "",
         size: str = "640x640",
