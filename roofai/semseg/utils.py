@@ -22,6 +22,8 @@ def visualize(
     description: List[str] = [],
     list_of_contours: List[Any] = [],
     line_width: int = 80,
+    draw_the_contours_in: List[str] = ["image"],
+    footer: List[str] = [],
 ):
     n = len(images)
     fig = plt.figure(figsize=(n * 5, 5))
@@ -55,7 +57,7 @@ def visualize(
         )
         ax.imshow(image)
 
-        if name == "image":
+        if name in draw_the_contours_in:
             for contour in list_of_contours:
                 plt.plot(
                     contour[0],
@@ -74,7 +76,7 @@ def visualize(
                 object_name=path.name(file.path(filename)),
             )
             + description,
-            footer=signature(),
+            footer=footer + signature(),
             line_width=line_width,
         )
 

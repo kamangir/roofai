@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 import segmentation_models_pytorch as smp
 import numpy as np
 from tqdm import tqdm
@@ -6,19 +6,20 @@ import torch
 import cv2
 
 from blueness import module
+from blue_options import string
 from blue_options.elapsed_timer import ElapsedTimer
 from blue_objects import objects, file
 from blue_objects.mlflow.tags import get_tags
 from blue_objects.metadata import post_to_object
 from blue_objects.logger.matrix import log_matrix
 
-from roofai.google_maps.api.geocoding import geocode
-from roofai.semseg.model import SemSegModel
-from roofai.semseg import Profile
-from roofai.semseg.augmentation import get_validation_augmentation, get_preprocessing
 from roofai import NAME
 from roofai import fullname
+from roofai.google_maps.api.geocoding import geocode
 from roofai.google_maps.semseg.dataset import GoogleMapsDataset
+from roofai.semseg import Profile
+from roofai.semseg.augmentation import get_validation_augmentation, get_preprocessing
+from roofai.semseg.model import SemSegModel
 from roofai.logger import logger
 
 
@@ -36,7 +37,10 @@ def predict(
     in_notebook: bool = False,
     batch_size: int = 32,
     verbose: bool = False,
-) -> bool:
+) -> Tuple[bool, np.ndarray, np.ndarray]:
+    output_matrix: np.ndarray = np.array(())
+    input_matrix: np.ndarray = np.array(())
+
     if address:
         success, lat, lon, _ = geocode(
             address=address,
@@ -44,25 +48,25 @@ def predict(
             verbose=verbose,
         )
         if not success:
-            return success
+            return success, output_matrix, input_matrix
 
     success, model_tags = get_tags(model_object_name)
     if not success:
-        return success
+        return success, output_matrix, input_matrix
     dataset_object_name = model_tags.get("dataset", "")
     if not dataset_object_name:
         logger.error(f"{model_object_name}.dataset not found.")
-        return False
+        return False, output_matrix, input_matrix
 
     success, dataset_tags = get_tags(dataset_object_name)
     if not success:
-        return success
+        return success, output_matrix, input_matrix
     zoom_str = dataset_tags.get("zoom", "bad-zoom-value")
     try:
         zoom = int(zoom_str)
     except Exception as e:
         logger.error(e)
-        return False
+        return False, output_matrix, input_matrix
 
     model = SemSegModel(
         model_filename=objects.path_of(
@@ -122,7 +126,8 @@ def predict(
 
     stack_of_masks = np.concatenate(list_of_masks, axis=0)
 
-    logger.info(f"stitching {stack_of_masks.shape[0]:,} chips...")
+    chip_count = stack_of_masks.shape[0]
+    logger.info(f"stitching {chip_count:,} chip(s)...")
     output_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.float32)
     weight_matrix = np.zeros(dataset.matrix.shape[:2], dtype=np.uint8)
     chip_index: int = 0
@@ -165,11 +170,12 @@ def predict(
         matrix=output_matrix,
         suffix=[dataset.matrix],
         header=objects.signature(
-            info=f"{lat:.05f},{lon:.05f}",
+            info=f"lat:{lat:.05f},lon:{lon:.05f}",
             object_name=prediction_object_name,
         )
         + ([address] if address else [])
         + [
+            f"model: {model_object_name}",
             model.signature,
             f"device: {device}",
             f"profile: {profile}",
@@ -180,6 +186,7 @@ def predict(
                     short=True,
                 )
             ),
+            f"{chip_count:,} chip(s)",
         ],
         footer=[fullname()],
         dynamic_range=[0, 1.0],
@@ -187,22 +194,28 @@ def predict(
         colormap=cv2.COLORMAP_JET,
         verbose=True,
     ):
-        return False
+        return False, output_matrix, dataset.matrix
 
     output_matrix = output_matrix * 255
     output_matrix[output_matrix < 0] = 0
     output_matrix[output_matrix > 255] = 255
     output_matrix = output_matrix.astype(np.uint8)
 
-    return post_to_object(
-        prediction_object_name,
-        NAME.replace(".", "-"),
-        {
-            "lat": lat,
-            "lon": lon,
-            "address": address,
-            "elapsed_time": timer.elapsed_time,
-            "model": model_object_name,
-            "output_filename": file.name_and_extension(output_filename),
-        },
+    return (
+        post_to_object(
+            prediction_object_name,
+            NAME.replace(".", "-"),
+            {
+                "lat": lat,
+                "lon": lon,
+                "chip_count": chip_count,
+                "creation-date": string.pretty_date(),
+                "address": address,
+                "elapsed_time": timer.elapsed_time,
+                "model": model_object_name,
+                "output_filename": file.name_and_extension(output_filename),
+            },
+        ),
+        output_matrix,
+        dataset.matrix,
     )
