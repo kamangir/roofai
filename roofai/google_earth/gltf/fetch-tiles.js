@@ -8,7 +8,7 @@ const { writeFile } = require('fs/promises');
 async function run() {
   // Get your key:
   // https://developers.google.com/maps/documentation/tile/3d-tiles
-  const GOOGLE_API_KEY = "AIzaSyBdjTC8083HJitGQvqzD-U7sf9jjTKRxEU"
+  const GOOGLE_API_KEY = "TBA"
   const tilesetUrl = 'https://tile.googleapis.com/v1/3dtiles/root.json?key=' + GOOGLE_API_KEY;
   const screenSpaceError = 1
   const viewport = new WebMercatorViewport({
