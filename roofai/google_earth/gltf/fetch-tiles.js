@@ -8,7 +8,7 @@ const { writeFile } = require('fs/promises');
 async function run() {
   // Get your key:
   // https://developers.google.com/maps/documentation/tile/3d-tiles
-  const GOOGLE_API_KEY = "TBA"
+  const GOOGLE_API_KEY = process.env.GOOGLE_MAPS_API_KEY
   const tilesetUrl = 'https://tile.googleapis.com/v1/3dtiles/root.json?key=' + GOOGLE_API_KEY;
   const screenSpaceError = 1
   const viewport = new WebMercatorViewport({
@@ -19,7 +19,7 @@ async function run() {
     zoom: 16
   });
 
-  const object_name = "3d-download-v1"
+  const object_name = "3d-download-v3"
 
   const ABCLI_OBJECT_ROOT = "/Users/kamangir/storage/abcli"
   const object_path = `${ABCLI_OBJECT_ROOT}/${object_name}`
