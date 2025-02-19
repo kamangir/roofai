@@ -19,10 +19,11 @@ async function run() {
     zoom: 16
   });
 
-  const object_name = "3d-download-v3"
+  console.log(`ABCLI_OBJECT_ROOT: ${process.env.ABCLI_OBJECT_ROOT}`);
 
-  const ABCLI_OBJECT_ROOT = "/Users/kamangir/storage/abcli"
-  const object_path = `${ABCLI_OBJECT_ROOT}/${object_name}`
+  const object_name = "3d-download-v4"
+
+  const object_path = `${process.env.ABCLI_OBJECT_ROOT}/${object_name}`
 
   console.log("Fetching tileset...")
   const tilesetJson = await load(tilesetUrl, Tiles3DLoader);
