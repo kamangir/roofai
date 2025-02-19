@@ -32,7 +32,7 @@ class GoogleMapsDataset(BaseDataset):
         self.chip_width = DatasetTarget.TORCH.chip_width
         self.chip_overlap = chip_overlap
 
-        success, self.matrix, _ = get_static_image(
+        success, self.matrix, metadata = get_static_image(
             lat=lat,
             lon=lon,
             filename=(
@@ -48,6 +48,8 @@ class GoogleMapsDataset(BaseDataset):
             size=size,
         )
         assert success
+
+        self.gsd = metadata["gsd"]
 
         self.ids: List[str] = []
         for y in range(

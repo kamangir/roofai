@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 import segmentation_models_pytorch as smp
 import numpy as np
 from tqdm import tqdm
@@ -37,7 +37,7 @@ def predict(
     in_notebook: bool = False,
     batch_size: int = 32,
     verbose: bool = False,
-) -> Tuple[bool, np.ndarray, np.ndarray]:
+) -> Tuple[bool, np.ndarray, np.ndarray, Dict]:
     output_matrix: np.ndarray = np.array(())
     input_matrix: np.ndarray = np.array(())
 
@@ -189,6 +189,7 @@ def predict(
                 )
             ),
             f"{chip_count:,} chip(s)",
+            f"gsd: {dataset.gsd:.2f} m",
         ],
         footer=[fullname()],
         dynamic_range=[0, 1.0],
@@ -208,6 +209,7 @@ def predict(
             prediction_object_name,
             NAME.replace(".", "-"),
             {
+                "gsd": dataset.gsd,
                 "lat": lat,
                 "lon": lon,
                 "chip_count": chip_count,
@@ -220,4 +222,7 @@ def predict(
         ),
         output_matrix,
         dataset.matrix,
+        {
+            "gsd": dataset.gsd,
+        },
     )
