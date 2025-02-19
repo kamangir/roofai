@@ -29,7 +29,7 @@ def test_google_maps_predict(
     model_object_name = env.ROOFAI_DEFAULT_GOOGLE_MAPS_MODEL
     assert objects.download(model_object_name)
 
-    success, output_image, input_image = predict(
+    success, output_image, input_image, metadata = predict(
         lat=lat,
         lon=lon,
         model_object_name=model_object_name,
@@ -40,3 +40,4 @@ def test_google_maps_predict(
     assert success
     assert isinstance(output_image, np.ndarray)
     assert isinstance(input_image, np.ndarray)
+    assert "gsd" in metadata
