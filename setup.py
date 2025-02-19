@@ -12,6 +12,7 @@ setup(
         NAME,
         f"{NAME}.dataset",
         f"{NAME}.dataset.ingest",
+        f"{NAME}.google_earth",
         f"{NAME}.google_maps",
         f"{NAME}.google_maps.api",
         f"{NAME}.google_maps.semseg",
