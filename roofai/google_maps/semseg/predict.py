@@ -48,25 +48,25 @@ def predict(
             verbose=verbose,
         )
         if not success:
-            return success, output_matrix, input_matrix
+            return success, output_matrix, input_matrix, {}
 
     success, model_tags = get_tags(model_object_name)
     if not success:
-        return success, output_matrix, input_matrix
+        return success, output_matrix, input_matrix, {}
     dataset_object_name = model_tags.get("dataset", "")
     if not dataset_object_name:
         logger.error(f"{model_object_name}.dataset not found.")
-        return False, output_matrix, input_matrix
+        return False, output_matrix, input_matrix, {}
 
     success, dataset_tags = get_tags(dataset_object_name)
     if not success:
-        return success, output_matrix, input_matrix
+        return success, output_matrix, input_matrix, {}
     zoom_str = dataset_tags.get("zoom", "bad-zoom-value")
     try:
         zoom = int(zoom_str)
     except Exception as e:
         logger.error(e)
-        return False, output_matrix, input_matrix
+        return False, output_matrix, input_matrix, {}
 
     model = SemSegModel(
         model_filename=objects.path_of(
@@ -197,7 +197,7 @@ def predict(
         colormap=cv2.COLORMAP_JET,
         verbose=True,
     ):
-        return False, output_matrix, dataset.matrix
+        return False, output_matrix, dataset.matrix, {}
 
     output_matrix = output_matrix * 255
     output_matrix[output_matrix < 0] = 0
