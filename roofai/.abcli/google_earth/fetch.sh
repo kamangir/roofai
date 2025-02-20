@@ -13,7 +13,7 @@ function roofai_google_earth_fetch() {
         node fetch-tiles.js \
         $lat \
         $lon \
-        $object_name \
+        $ABCLI_OBJECT_ROOT/$object_name \
         "${@:3}"
     [[ $? -ne 0 ]] && return 1
 
