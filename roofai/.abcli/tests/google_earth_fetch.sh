@@ -7,6 +7,8 @@ function test_roofai_google_earth_fetch() {
 
     abcli_eval ,$options \
         roofai_google_earth_fetch \
-        lat=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LAT,lon=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LON \
-        $object_name
+        install,$options \
+        $object_name \
+        --latitude=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LAT \
+        --longitude=$ROOFAI_TEST_GOOGLE_MAPS_HOUSE_LON
 }
