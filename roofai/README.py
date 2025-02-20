@@ -62,6 +62,9 @@ def build():
                 "path": "semseg",
             },
             {
+                "path": "google_earth",
+            },
+            {
                 "path": "google_maps/api",
             },
             {
