@@ -11,6 +11,8 @@
 
 [fetch-53.343318--2.650661-2025-02-19-iiqxdp](https://kamangir-public.s3.ca-central-1.amazonaws.com/fetch-53.343318--2.650661-2025-02-19-iiqxdp.tar.gz)
 
-| using https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example, live: https://omarshehata.github.io/google-earth-as-gltf/ | glb viewer: https://sandbox.babylonjs.com/ |
+| | |
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/roofAI/google_earth/google-earth-as-gltf.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roofAI/google_earth/glb-viewer.png?raw=true) |
+| using https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example, live: https://omarshehata.github.io/google-earth-as-gltf/ | glb viewer: https://sandbox.babylonjs.com/ |
+

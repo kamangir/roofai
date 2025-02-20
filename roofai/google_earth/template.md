@@ -12,6 +12,7 @@ set:::object_name fetch-53.343318--2.650661-2025-02-19-iiqxdp
 
 object:::get:::object_name
 
-| using https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example, live: https://omarshehata.github.io/google-earth-as-gltf/ | glb viewer: https://sandbox.babylonjs.com/ |
+| | |
 |-|-|
 | assets:::roofAI/google_earth/google-earth-as-gltf.png | assets:::roofAI/google_earth/glb-viewer.png |
+| using https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example, live: https://omarshehata.github.io/google-earth-as-gltf/ | glb viewer: https://sandbox.babylonjs.com/ |
