@@ -37,7 +37,7 @@ items = README.Items(
             "name": "Google Earth API",
             "url": "./roofai/google_earth/api",
             "marquee": "https://github.com/kamangir/assets/raw/main/roofAI/google_earth/glb-viewer.png?raw=true",
-            "description": "Integrations with [Google Maps Tile API, Photorealistic 3D Tiles overview](https://developers.google.com/maps/documentation/tile/3d-tiles-overview).",
+            "description": "Integration with the [Google Photorealistic 3D Tiles](https://developers.google.com/maps/documentation/tile/3d-tiles-overview) API.",
         },
     ]
 )
