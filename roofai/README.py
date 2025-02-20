@@ -32,10 +32,7 @@ items = README.Items(
             "marquee": "https://github.com/kamangir/assets/raw/main/roofAI/roboflow/labelling-2.png?raw=true",
             "description": "Google Maps semantic segmentation datasets and models.",
         },
-        {
-            "name": "",
-            "marquee": "",
-        },
+        {},
         {
             "name": "Google Earth API",
             "url": "./roofai/google_earth/api",
