@@ -32,6 +32,15 @@ items = README.Items(
             "marquee": "https://github.com/kamangir/assets/raw/main/roofAI/roboflow/labelling-2.png?raw=true",
             "description": "Google Maps semantic segmentation datasets and models.",
         },
+        {
+            "name": "",
+        },
+        {
+            "name": "Google Earth API",
+            "url": "./roofai/google_earth/api",
+            "marquee": "https://github.com/kamangir/assets/raw/main/roofAI/google_earth/glb-viewer.png?raw=true",
+            "description": "Integrations with [Google Maps Tile API, Photorealistic 3D Tiles overview](https://developers.google.com/maps/documentation/tile/3d-tiles-overview).",
+        },
     ]
 )
 
