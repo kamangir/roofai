@@ -9,7 +9,7 @@ def help_fetch(
 ) -> str:
     options = "".join(
         [
-            xtra("dryrun,", mono=mono),
+            xtra("dryrun,install,", mono=mono),
             "lat=<lat>,lon=<lon>",
             xtra(",upload", mono=mono),
         ]
