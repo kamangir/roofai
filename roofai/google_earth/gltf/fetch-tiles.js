@@ -6,6 +6,11 @@ const { WebMercatorViewport } = require('@deck.gl/core');
 const { writeFile } = require('fs/promises');
 
 async function run() {
+  const latitude = parseFloat(process.argv[2])
+  const longitude = parseFloat(process.argv[3])
+
+  console.log(`latitude: ${latitude}, longitude: ${longitude}`);
+
   // Get your key:
   // https://developers.google.com/maps/documentation/tile/3d-tiles
   const GOOGLE_API_KEY = process.env.GOOGLE_MAPS_API_KEY
@@ -14,14 +19,14 @@ async function run() {
   const viewport = new WebMercatorViewport({
     width: 600,
     height: 400,
-    latitude: 53.3433,
-    longitude: -2.6518,
+    latitude: latitude,
+    longitude: longitude,
     zoom: 16
   });
 
   console.log(`ABCLI_OBJECT_ROOT: ${process.env.ABCLI_OBJECT_ROOT}`);
 
-  const object_name = "3d-download-v4"
+  const object_name = "3d-download-v10"
 
   const object_path = `${process.env.ABCLI_OBJECT_ROOT}/${object_name}`
 
@@ -73,8 +78,6 @@ async function run() {
 }
 
 run()
-
-
 
 function getSessionKey(tileset) {
   return new URL(`http://website.com?${tileset.queryParams}`).searchParams.get("session")
