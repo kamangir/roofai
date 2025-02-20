@@ -27,7 +27,7 @@ async function run() {
   // https://developers.google.com/maps/documentation/tile/3d-tiles
   const GOOGLE_API_KEY = process.env.GOOGLE_MAPS_API_KEY
   const tilesetUrl = 'https://tile.googleapis.com/v1/3dtiles/root.json?key=' + GOOGLE_API_KEY;
-  const screenSpaceError = 1
+  const screenSpaceError = 2
   const viewport = new WebMercatorViewport({
     width: 600,
     height: 400,
