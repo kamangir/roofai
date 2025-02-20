@@ -9,11 +9,19 @@ def help_fetch(
 ) -> str:
     options = "".join(
         [
-            xtra("dryrun,", mono=mono),
-            "lat=<lat>,lon=<lon>",
-            xtra(",upload", mono=mono),
+            xtra("dryrun,install,", mono=mono),
+            "upload",
         ]
     )
+
+    args = [
+        "[--latitude=<49.279802>]",
+        "[--longitude=<-123.115660>]",
+        "[--screenSpaceError=<2>]",
+        "[--width=<230>]",
+        "[--height=<175>]",
+        "[--zoom=<19>]",
+    ]
 
     return show_usage(
         [
@@ -21,7 +29,8 @@ def help_fetch(
             "fetch",
             f"[{options}]",
             "[-|<object-name>]",
-        ],
+        ]
+        + args,
         "fetch from google earth.",
         mono=mono,
     )
