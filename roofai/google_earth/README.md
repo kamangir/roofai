@@ -29,7 +29,7 @@ runme
 | | |
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/fetch-2025-02-20-oeqz75/google-earth-as-gltf.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/fetch-2025-02-20-oeqz75/babylonjs.png?raw=true) |
-| using [github/OmarShehata/google-earth-as-gltf](https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example) [[live](https://omarshehata.github.io/google-earth-as-gltf/)] | glb viewer: [sandbox.babylonjs.com](https://sandbox.babylonjs.com/) |
+| using [google-earth-as-gltf](https://github.com/kamangir/google-earth-as-gltf/tree/main/simple-node-example) [[live](https://kamangir.github.io/google-earth-as-gltf/)] | glb viewer: [sandbox.babylonjs.com](https://sandbox.babylonjs.com/) |
 
 [](https://github.com/kamangir/assets/blob/main/fetch-2025-02-20-oeqz75/)
 
