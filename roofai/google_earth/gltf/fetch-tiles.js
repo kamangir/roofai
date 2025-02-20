@@ -4,12 +4,24 @@ const { Tileset3D } = require('@loaders.gl/tiles');
 const { Tiles3DLoader } = require('@loaders.gl/3d-tiles');
 const { WebMercatorViewport } = require('@deck.gl/core');
 const { writeFile } = require('fs/promises');
+var fs = require('fs');
 
 async function run() {
   const latitude = parseFloat(process.argv[2])
   const longitude = parseFloat(process.argv[3])
+  const object_name = process.argv[4]
+  if (isNaN(latitude) || isNaN(longitude) || (!object_name)) {
+    console.error('❗️ usage: node fetch-tiles latitude longitude object_name');
+    process.exit(1);
+  }
+  console.log(`fetch-tiles: (lat:${latitude},lon=${longitude}) -> ${object_name}`);
 
-  console.log(`latitude: ${latitude}, longitude: ${longitude}`);
+  const object_path = `${process.env.ABCLI_OBJECT_ROOT}/${object_name}`
+  // https://stackoverflow.com/a/26815894/17619982
+  if (!fs.existsSync(object_path)) {
+    fs.mkdirSync(object_path, { recursive: true });
+    console.log(`created ${object_path}`);
+  }
 
   // Get your key:
   // https://developers.google.com/maps/documentation/tile/3d-tiles
@@ -23,12 +35,6 @@ async function run() {
     longitude: longitude,
     zoom: 16
   });
-
-  console.log(`ABCLI_OBJECT_ROOT: ${process.env.ABCLI_OBJECT_ROOT}`);
-
-  const object_name = "3d-download-v10"
-
-  const object_path = `${process.env.ABCLI_OBJECT_ROOT}/${object_name}`
 
   console.log("Fetching tileset...")
   const tilesetJson = await load(tilesetUrl, Tiles3DLoader);
