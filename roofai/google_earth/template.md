@@ -27,10 +27,10 @@ runme
 
 set:::object_name fetch-2025-02-20-oeqz75
 
-| | |
-|-|-|
-| assets:::get:::object_name/google-earth-as-gltf.png | assets:::get:::object_name/babylonjs.png |
-| using [google-earth-as-gltf](https://github.com/kamangir/google-earth-as-gltf/tree/main/simple-node-example) [[live](https://kamangir.github.io/google-earth-as-gltf/)] | glb viewer: [sandbox.babylonjs.com](https://sandbox.babylonjs.com/) |
+| | | |
+|-|-|-|
+| assets:::get:::object_name/google-earth-as-gltf.png | assets:::get:::object_name/babylonjs.png | assets:::get:::object_name/notebook.png |
+| using [google-earth-as-gltf](https://github.com/kamangir/google-earth-as-gltf/tree/main/simple-node-example) [[live](https://kamangir.github.io/google-earth-as-gltf/)] | glb viewer: [sandbox.babylonjs.com](https://sandbox.babylonjs.com/) | [notebook](../../notebooks/google_earth.ipynb) wip |
 
 assets:::get:::object_name/
 
