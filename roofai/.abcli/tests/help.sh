@@ -5,6 +5,10 @@ function test_roofai_help() {
 
     local module
     for module in \
+        "@gearth" \
+        "@google_earth" \
+        "@google_earth fetch" \
+        \
         "@gmaps" \
         "@google_maps" \
         "@google_maps get_static_image" \
