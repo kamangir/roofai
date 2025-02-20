@@ -14,5 +14,5 @@
 | | |
 |-|-|
 | ![image](https://github.com/kamangir/assets/blob/main/roofAI/google_earth/google-earth-as-gltf.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roofAI/google_earth/glb-viewer.png?raw=true) |
-| using https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example, live: https://omarshehata.github.io/google-earth-as-gltf/ | glb viewer: https://sandbox.babylonjs.com/ |
+| using [github/OmarShehata/google-earth-as-gltf](https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example), [live](https://omarshehata.github.io/google-earth-as-gltf/) | glb viewer: [sandbox.babylonjs.com](https://sandbox.babylonjs.com/) |
 

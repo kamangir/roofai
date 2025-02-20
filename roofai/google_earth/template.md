@@ -15,4 +15,4 @@ object:::get:::object_name
 | | |
 |-|-|
 | assets:::roofAI/google_earth/google-earth-as-gltf.png | assets:::roofAI/google_earth/glb-viewer.png |
-| using https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example, live: https://omarshehata.github.io/google-earth-as-gltf/ | glb viewer: https://sandbox.babylonjs.com/ |
+| using [github/OmarShehata/google-earth-as-gltf](https://github.com/OmarShehata/google-earth-as-gltf/tree/main/simple-node-example), [live](https://omarshehata.github.io/google-earth-as-gltf/) | glb viewer: [sandbox.babylonjs.com](https://sandbox.babylonjs.com/) |
