@@ -7,8 +7,12 @@
 
 ```bash
 @gearth fetch \
-	lat=53.343318,lon=-2.650661 -
+	lat=53.343318,lon=-2.650661,upload -
 ```
+
+set:::object_name fetch-53.343318--2.650661-2025-02-19-iiqxdp
+
+object:::get:::object_name
 
 | | |
 |-|-|
