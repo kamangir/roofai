@@ -10,7 +10,7 @@
 
 
 ```bash
-@gearth fetch \
+@google_earth fetch \
     lat=53.343318,lon=-2.650661,upload -
 ```
 
