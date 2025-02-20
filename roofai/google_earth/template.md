@@ -12,4 +12,4 @@
 
 | | |
 |-|-|
-| assets:::roofai/google_earth/google-earth-as-gltf.png | assets:::roofai/google_earth/glb-viewer.png |
+| assets:::roofAI/google_earth/google-earth-as-gltf.png | assets:::roofAI/google_earth/glb-viewer.png |

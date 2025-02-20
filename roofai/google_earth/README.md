@@ -12,4 +12,4 @@
 
 | | |
 |-|-|
-| ![image](https://github.com/kamangir/assets/blob/main/roofai/google_earth/google-earth-as-gltf.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roofai/google_earth/glb-viewer.png?raw=true) |
+| ![image](https://github.com/kamangir/assets/blob/main/roofAI/google_earth/google-earth-as-gltf.png?raw=true) | ![image](https://github.com/kamangir/assets/blob/main/roofAI/google_earth/glb-viewer.png?raw=true) |
