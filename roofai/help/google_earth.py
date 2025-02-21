@@ -3,6 +3,23 @@ from typing import List
 from blue_options.terminal import show_usage, xtra
 
 
+def help_browse(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    options = "dev,sandbox"
+
+    return show_usage(
+        [
+            "@google_earth",
+            "browse",
+            f"[{options}]",
+        ],
+        "browse google earth tools.",
+        mono=mono,
+    )
+
+
 def help_fetch(
     tokens: List[str],
     mono: bool,
@@ -25,7 +42,7 @@ def help_fetch(
 
     return show_usage(
         [
-            "@gearth",
+            "@google_earth",
             "fetch",
             f"[{options}]",
             "[-|<object-name>]",
@@ -37,5 +54,6 @@ def help_fetch(
 
 
 help_functions = {
+    "browse": help_browse,
     "fetch": help_fetch,
 }

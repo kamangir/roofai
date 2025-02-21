@@ -8,7 +8,7 @@
 runme() {
     local object_name=fetch-$(@@timestamp)
 
-    @gearth fetch \
+    @google_earth fetch \
         install,upload \
         $object_name \
         --latitude=$ROOFAI_TEST_GOOGLE_MAPS_LAT \

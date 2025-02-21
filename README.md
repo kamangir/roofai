@@ -16,9 +16,9 @@ graph LR
 
     semseg_predict["roofai<br>semseg<br>predict -<br>&lt;model-object-name&gt;<br>&lt;dataset-object-name&gt;<br>&lt;prediction-object-name&gt;"]
 
-    gmaps_get_static_image["@gmaps<br>get_static_image -<br>&lt;object-name&gt;<br>--lat &lt;lat&gt;<br>--lon &lt;lon&gt;"]
+    gmaps_get_static_image["@google_maps<br>get_static_image -<br>&lt;object-name&gt;<br>--lat &lt;lat&gt;<br>--lon &lt;lon&gt;"]
 
-    gmaps_geocode["@gmaps<br>geocode - -<br>--address &lt;address&gt;"]
+    gmaps_geocode["@google_maps<br>geocode - -<br>--address &lt;address&gt;"]
 
     dataset_ingest_gmaps["roofai<br>dataset<br>ingest<br>source=gmaps<br>&lt;object-name&gt;<br>count=&lt;count&gt;,lat=&lt;lat&gt;,lon=&lt;lon&gt;<br>roboflow,project=&lt;project-name&gt;"]
 
@@ -26,7 +26,11 @@ graph LR
 
     roboflow_download["@roboflow<br>download<br>project=&lt;project-name&gt;,version=&lt;version&gt;<br>&lt;object-name&gt;<br>ingest,count=&lt;10000&gt;<br>&lt;dataset-object-name&gt;"]
 
-    gmaps_predict["@gmaps<br>predict<br>lat=&lt;lat&gt;,lon=&lt;lon&gt; -<br>&lt;model-object-name&gt;<br>&lt;prediction-object-name&gt;"]
+    gmaps_predict["@google_maps<br>predict<br>lat=&lt;lat&gt;,lon=&lt;lon&gt; -<br>&lt;model-object-name&gt;<br>&lt;prediction-object-name&gt;"]
+
+    gearth_browse["@google_earth<br>browse<br>dev"]
+
+    gearth_fetch["@google_earth<br>fetch -<br>&lt;object-name&gt;<br>--latitude=&lt;&gt;<br>--longitude=&lt;&gt;"]
 
     address["🌐 address"]:::folder
     lat_lon["🌐 lat,lon"]:::folder
@@ -83,6 +87,11 @@ graph LR
     address --> gmaps_geocode
     gmaps_geocode --> lat_lon
 
+    lat_lon --> gearth_browse
+
+    lat_lon --> gearth_fetch
+    gearth_fetch --> object_name
+
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
 
@@ -97,4 +106,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/roofai/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/roofai/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/roofai/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/roofai.svg)](https://pypi.org/project/roofai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/roofai)](https://pypistats.org/packages/roofai)
 
-built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.291.1`](https://github.com/kamangir/roofai).
+built by 🌀 [`blue_options-4.223.1`](https://github.com/kamangir/awesome-bash-cli), based on 🏛️ [`roofai-6.292.1`](https://github.com/kamangir/roofai).
