@@ -8,4 +8,6 @@ function test_roofai_google_earth_browse() {
         roofai_google_earth_browse $options,$test_options
         [[ $? -ne 0 ]] && return 1
     done
+
+    return 0
 }
