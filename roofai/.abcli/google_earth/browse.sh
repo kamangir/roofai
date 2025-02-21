@@ -13,7 +13,6 @@ function roofai_google_earth_browse() {
             return 0
 
         pushd $abcli_path_git/google-earth-as-gltf >/dev/null
-        npm install minimist
         npm install
 
         abcli_browse http://localhost:3000/ &
