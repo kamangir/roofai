@@ -16,9 +16,9 @@ graph LR
 
     semseg_predict["roofai semseg predict~~- <model-object-name> <dataset-object-name> <prediction-object-name>"]
 
-    gmaps_get_static_image["@gmaps get_static_image~~- <object-name> --lat~~<lat> --lon~~<lon>"]
+    gmaps_get_static_image["@google_maps get_static_image~~- <object-name> --lat~~<lat> --lon~~<lon>"]
 
-    gmaps_geocode["@gmaps geocode~~-~~- --address~~<address>"]
+    gmaps_geocode["@google_maps geocode~~-~~- --address~~<address>"]
 
     dataset_ingest_gmaps["roofai dataset ingest source=gmaps <object-name> count=<count>,lat=<lat>,lon=<lon> roboflow,project=<project-name>"]
 
@@ -26,7 +26,11 @@ graph LR
 
     roboflow_download["@roboflow download project=<project-name>,version=<version> <object-name> ingest,count=<10000> <dataset-object-name>"]
 
-    gmaps_predict["@gmaps predict lat=<lat>,lon=<lon>~~- <model-object-name> <prediction-object-name>"]
+    gmaps_predict["@google_maps predict lat=<lat>,lon=<lon>~~- <model-object-name> <prediction-object-name>"]
+
+    gearth_browse["@google_earth browse dev"]
+
+    gearth_fetch["@google_earth fetch~~- <object-name> --latitude=<> --longitude=<>"]
 
     address["🌐 address"]:::folder
     lat_lon["🌐 lat,lon"]:::folder
@@ -37,6 +41,7 @@ graph LR
     model_object_name["📂 model object"]:::folder
     prediction_object_name["📂 prediction object"]:::folder
     object_name["📂 object"]:::folder
+    object_name_2["📂 object"]:::folder
     object_name_static_image["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
     roboflow["🖼️ roboflow"]:::folder
@@ -82,6 +87,11 @@ graph LR
 
     address --> gmaps_geocode
     gmaps_geocode --> lat_lon
+
+    lat_lon --> gearth_browse
+
+    lat_lon --> gearth_fetch
+    gearth_fetch --> object_name_2
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```

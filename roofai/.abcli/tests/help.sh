@@ -7,6 +7,7 @@ function test_roofai_help() {
     for module in \
         "@gearth" \
         "@google_earth" \
+        "@google_earth browse" \
         "@google_earth fetch" \
         \
         "@gmaps" \

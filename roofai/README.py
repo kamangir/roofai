@@ -1,8 +1,11 @@
 import os
 
+from blue_options.help.functions import get_help
 from blue_objects import file, README
+from blue_objects.env import abcli_path_git
 
 from roofai import NAME, VERSION, ICON, REPO_NAME
+from roofai.help.functions import help_functions
 from roofai.dataset.README import items as dataset_items
 
 
@@ -44,6 +47,20 @@ items = README.Items(
 
 
 def build():
+    # failure is tolerated.
+    README.build(
+        path=os.path.join(abcli_path_git, "google-earth-as-gltf/"),
+        ICON=ICON,
+        NAME=NAME,
+        VERSION=VERSION,
+        REPO_NAME=REPO_NAME,
+        help_function=lambda tokens: get_help(
+            tokens,
+            help_functions,
+            mono=True,
+        ),
+    )
+
     return all(
         README.build(
             items=readme.get("items", []),
