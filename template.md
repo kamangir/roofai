@@ -41,6 +41,7 @@ graph LR
     model_object_name["📂 model object"]:::folder
     prediction_object_name["📂 prediction object"]:::folder
     object_name["📂 object"]:::folder
+    object_name_2["📂 object"]:::folder
     object_name_static_image["📂 object"]:::folder
     terminal["💻 terminal"]:::folder
     roboflow["🖼️ roboflow"]:::folder
@@ -90,7 +91,7 @@ graph LR
     lat_lon --> gearth_browse
 
     lat_lon --> gearth_fetch
-    gearth_fetch --> object_name
+    gearth_fetch --> object_name_2
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
