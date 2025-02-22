@@ -98,13 +98,19 @@ if args.task == "get_static_image":
     success, _, _ = get_static_image(
         lat=args.lat,
         lon=args.lon,
-        filename=(
-            objects.path_of(
-                object_name=args.object_name,
-                filename=args.filename,
-            )
-            if args.filename
-            else ""
+        filename=objects.path_of(
+            object_name=args.object_name,
+            filename=(
+                args.filename
+                if args.filename
+                else "{}-{:.06f}-{:.06f}-{:02d}-{}.png".format(
+                    args.maptype,
+                    args.lat,
+                    args.lon,
+                    args.zoom,
+                    args.size,
+                )
+            ),
         ),
         zoom=args.zoom,
         maptype=args.maptype,
