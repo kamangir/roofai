@@ -103,12 +103,14 @@ if args.task == "get_static_image":
             filename=(
                 args.filename
                 if args.filename
-                else "{}-{:.06f}-{:.06f}-{:02d}-{}.png".format(
-                    args.maptype,
-                    args.lat,
-                    args.lon,
-                    args.zoom,
-                    args.size,
+                else "{}.png".format(
+                    "{}-{:.06f}-{:.06f}-{:02d}-{}".format(
+                        args.maptype,
+                        args.lat,
+                        args.lon,
+                        args.zoom,
+                        args.size,
+                    ).replace(".", "-")
                 )
             ),
         ),
